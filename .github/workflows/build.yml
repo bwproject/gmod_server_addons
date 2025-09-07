@@ -6,21 +6,30 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
 
+    - name: Install dependencies
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
+        sudo apt-get install -y wget unzip lib32gcc-s1
+
     - name: Install SteamCMD
       run: |
-        sudo apt-get update
-        sudo apt-get install -y steamcmd
+        mkdir -p $HOME/steamcmd
+        cd $HOME/steamcmd
+        wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+        tar -xvzf steamcmd_linux.tar.gz
+        $HOME/steamcmd/steamcmd.sh +quit
 
     - name: Install Garry's Mod tools
       run: |
         mkdir -p $HOME/gmod-tools
-        steamcmd +login anonymous \
+        $HOME/steamcmd/steamcmd.sh +login anonymous \
           +force_install_dir $HOME/gmod-tools \
           +app_update 4020 validate +quit
         ls $HOME/gmod-tools/bin/
