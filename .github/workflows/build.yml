@@ -1,60 +1,51 @@
-name: Build All Garry's Mod Addons
+name: Build and Publish Garry's Mod Addons
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-24.04
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y wget unzip zip
+        sudo apt-get install -y wget unzip libwebkit2gtk-4.1-0 libjavascriptcoregtk-4.1-0 zip
 
-    - name: Download gmad
+    - name: Set Steam API Key
+      run: echo "STEAM_API_KEY=${{ secrets.STEAM_API_KEY }}" >> $GITHUB_ENV
+
+    - name: Download gmpublisher
       run: |
-        mkdir -p $HOME/gmad
-        cd $HOME/gmad
-        wget -O gmad_linux.zip https://github.com/Facepunch/garrysmod-sdk/releases/download/v2025.07/gmad_linux.zip
-        unzip gmad_linux.zip
-        chmod +x gmad
-        echo "gmad installed at $HOME/gmad/gmad"
+        mkdir -p $HOME/gmpublisher
+        cd $HOME/gmpublisher
+        wget -O gmpublisher_linux.tar.gz https://github.com/WilliamVenner/gmpublisher/releases/download/v2.11.0/gmpublisher_2.11.0_linux_x86_64.tar.gz
+        tar -xzf gmpublisher_linux.tar.gz
+        chmod +x gmpublisher
 
-    - name: Pack all addons
+    - name: Pack and publish addons
       run: |
         mkdir -p ./build
-        GMAD_BIN="$HOME/gmad/gmad"
-        for dir in ./addons/*/ ; do
+        GMPUB="$HOME/gmpublisher/gmpublisher"
+        for dir in ./addons/*/; do
           name=$(basename "$dir")
-          echo "Packing $name ..."
-          "$GMAD_BIN" create -folder "$dir" -out "./build/${name}.gma"
+          echo "Packing $name..."
+          "$GMPUB" pack "$dir" --output "./build/$name.gma"
+          echo "Publishing $name to Steam Workshop..."
+          "$GMPUB" publish "./build/$name.gma" \
+            --title "$name" \
+            --description "Automatically published via GitHub Actions" \
+            --tags "tag1,tag2" \
+            --steam-key "$STEAM_API_KEY"
         done
 
-    - name: Log packed addons
-      run: |
-        echo "Packed .gma files:"
-        ls -1 ./build/*.gma
-
-    - name: Upload individual .gma files
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: gmod-addons-individual
+        name: gmod-addons
         path: ./build/*.gma
-
-    - name: Archive all .gma into ZIP
-      run: |
-        zip -r ./build/addons.zip ./build/*.gma
-        echo "Files in ZIP:"
-        unzip -l ./build/addons.zip
-
-    - name: Upload ZIP artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: gmod-addons-zip
-        path: ./build/addons.zip
