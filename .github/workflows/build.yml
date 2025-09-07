@@ -1,4 +1,4 @@
-name: Build and Publish Garry's Mod Addon
+name: Build and Publish Garry's Mod Addons
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-publish:
-    runs-on: ubuntu-24.04
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -14,35 +14,36 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget unzip libwebkit2gtk-4.1-0 libjavascriptcoregtk-4.1-0 zip
-
-    - name: Set Steam API Key
-      run: echo "STEAM_API_KEY=${{ secrets.STEAM_API_KEY }}" >> $GITHUB_ENV
+        choco install zip -y
 
     - name: Download gmpublisher
       run: |
-        mkdir -p $HOME/gmpublisher
-        cd $HOME/gmpublisher
-        wget -O gmpublisher_linux.tar.gz https://github.com/WilliamVenner/gmpublisher/releases/download/v2.11.0/gmpublisher_2.11.0_linux_x86_64.tar.gz
-        tar -xzf gmpublisher_linux.tar.gz
-        chmod +x gmpublisher
+        $url = "https://github.com/WilliamVenner/gmpublisher/releases/download/v2.11.0/gmpublisher_2.11.0_x64.zip"
+        $dest = "$Env:USERPROFILE\gmpublisher.zip"
+        Invoke-WebRequest -Uri $url -OutFile $dest
+        Expand-Archive -Path $dest -DestinationPath "$Env:USERPROFILE\gmpublisher"
+        Remove-Item $dest
+        Write-Host "gmpublisher installed at $Env:USERPROFILE\gmpublisher"
+
+    - name: Set Steam API Key
+      run: |
+        echo "STEAM_API_KEY=${{ secrets.STEAM_API_KEY }}" >> $Env:GITHUB_ENV
 
     - name: Pack and publish addons
       run: |
-        mkdir -p ./build
-        GMPUB="$HOME/gmpublisher/gmpublisher"
-        for dir in ./addons/*/; do
-          name=$(basename "$dir")
-          echo "Packing $name..."
-          "$GMPUB" pack "$dir" --output "./build/$name.gma"
-          echo "Publishing $name to Steam Workshop..."
-          "$GMPUB" publish "./build/$name.gma" \
-            --title "$name" \
-            --description "Automatically published via GitHub Actions" \
-            --tags "tag1,tag2" \
-            --steam-key "$STEAM_API_KEY"
-        done
+        $gmpub = "$Env:USERPROFILE\gmpublisher\gmpublisher.exe"
+        mkdir build
+        Get-ChildItem -Directory ./addons | ForEach-Object {
+            $addonName = $_.Name
+            Write-Host "Packing $addonName..."
+            & $gmpub pack $_.FullName --output ".\build\$addonName.gma"
+            Write-Host "Publishing $addonName to Steam Workshop..."
+            & $gmpub publish ".\build\$addonName.gma" `
+              --title $addonName `
+              --description "Automatically published via GitHub Actions" `
+              --tags "tag1,tag2" `
+              --steam-key $Env:STEAM_API_KEY
+        }
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
