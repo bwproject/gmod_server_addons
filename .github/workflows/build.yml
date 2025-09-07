@@ -1,4 +1,4 @@
-name: Build and Publish Garry's Mod Addons
+name: Build and Publish Garry's Mod Addon
 
 on:
   push:
