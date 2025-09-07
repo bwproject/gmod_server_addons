@@ -29,14 +29,24 @@ jobs:
 
     - name: Pack and publish addons
       run: |
-        $gmpub = "C:\Program Files\gmpublisher\gmpublisher.exe"
+        # Найти реальный путь gmpublisher.exe
+        $gmpubPath = Get-ChildItem "C:\Program Files\gmpublisher" -Recurse -Filter "gmpublisher.exe" | Select-Object -First 1
+        if (-not $gmpubPath) {
+            $gmpubPath = Get-ChildItem "C:\Program Files (x86)\gmpublisher" -Recurse -Filter "gmpublisher.exe" | Select-Object -First 1
+        }
+        if (-not $gmpubPath) {
+            Write-Error "gmpublisher.exe not found!"
+            exit 1
+        }
+        Write-Host "Using gmpublisher at $($gmpubPath.FullName)"
+
         mkdir build
         Get-ChildItem -Directory ./addons | ForEach-Object {
             $addonName = $_.Name
             Write-Host "Packing $addonName..."
-            & "$gmpub" pack $_.FullName --output ".\build\$addonName.gma"
+            & "$($gmpubPath.FullName)" pack $_.FullName --output ".\build\$addonName.gma"
             Write-Host "Publishing $addonName to Steam Workshop..."
-            & "$gmpub" publish ".\build\$addonName.gma" `
+            & "$($gmpubPath.FullName)" publish ".\build\$addonName.gma" `
               --title $addonName `
               --description "Automatically published via GitHub Actions" `
               --tags "tag1,tag2" `
