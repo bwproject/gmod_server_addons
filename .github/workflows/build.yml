@@ -1,0 +1,43 @@
+name: Build All Garry's Mod Addons
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Install SteamCMD
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y steamcmd
+
+    - name: Install Garry's Mod tools
+      run: |
+        mkdir -p $HOME/gmod-tools
+        steamcmd +login anonymous \
+          +force_install_dir $HOME/gmod-tools \
+          +app_update 4020 validate +quit
+        ls $HOME/gmod-tools/bin/
+
+    - name: Pack all addons
+      run: |
+        mkdir -p ./build
+        for dir in ./addons/*/ ; do
+          name=$(basename "$dir")
+          echo "Packing $name ..."
+          $HOME/gmod-tools/bin/gmad create \
+            -folder "$dir" \
+            -out "./build/${name}.gma"
+        done
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: gmod-addons
+        path: ./build/*.gma
