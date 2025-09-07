@@ -16,7 +16,7 @@ jobs:
       run: |
         sudo dpkg --add-architecture i386
         sudo apt-get update
-        sudo apt-get install -y wget unzip lib32gcc-s1
+        sudo apt-get install -y wget unzip lib32gcc-s1 zip
 
     - name: Install SteamCMD
       run: |
@@ -32,21 +32,39 @@ jobs:
         $HOME/steamcmd/steamcmd.sh +login anonymous \
           +force_install_dir $HOME/gmod-tools \
           +app_update 4020 validate +quit
-        ls $HOME/gmod-tools/bin/
+        GMOD_BIN="$HOME/gmod-tools/steamapps/common/GarrysModDS/bin"
+        chmod +x "$GMOD_BIN/gmad"
+        echo "GMod tools installed at $GMOD_BIN"
 
     - name: Pack all addons
       run: |
         mkdir -p ./build
+        GMOD_BIN="$HOME/gmod-tools/steamapps/common/GarrysModDS/bin"
         for dir in ./addons/*/ ; do
           name=$(basename "$dir")
           echo "Packing $name ..."
-          $HOME/gmod-tools/bin/gmad create \
-            -folder "$dir" \
-            -out "./build/${name}.gma"
+          "$GMOD_BIN/gmad" create -folder "$dir" -out "./build/${name}.gma"
         done
 
-    - name: Upload build artifacts
+    - name: Log packed addons
+      run: |
+        echo "Packed .gma files:"
+        ls -1 ./build/*.gma
+
+    - name: Upload individual .gma files
       uses: actions/upload-artifact@v4
       with:
-        name: gmod-addons
+        name: gmod-addons-individual
         path: ./build/*.gma
+
+    - name: Archive all .gma into ZIP
+      run: |
+        zip -r ./build/addons.zip ./build/*.gma
+        echo "Files in ZIP:"
+        unzip -l ./build/addons.zip
+
+    - name: Upload ZIP artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: gmod-addons-zip
+        path: ./build/addons.zip
