@@ -34,9 +34,9 @@ jobs:
         Get-ChildItem -Directory ./addons | ForEach-Object {
             $addonName = $_.Name
             Write-Host "Packing $addonName..."
-            & $gmpub pack $_.FullName --output ".\build\$addonName.gma"
+            & "$gmpub" pack $_.FullName --output ".\build\$addonName.gma"
             Write-Host "Publishing $addonName to Steam Workshop..."
-            & $gmpub publish ".\build\$addonName.gma" `
+            & "$gmpub" publish ".\build\$addonName.gma" `
               --title $addonName `
               --description "Automatically published via GitHub Actions" `
               --tags "tag1,tag2" `
