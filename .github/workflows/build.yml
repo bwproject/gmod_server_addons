@@ -13,25 +13,23 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: |
-        choco install zip -y
+      run: choco install zip -y
 
-    - name: Download gmpublisher
+    - name: Download and install gmpublisher
       run: |
-        $url = "https://github.com/WilliamVenner/gmpublisher/releases/download/v2.11.0/gmpublisher_2.11.0_x64.zip"
-        $dest = "$Env:USERPROFILE\gmpublisher.zip"
-        Invoke-WebRequest -Uri $url -OutFile $dest
-        Expand-Archive -Path $dest -DestinationPath "$Env:USERPROFILE\gmpublisher"
-        Remove-Item $dest
-        Write-Host "gmpublisher installed at $Env:USERPROFILE\gmpublisher"
+        $url = "https://github.com/WilliamVenner/gmpublisher/releases/download/2.11.0/gmpublisher_2.11.0_x64_en-US.msi"
+        $msiPath = "$Env:USERPROFILE\gmpublisher.msi"
+        Invoke-WebRequest -Uri $url -OutFile $msiPath
+        msiexec /i $msiPath /qn
+        Remove-Item $msiPath
+        Write-Host "gmpublisher installed."
 
     - name: Set Steam API Key
-      run: |
-        echo "STEAM_API_KEY=${{ secrets.STEAM_API_KEY }}" >> $Env:GITHUB_ENV
+      run: echo "STEAM_API_KEY=${{ secrets.STEAM_API_KEY }}" >> $Env:GITHUB_ENV
 
     - name: Pack and publish addons
       run: |
-        $gmpub = "$Env:USERPROFILE\gmpublisher\gmpublisher.exe"
+        $gmpub = "C:\Program Files\gmpublisher\gmpublisher.exe"
         mkdir build
         Get-ChildItem -Directory ./addons | ForEach-Object {
             $addonName = $_.Name
@@ -46,7 +44,4 @@ jobs:
         }
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: gmod-addons
-        path: ./build/*.gma
+      us
