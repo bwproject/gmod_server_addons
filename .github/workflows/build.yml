@@ -14,36 +14,26 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo dpkg --add-architecture i386
         sudo apt-get update
-        sudo apt-get install -y wget unzip lib32gcc-s1 zip
+        sudo apt-get install -y wget unzip zip
 
-    - name: Install SteamCMD
+    - name: Download gmad
       run: |
-        mkdir -p $HOME/steamcmd
-        cd $HOME/steamcmd
-        wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
-        tar -xvzf steamcmd_linux.tar.gz
-        $HOME/steamcmd/steamcmd.sh +quit
-
-    - name: Install Garry's Mod tools
-      run: |
-        mkdir -p $HOME/gmod-tools
-        $HOME/steamcmd/steamcmd.sh +login anonymous \
-          +force_install_dir $HOME/gmod-tools \
-          +app_update 4020 validate +quit
-        GMOD_BIN="$HOME/gmod-tools/steamapps/common/GarrysModDS/bin"
-        chmod +x "$GMOD_BIN/gmad"
-        echo "GMod tools installed at $GMOD_BIN"
+        mkdir -p $HOME/gmad
+        cd $HOME/gmad
+        wget -O gmad_linux.zip https://github.com/Facepunch/garrysmod-sdk/releases/download/v2025.07/gmad_linux.zip
+        unzip gmad_linux.zip
+        chmod +x gmad
+        echo "gmad installed at $HOME/gmad/gmad"
 
     - name: Pack all addons
       run: |
         mkdir -p ./build
-        GMOD_BIN="$HOME/gmod-tools/steamapps/common/GarrysModDS/bin"
+        GMAD_BIN="$HOME/gmad/gmad"
         for dir in ./addons/*/ ; do
           name=$(basename "$dir")
           echo "Packing $name ..."
-          "$GMOD_BIN/gmad" create -folder "$dir" -out "./build/${name}.gma"
+          "$GMAD_BIN" create -folder "$dir" -out "./build/${name}.gma"
         done
 
     - name: Log packed addons
