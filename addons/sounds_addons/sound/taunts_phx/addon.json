@@ -1,8 +1,0 @@
-{
-  "title": "ProjectBW Sound PropHunt",
-  "type": "content",
-  "tags": ["sound", "prop-hunt"],
-  "ignore": ["*.psd", "*.blend", "*.tmp"],
-  "author_name": "The_Mr_Mes109",
-  "content_type": "addon"
-}
