@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazbear's Hunt - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #7f1d1d 0%, #000000 50%, #7f1d1d 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .glow-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 384px;
+            height: 384px;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 50%;
+            filter: blur(48px);
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .info-panel {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(153, 27, 27, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            z-index: 20;
+        }
+
+        .server-owner {
+            top: 24px;
+            left: 24px;
+        }
+
+        .player-info {
+            top: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .server-rules {
+            bottom: 24px;
+            left: 24px;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ef4444;
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: rgba(254, 202, 202, 0.7);
+            letter-spacing: 0.05em;
+            margin-bottom: 64px;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 448px;
+            margin-bottom: 32px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(127, 29, 29, 0.5);
+            border: 1px solid rgba(153, 27, 27, 0.3);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #dc2626, #f87171);
+            border-radius: 9999px;
+            transition: width 0.5s ease-out;
+            box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
+        }
+
+        .server-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 8px;
+        }
+
+        .server-info span {
+            color: rgba(254, 202, 202, 0.6);
+            font-size: 0.875rem;
+        }
+
+        .server-info .value {
+            color: #fca5a5;
+            font-weight: 500;
+        }
+
+        .separator {
+            color: rgba(239, 68, 68, 0.4);
+        }
+
+        .map-info {
+            color: rgba(254, 202, 202, 0.6);
+            font-size: 0.875rem;
+        }
+
+        .map-info .value {
+            color: #fca5a5;
+            font-weight: 500;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(239, 68, 68, 0.4);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .text-label {
+            color: #fca5a5;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .text-value {
+            color: rgba(254, 202, 202, 0.8);
+            font-size: 0.75rem;
+        }
+
+        .text-progress {
+            color: #fca5a5;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .text-percent {
+            color: #f87171;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        .access-denied {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 32px;
+        }
+
+        .spinner {
+            width: 64px;
+            height: 64px;
+            border: 4px solid rgba(239, 68, 68, 0.3);
+            border-top: 4px solid #ef4444;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .audio-control {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(153, 27, 27, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fca5a5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            font-size: 18px;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .audio-control:hover {
+            background: rgba(153, 27, 27, 0.4);
+            color: #fecaca;
+            border-color: rgba(220, 38, 38, 0.5);
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.2);
+        }
+
+        .audio-control:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .info-panel {
+                padding: 12px;
+            }
+
+            .player-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="glow-orb"></div>
+
+    <div class="info-panel server-owner">
+        <p class="text-label">Server Owner</p>
+        <p class="text-value">@sergeant_robbery</p>
+    </div>
+
+    <div class="info-panel player-info">
+        <div class="avatar">
+            <img id="playerAvatar" src="" alt="Player Avatar" style="display: none;"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span id="playerInitial" style="color: #f87171; font-size: 12px; font-weight: bold;">?</span>
+        </div>
+        <div>
+            <p class="text-value" id="playerName">Loading...</p>
+            <p class="text-value" style="font-size: 10px;">ID: <span id="playerSteamId">...</span></p>
+        </div>
+    </div>
+
+    <div class="info-panel server-rules">
+        <p class="text-label">Server Rules</p>
+        <p class="text-value">Enjoy and don’t take offense!</p>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div>
+            <h1 class="title">FAZBEAR'S HUNT</h1>
+            <p class="subtitle" id="statusText">Connecting to server...</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-header">
+                <span class="text-progress">Progress</span>
+                <span class="text-percent" id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div>
+            <div class="server-info">
+                <span>Server: <span class="value" id="serverName">Loading...</span></span>
+                <span class="separator">•</span>
+                <span>Mode: <span class="value" id="gameMode">Loading...</span></span>
+            </div>
+            <p class="map-info">Map: <span class="value" id="mapName">Loading...</span></p>
+        </div>
+
+        <div class="footer">
+            Powered by rep0rt
+        </div>
+    </div>
+
+    <div class="main-content access-denied" id="accessDenied" style="display: none;">
+        <div class="spinner"></div>
+        <h1 style="font-size: 2.5rem; font-weight: bold; color: #ef4444; margin-bottom: 16px;">Access Denied</h1>
+        <p style="color: rgba(254, 202, 202, 0.7); font-size: 1.125rem; margin-bottom: 8px;">This loading screen is only
+            accessible from Garry's Mod</p>
+        <p style="color: rgba(239, 68, 68, 0.6); font-size: 0.875rem;">Please connect through the game client</p>
+    </div>
+
+    <audio id="backgroundAudio" loop preload="auto" style="display: none;">
+        <source src="loading-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="audio-control" id="audioControl" title="Toggle Audio">🔇</button>
+
+    <script>
+        let loadingProgress = 0;
+        let serverInfo = null;
+        let playerInfo = {
+            name: "Loading...",
+            steamId: "STEAM_0:0:000000000",
+            avatar: null
+        };
+        let isGModAvailable = null;
+        let isAudioPlaying = false;
+        let filesNeeded = 0;
+        let filesTotal = 0;
+        let filesDownloaded = 0;
+
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        const statusText = document.getElementById('statusText');
+        const serverName = document.getElementById('serverName');
+        const gameMode = document.getElementById('gameMode');
+        const mapName = document.getElementById('mapName');
+        const playerName = document.getElementById('playerName');
+        const playerSteamId = document.getElementById('playerSteamId');
+        const playerAvatar = document.getElementById('playerAvatar');
+        const playerInitial = document.getElementById('playerInitial');
+        const mainContent = document.getElementById('mainContent');
+        const accessDenied = document.getElementById('accessDenied');
+        const backgroundAudio = document.getElementById('backgroundAudio');
+        const audioControl = document.getElementById('audioControl');
+
+        function updateProgress(progress) {
+            loadingProgress = Math.max(loadingProgress, progress);
+            progressFill.style.width = loadingProgress + '%';
+            progressPercent.textContent = Math.floor(loadingProgress) + '%';
+        }
+
+        function updateServerInfo() {
+            if (serverInfo) {
+                serverName.textContent = serverInfo.name || 'Loading...';
+                gameMode.textContent = serverInfo.gamemode || 'Loading...';
+                mapName.textContent = serverInfo.map || 'Loading...';
+            }
+        }
+
+        function updatePlayerInfo() {
+            const currentSteamId = playerSteamId.textContent;
+            if (currentSteamId && currentSteamId !== '...' && currentSteamId !== 'STEAM_0:0:000000000') {
+                if (!playerInfo.steamId || playerInfo.steamId === 'STEAM_0:0:000000000') {
+                    playerInfo.steamId = currentSteamId;
+                }
+            }
+
+            playerName.textContent = playerInfo.name || 'Loading...';
+
+            if (playerInfo.steamId && playerInfo.steamId !== 'STEAM_0:0:000000000') {
+                playerSteamId.textContent = playerInfo.steamId;
+            } else if (currentSteamId && currentSteamId !== '...' && currentSteamId !== 'STEAM_0:0:000000000') {
+                playerSteamId.textContent = currentSteamId;
+            }
+
+            if (playerInfo.avatar && playerInfo.avatar !== '') {
+                playerAvatar.src = playerInfo.avatar;
+                playerAvatar.style.display = 'block';
+                playerInitial.style.display = 'none';
+            } else {
+                const initial = playerInfo.name && playerInfo.name !== 'Loading...' ?
+                    playerInfo.name.charAt(0).toUpperCase() : '?';
+                playerInitial.textContent = initial;
+                playerAvatar.style.display = 'none';
+                playerInitial.style.display = 'flex';
+            }
+        }
+
+        function getPlayerInfoFromGMod() {
+            try {
+                if (window.gmod && typeof window.gmod.GetPlayerInfo === 'function') {
+                    const info = window.gmod.GetPlayerInfo();
+                    if (info) {
+                        if (info.personaname || info.name || info.nick || info.username) {
+                            playerInfo.name = info.personaname || info.name || info.nick || info.username;
+                        }
+                        if (info.steamid || info.steam_id) {
+                            playerInfo.steamId = info.steamid || info.steam_id;
+                        }
+                        if (info.avatarmedium || info.avatar) {
+                            playerInfo.avatar = info.avatarmedium || info.avatar;
+                        }
+                        updatePlayerInfo();
+                        return true;
+                    }
+                }
+
+                if (window.gmod && window.gmod.player) {
+                    const name = window.gmod.player.GetName();
+                    const steamId = window.gmod.player.SteamID();
+                    if (name) playerInfo.name = name;
+                    if (steamId && steamId !== 'STEAM_0:0:000000000') playerInfo.steamId = steamId;
+                    updatePlayerInfo();
+                    return true;
+                }
+
+                if (typeof GetPlayerName === 'function' && typeof GetPlayerSteamID === 'function') {
+                    const name = GetPlayerName();
+                    const steamId = GetPlayerSteamID();
+                    if (name) playerInfo.name = name;
+                    if (steamId && steamId !== 'STEAM_0:0:000000000') playerInfo.steamId = steamId;
+                    updatePlayerInfo();
+                    return true;
+                }
+            } catch (error) {
+                console.log("Error getting player info:", error);
+            }
+            return false;
+        }
+
+        async function fetchSteamUserData(steamId) {
+            if (!steamId || steamId === "STEAM_0:0:000000000") return;
+
+            const steam64Id = convertSteamIdToSteam64(steamId);
+            if (!steam64Id || steam64Id.length < 17) return;
+
+            try {
+                console.log(`Fetching Steam user data for Steam64 ID: ${steam64Id}`);
+
+                const apiUrl = `https://gmod-fh-loading.vercel.app/api/steam?steamid=${steam64Id}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("Steam API response:", data);
+
+                    if (data.response && data.response.players && data.response.players.length > 0) {
+                        const player = data.response.players[0];
+
+                        if (player.personaname) {
+                            playerInfo.name = player.personaname;
+                        }
+
+                        if (player.avatarmedium) {
+                            playerInfo.avatar = player.avatarmedium;
+                        } else if (player.avatar) {
+                            playerInfo.avatar = player.avatar;
+                        }
+
+                        if (player.profileurl) {
+                            playerInfo.profileUrl = player.profileurl;
+                        }
+
+                        updatePlayerInfo();
+                        console.log("Player data updated successfully:", playerInfo);
+                        return true;
+                    } else {
+                        console.log("No player data found in Steam API response");
+                    }
+                } else {
+                    console.log(`Steam API request failed: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                console.log("Steam API fetch error:", error);
+            }
+
+            return false;
+        }
+
+        function convertSteamIdToSteam64(steamId) {
+            if (!steamId) return null;
+
+            if (steamId.match(/^\d{17}$/)) {
+                return steamId;
+            }
+
+            const match = steamId.match(/STEAM_0:([01]):(\d+)/);
+            if (match) {
+                const y = parseInt(match[1]);
+                const z = parseInt(match[2]);
+
+                const steam64 = BigInt(76561197960265728) + BigInt(z * 2) + BigInt(y);
+                return steam64.toString();
+            }
+
+            return null;
+        }
+
+        function checkGModAPI() {
+            const hasGModAPI = !!(
+                window.gmod ||
+                window.GameDetails ||
+                document.referrer.includes("steam://") ||
+                navigator.userAgent.includes("Valve") ||
+                window.location.search.includes("gmod") ||
+                window.location.protocol === "gmod:"
+            );
+
+            if (hasGModAPI) {
+                console.log("GMod API detected");
+                isGModAvailable = true;
+
+                setTimeout(() => {
+                    if (!getPlayerInfoFromGMod()) {
+                        console.log("Retrying player info fetch...");
+                        setTimeout(getPlayerInfoFromGMod, 2000);
+                    }
+                }, 500);
+
+                return true;
+            } else {
+                console.log("GMod API not detected, starting timeout");
+                setTimeout(() => {
+                    const recheckGMod = !!(window.gmod || window.GameDetails);
+                    if (!recheckGMod) {
+                        console.log("GMod API timeout - direct access detected");
+                        isGModAvailable = false;
+                        showAccessDenied();
+                    } else {
+                        isGModAvailable = true;
+                        getPlayerInfoFromGMod();
+                    }
+                }, 3000);
+                return false;
+            }
+        }
+
+        function showAccessDenied() {
+            mainContent.style.display = 'none';
+            accessDenied.style.display = 'flex';
+        }
+
+        function toggleAudio() {
+            if (isAudioPlaying) {
+                backgroundAudio.pause();
+                audioControl.textContent = '🔇';
+                isAudioPlaying = false;
+            } else {
+                backgroundAudio.play().catch(e => console.log("Audio play failed:", e));
+                audioControl.textContent = '🔊';
+                isAudioPlaying = true;
+            }
+        }
+
+        function initAudio() {
+            backgroundAudio.volume = 0.3;
+            setTimeout(() => {
+                backgroundAudio.play().then(() => {
+                    audioControl.textContent = '🔊';
+                    isAudioPlaying = true;
+                }).catch(e => {
+                    console.log("Audio autoplay blocked by browser");
+                });
+            }, 1000);
+        }
+
+        window.GameDetails = function (servername, serverurl, mapname, maxplayers, steamid, gamemode) {
+            console.log("GMod GameDetails received:", {
+                servername, serverurl, mapname, maxplayers, steamid, gamemode
+            });
+
+            serverInfo = {
+                name: servername,
+                gamemode: gamemode,
+                map: mapname,
+                maxPlayers: maxplayers,
+                steamId: steamid,
+                serverUrl: serverurl
+            };
+
+            if (steamid && steamid !== "STEAM_0:0:000000000" && steamid.trim() !== '') {
+                playerInfo.steamId = steamid;
+                console.log("Steam ID set from GameDetails:", steamid);
+            }
+
+            isGModAvailable = true;
+            updateServerInfo();
+            updatePlayerInfo();
+
+            if (steamid && steamid !== "STEAM_0:0:000000000") {
+                fetchSteamUserData(steamid);
+            }
+        };
+
+        window.SetFilesNeeded = function (needed) {
+            console.log("Files needed:", needed);
+            filesNeeded = needed;
+            filesTotal = needed;
+            updateProgress(5);
+            statusText.textContent = `Checking ${needed} files...`;
+            isGModAvailable = true;
+        };
+
+        window.SetFilesTotal = function (total) {
+            console.log("Files total:", total);
+            filesTotal = total;
+            updateProgress(10);
+            statusText.textContent = `Found ${total} files to download...`;
+            isGModAvailable = true;
+        };
+
+        window.DownloadingFile = function (file) {
+            console.log("Downloading file:", file);
+            filesDownloaded++;
+
+            if (filesTotal > 0) {
+                const fileProgress = 10 + (filesDownloaded / filesTotal) * 70;
+                updateProgress(fileProgress);
+                statusText.textContent = `Downloading ${file}... (${filesDownloaded}/${filesTotal})`;
+            }
+
+            isGModAvailable = true;
+        };
+
+        window.SetStatusChanged = function (newStatus) {
+            console.log("Status changed:", newStatus);
+            statusText.textContent = newStatus;
+            isGModAvailable = true;
+
+            if (newStatus.includes("Retrieving server info")) {
+                updateProgress(15);
+            } else if (newStatus.includes("Parsing game info")) {
+                updateProgress(25);
+            } else if (newStatus.includes("Requesting lua files")) {
+                updateProgress(35);
+            } else if (newStatus.includes("Checking for missing files")) {
+                updateProgress(45);
+            } else if (newStatus.includes("Workshop complete")) {
+                updateProgress(55);
+            } else if (newStatus.includes("Starting Lua")) {
+                updateProgress(65);
+            } else if (newStatus.includes("Lua cache")) {
+                updateProgress(75);
+            } else if (newStatus.includes("Sending client info")) {
+                updateProgress(85);
+            } else if (newStatus.includes("Spawning")) {
+                updateProgress(95);
+            } else if (newStatus.includes("Ready") || newStatus.includes("Complete")) {
+                updateProgress(100);
+            } else {
+                const progressMatch = newStatus.match(/(\d+)%/);
+                if (progressMatch) {
+                    const progress = parseInt(progressMatch[1]);
+                    updateProgress(progress);
+                }
+            }
+
+            if (playerInfo.name === "Loading...") {
+                getPlayerInfoFromGMod();
+            }
+        };
+
+        window.SetPlayerInfo = function (name, steamId, rank, avatar) {
+            console.log("Player info received:", { name, steamId, rank, avatar });
+
+            if (name && name.trim() !== '') playerInfo.name = name;
+
+            if (steamId && steamId !== 'STEAM_0:0:000000000' && steamId.trim() !== '') {
+                playerInfo.steamId = steamId;
+                console.log("Steam ID set from SetPlayerInfo:", steamId);
+            }
+
+            if (rank) playerInfo.rank = rank;
+            if (avatar && avatar.trim() !== '') playerInfo.avatar = avatar;
+
+            updatePlayerInfo();
+
+            if (!playerInfo.avatar && playerInfo.steamId && playerInfo.steamId !== 'STEAM_0:0:000000000') {
+                fetchSteamUserData(playerInfo.steamId);
+            }
+
+            isGModAvailable = true;
+        };
+
+        window.GetPlayerName = function () {
+            if (window.gmod && window.gmod.player) {
+                return window.gmod.player.GetName();
+            }
+            return null;
+        };
+
+        window.GetPlayerSteamID = function () {
+            if (window.gmod && window.gmod.player) {
+                return window.gmod.player.SteamID();
+            }
+            return null;
+        };
+
+        audioControl.addEventListener('click', toggleAudio);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            checkGModAPI();
+            initAudio();
+
+            const playerInfoInterval = setInterval(() => {
+                if (playerInfo.name === "Loading..." || playerInfo.steamId === "STEAM_0:0:000000000") {
+                    if (getPlayerInfoFromGMod()) {
+                        clearInterval(playerInfoInterval);
+                    }
+                } else {
+                    if (!playerInfo.avatar && playerInfo.steamId !== "STEAM_0:0:000000000") {
+                        fetchSteamUserData(playerInfo.steamId).then(success => {
+                            if (success) clearInterval(playerInfoInterval);
+                        });
+                    } else {
+                        clearInterval(playerInfoInterval);
+                    }
+                }
+            }, 2000);
+
+            setTimeout(() => clearInterval(playerInfoInterval), 30000);
+        });
+    </script>
+
+</body>
+
+</html>
