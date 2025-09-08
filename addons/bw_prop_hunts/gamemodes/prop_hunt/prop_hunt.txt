@@ -1,13 +1,13 @@
 "prop_hunt"
 {
 	"base"		"base"
-	"title"		"Prop Hunt: X2Z"
+	"title"		"Prop Hunt: X2Z (BW)"
 	"maps"      "^ph_|^phx_"
     "category"  "pvp"
     
 	"selectable"	"1"
 	"menusystem"	"1"
-	"workshopid"	"2176546751"
+	"workshopid"	"3564722398"
 	
 	"isphx"			"1"
 	
