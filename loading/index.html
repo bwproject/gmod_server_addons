@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMOD PROJECTBW PROP HUNTS - Загрузка</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="glow-orb"></div>
+
+    <div class="info-panel server-owner">
+        <p class="text-label">TG Сервера</p>
+        <p class="text-value">@projectbw_news</p>
+    </div>
+
+    <div class="info-panel player-info">
+        <div class="avatar">
+            <img id="playerAvatar" src="" alt="Player Avatar" style="display: none;"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span id="playerInitial" style="color: #f87171; font-size: 12px; font-weight: bold;">?</span>
+        </div>
+        <div>
+            <p class="text-value" id="playerName">Loading...</p>
+            <p class="text-value" style="font-size: 10px;">ID: <span id="playerSteamId">...</span></p>
+        </div>
+    </div>
+
+    <div class="info-panel server-rules">
+        <p class="text-label">Server Rules</p>
+        <p class="text-value">Enjoy and don’t take offense!</p>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div>
+            <h1 class="title">GMOD PROJECT BW PROP HUNTS</h1>
+            <p class="subtitle" id="statusText">Connecting to server...</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-header">
+                <span class="text-progress">Progress</span>
+                <span class="text-percent" id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div>
+            <div class="server-info">
+                <span>Server: <span class="value" id="serverName">Loading...</span></span>
+                <span class="separator">•</span>
+                <span>Mode: <span class="value" id="gameMode">Loading...</span></span>
+            </div>
+            <p class="map-info">Map: <span class="value" id="mapName">Loading...</span></p>
+        </div>
+
+        <div class="footer">
+            Powered by ProjectBW
+        </div>
+    </div>
+
+    <div class="main-content access-denied" id="accessDenied" style="display: none;">
+        <div class="spinner"></div>
+        <h1 style="font-size: 2.5rem; font-weight: bold; color: #ef4444; margin-bottom: 16px;">Access Denied</h1>
+        <p style="color: rgba(254, 202, 202, 0.7); font-size: 1.125rem; margin-bottom: 8px;">This loading screen is only
+            accessible from Garry's Mod</p>
+        <p style="color: rgba(239, 68, 68, 0.6); font-size: 0.875rem;">Please connect through the game client</p>
+    </div>
+
+    <audio id="backgroundAudio" loop preload="auto" style="display: none;">
+        <source src="loading-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="audio-control" id="audioControl" title="Toggle Audio">🔇</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
