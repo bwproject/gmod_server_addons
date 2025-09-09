@@ -3,6 +3,8 @@ name: Build and Publish Garry's Mod Addons
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'addons/**'
 
 jobs:
   build-and-publish:
@@ -30,23 +32,23 @@ jobs:
     - name: Pack and publish addons
       run: |
         # Найти реальный путь gmpublisher.exe
-        $gmpubPath = Get-ChildItem "C:\Program Files\gmpublisher" -Recurse -Filter "gmpublisher.exe" | Select-Object -First 1
-        if (-not $gmpubPath) {
-            $gmpubPath = Get-ChildItem "C:\Program Files (x86)\gmpublisher" -Recurse -Filter "gmpublisher.exe" | Select-Object -First 1
+        $gmpubPath = Join-Path "C:\Program Files\gmpublisher" "gmpublisher.exe"
+        if (-not (Test-Path $gmpubPath)) {
+            $gmpubPath = Join-Path "C:\Program Files (x86)\gmpublisher" "gmpublisher.exe"
         }
-        if (-not $gmpubPath) {
+        if (-not (Test-Path $gmpubPath)) {
             Write-Error "gmpublisher.exe not found!"
             exit 1
         }
-        Write-Host "Using gmpublisher at $($gmpubPath.FullName)"
+        Write-Host "Using gmpublisher at $gmpubPath"
 
         mkdir build
         Get-ChildItem -Directory ./addons | ForEach-Object {
             $addonName = $_.Name
             Write-Host "Packing $addonName..."
-            & "$($gmpubPath.FullName)" pack $_.FullName --output ".\build\$addonName.gma"
+            & "$gmpubPath" pack $_.FullName --output ".\build\$addonName.gma"
             Write-Host "Publishing $addonName to Steam Workshop..."
-            & "$($gmpubPath.FullName)" publish ".\build\$addonName.gma" `
+            & "$gmpubPath" publish ".\build\$addonName.gma" `
               --title $addonName `
               --description "Automatically published via GitHub Actions" `
               --tags "tag1,tag2" `
