@@ -11,6 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const playerInitial = document.getElementById("playerInitial");
   const backgroundAudio = document.getElementById("backgroundAudio");
   const audioControl = document.getElementById("audioControl");
+  const body = document.body;
+
+  // --- Баннер ---
+  const bannerBox = document.querySelector(".banner-box");
+  const bannerClose = document.querySelector(".banner-close");
+
+  if (bannerBox && bannerClose) {
+    bannerClose.addEventListener("click", () => {
+      bannerBox.style.display = "none";
+    });
+  }
+
+  let totalFiles = 0;
+  let neededFiles = 0;
 
   // --- Музыка ---
   audioControl.addEventListener("click", () => {
@@ -29,22 +43,31 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.SetFilesTotal = function(total) {
+    totalFiles = total;
+    neededFiles = total;
     progressFill.style.width = "0%";
     progressPercent.textContent = "0%";
   };
 
   window.SetFilesNeeded = function(needed) {
-    const total = parseInt(progressFill.style.width) || 0;
-    const percent = 100 - (needed / total) * 100;
+    neededFiles = needed;
+    updateProgress();
+  };
+
+  window.SetFilesDownloaded = function(downloaded) {
+    const percent = (downloaded / totalFiles) * 100;
     progressFill.style.width = percent + "%";
     progressPercent.textContent = Math.round(percent) + "%";
   };
 
-  window.SetFilesDownloaded = function(downloaded) {
-    const percent = (downloaded / 100) * 100;
-    progressFill.style.width = percent + "%";
-    progressPercent.textContent = Math.round(percent) + "%";
-  };
+  function updateProgress() {
+    if (totalFiles > 0) {
+      const downloaded = totalFiles - neededFiles;
+      const percent = (downloaded / totalFiles) * 100;
+      progressFill.style.width = percent + "%";
+      progressPercent.textContent = Math.round(percent) + "%";
+    }
+  }
 
   window.GameDetails = function(server, gm, map, name, sid, avatar) {
     serverName.textContent = server;
@@ -63,10 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
       playerInitial.style.display = "flex";
     }
   };
-});
 
   // --- Смена фоновых картинок ---
-  const body = document.body;
   let currentIndex = 0;
   let images = [];
 
@@ -90,3 +111,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentIndex = (currentIndex + 1) % images.length;
   }
+});
