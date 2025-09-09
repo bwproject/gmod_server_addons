@@ -29,6 +29,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Generate images.json
+        run: |
+          cd loading/img
+          ls *.jpg *.png 2>/dev/null | jq -R -s -c 'split("\n")[:-1]' > ../images.json
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
