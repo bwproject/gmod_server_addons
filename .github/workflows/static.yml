@@ -34,6 +34,9 @@ jobs:
           cd loading/img
           ls *.jpg *.png 2>/dev/null | jq -R -s -c 'split("\n")[:-1]' > ../images.json
 
+      - name: Set custom domain
+        run: echo "gmodloading.projectbw.ru" > loading/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
