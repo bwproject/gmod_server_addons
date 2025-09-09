@@ -11,18 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const playerInitial = document.getElementById("playerInitial");
   const backgroundAudio = document.getElementById("backgroundAudio");
   const audioControl = document.getElementById("audioControl");
-  const mainContent = document.getElementById("mainContent");
-  const accessDenied = document.getElementById("accessDenied");
 
-  // Проверка окружения: доступно только из Garry's Mod
-  const isGmod = window.location.search.includes("gmod");
-  if (!isGmod) {
-    mainContent.style.display = "none";
-    accessDenied.style.display = "flex";
-    return;
-  }
-
-  // Музыка
+  // --- Музыка ---
   audioControl.addEventListener("click", () => {
     if (backgroundAudio.paused) {
       backgroundAudio.play();
@@ -33,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // API Garry’s Mod
+  // --- API Garry’s Mod ---
   window.SetStatusChanged = function(status) {
     statusText.textContent = status;
   };
