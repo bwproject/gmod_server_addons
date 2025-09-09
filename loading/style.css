@@ -152,7 +152,7 @@ body {
 }
 
 .banner-box {
-  margin-top: 16px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -162,14 +162,14 @@ body {
   padding: 8px 12px;
   position: relative;
   z-index: 30;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .banner-box iframe {
   display: block;
   border: none;
-  width: 150px;
-  height: 50px;
+  width: 400px;
+  height: 150px;
 }
 
 #bannerText {
