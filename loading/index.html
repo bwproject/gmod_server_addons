@@ -24,15 +24,15 @@
   </div>
 
   <!-- Верхний правый угол -->
-  <div class="info-panel player-info shadow-lg">
+  <div class="info-panel player-info shadow-lg d-flex align-items-center gap-2">
     <div class="avatar">
-      <img id="playerAvatar" src="" alt="Player Avatar" style="display: none;"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <span id="playerInitial" style="color: #f87171; font-size: 12px; font-weight: bold;">?</span>
+      <img id="playerAvatar" src="" alt="Player Avatar" class="img-fluid rounded-circle d-none"
+           onerror="this.classList.add('d-none'); this.nextElementSibling.classList.remove('d-none');">
+      <span id="playerInitial" class="fw-bold text-danger small">?</span>
     </div>
     <div>
-      <p class="text-value fw-bold" id="playerName">Loading...</p>
-      <p class="text-value small">ID: <span id="playerSteamId">...</span></p>
+      <p class="text-value fw-bold mb-0" id="playerName">Loading...</p>
+      <p class="text-value small mb-0">ID: <span id="playerSteamId">...</span></p>
     </div>
   </div>
 
@@ -44,19 +44,22 @@
 
   <!-- Контент -->
   <div class="main-content text-center" id="mainContent">
-    <div>
-      <h1 class="title display-4 fw-bold">GMOD PROJECT BW PROP HUNTS</h1>
+    <div class="mb-4">
+      <h1 class="title fw-bold">GMOD PROJECT BW PROP HUNTS</h1>
       <p class="subtitle lead" id="statusText">Connecting to server...</p>
     </div>
 
     <!-- Прогресс -->
-    <div class="progress-container mb-4">
-      <div class="progress-header d-flex justify-content-between mb-2">
+    <div class="progress-container mx-auto mb-4" style="max-width: 480px;">
+      <div class="d-flex justify-content-between mb-1">
         <span class="text-progress">Progress</span>
         <span class="text-percent" id="progressPercent">0%</span>
       </div>
       <div class="progress" style="height: 12px;">
-        <div class="progress-fill progress-bar" id="progressFill" style="width: 0%"></div>
+        <div id="progressFill"
+             class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+             style="width: 0%">
+        </div>
       </div>
     </div>
 
@@ -64,15 +67,15 @@
     <div class="mb-4">
       <div class="server-info d-flex justify-content-center gap-2">
         <span>Server: <span class="value fw-semibold" id="serverName">Loading...</span></span>
-        <span class="separator">•</span>
+        <span class="text-muted">•</span>
         <span>Mode: <span class="value fw-semibold" id="gameMode">Loading...</span></span>
       </div>
       <p class="map-info">Map: <span class="value fw-semibold" id="mapName">Loading...</span></p>
     </div>
 
-    <!-- Баннер с рекламой -->
-    <div class="banner-box card p-2 shadow-lg">
-      <div class="d-flex align-items-center gap-3">
+    <!-- Баннер -->
+    <div class="banner-box card shadow-lg position-relative mx-auto">
+      <div class="d-flex align-items-center gap-3 p-3">
         <iframe 
           src="https://projectbw.ru/reklama/rsy2.html" 
           width="300" 
@@ -86,7 +89,7 @@
           <small class="text-muted">Ps рекламу можно скрыть на крестик</small>
         </div>
       </div>
-      <div class="banner-close position-absolute top-0 end-0 m-2">✖</div>
+      <button class="btn-close banner-close position-absolute top-0 end-0 m-2"></button>
     </div>
 
     <!-- Футер -->
@@ -96,7 +99,7 @@
   </div>
 
   <!-- Доступ запрещен -->
-  <div class="main-content access-denied text-center" id="accessDenied" style="display: none;">
+  <div class="main-content access-denied text-center d-none" id="accessDenied">
     <div class="spinner mb-4"></div>
     <h1 class="fw-bold text-danger mb-3">Access Denied</h1>
     <p class="text-light-emphasis mb-2">
@@ -108,12 +111,12 @@
   </div>
 
   <!-- Музыка -->
-  <audio id="backgroundAudio" loop preload="auto" style="display: none;">
+  <audio id="backgroundAudio" loop preload="auto" class="d-none">
     <source src="loading-music.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Кнопка управления звуком -->
-  <button class="audio-control btn btn-dark rounded-circle" id="audioControl" title="Toggle Audio">🔇</button>
+  <button class="audio-control btn btn-outline-success rounded-circle" id="audioControl" title="Toggle Audio">🔇</button>
 
   <script src="script.js"></script>
 </body>
