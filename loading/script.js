@@ -64,3 +64,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 });
+
+  // --- Смена фоновых картинок ---
+  const body = document.body;
+  let currentIndex = 0;
+  let images = [];
+
+  fetch("images.json")
+    .then(res => res.json())
+    .then(data => {
+      images = data.map(file => `img/${file}`);
+      if (images.length > 0) {
+        changeBackground();
+        setInterval(changeBackground, 120000); // каждые 2 минуты
+      }
+    })
+    .catch(err => console.error("Не удалось загрузить список картинок:", err));
+
+  function changeBackground() {
+    body.style.backgroundImage = `url(${images[currentIndex]})`;
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.transition = "background-image 1s ease-in-out";
+
+    currentIndex = (currentIndex + 1) % images.length;
+  }
