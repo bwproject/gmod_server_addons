@@ -11,12 +11,18 @@
   <div class="overlay"></div>
   <div class="glow-orb"></div>
 
+  <!-- Блок с TG-каналом и картинкой -->
   <div class="info-panel server-owner">
-    <p class="text-label">TG-канал сервера:</p>
-    <p class="text-value">t.me/projectbw_news</p>
-    <p class="text-value">@projectbw_news</p>
+    <div class="owner-text">
+      <p class="text-label">TG-канал сервера:</p>
+      <p class="text-value">t.me/projectbw_news</p>
+    </div>
+    <img class="owner-logo" 
+         src="https://gmodloading.projectbw.ru/IMG_7370.jpeg" 
+         alt="Server Logo">
   </div>
 
+  <!-- Блок с игроком -->
   <div class="info-panel player-info">
     <div class="avatar">
       <img id="playerAvatar" src="" alt="Player Avatar" style="display: none;"
@@ -29,18 +35,21 @@
     </div>
   </div>
 
+  <!-- Правила -->
   <div class="info-panel server-rules">
     <p class="text-label">Правила сервера:</p>
     <p class="text-value">Все правила сервера можно прочитать на WIKI:</p>
     <p class="text-value">wiki.projectbw.ru</p>
   </div>
 
+  <!-- Основной контент -->
   <div class="main-content" id="mainContent">
     <div>
       <h1 class="title">PROP HUNT</h1>
       <p class="subtitle" id="statusText">Подключение...</p>
     </div>
 
+    <!-- Прогресс -->
     <div class="progress-container">
       <div class="progress-header">
         <span class="text-progress">Загрузка</span>
@@ -51,6 +60,7 @@
       </div>
     </div>
 
+    <!-- Инфо о сервере -->
     <div>
       <div class="server-info">
         <span>Сервер: <span class="value" id="serverName">Загрузка...</span></span>
@@ -60,6 +70,7 @@
       <p class="map-info">Карта: <span class="value" id="mapName">Загрузка...</span></p>
     </div>
 
+    <!-- Баннер -->
     <div class="banner-box">
       <iframe 
         src="https://projectbw.ru/reklama/rsy2.html" 
@@ -77,11 +88,13 @@
       <div class="banner-close">✖</div>
     </div>
 
+    <!-- Футер -->
     <div class="footer">
       Powered by ProjectBW / The_Mr_Mes109 
     </div>
   </div>
 
+  <!-- Доступ запрещен -->
   <div class="main-content access-denied" id="accessDenied" style="display: none;">
     <div class="spinner"></div>
     <h1 style="font-size: 2.5rem; font-weight: bold; color: #ef4444; margin-bottom: 16px;">Access Denied</h1>
@@ -93,10 +106,12 @@
     </p>
   </div>
 
+  <!-- Музыка -->
   <audio id="backgroundAudio" loop preload="auto" style="display: none;">
     <source src="loading-music.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Кнопка управления звуком -->
   <button class="audio-control" id="audioControl" title="Toggle Audio">🔇</button>
 
   <script src="script.js"></script>
