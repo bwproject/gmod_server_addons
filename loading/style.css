@@ -1,25 +1,16 @@
-
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: linear-gradient(135deg, #003300 0%, #000000 50%, #003300 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
   color: #00ff80;
-  transition: background-image 1s ease-in-out;
 }
 
 .overlay {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  position: absolute; inset: 0;
   background: rgba(0, 0, 0, 0.7); z-index: 1;
 }
 
@@ -38,27 +29,65 @@ body {
 }
 
 .info-panel {
-  position: absolute; background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 255, 128, 0.4);
-  border-radius: 8px; padding: 16px; z-index: 20;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 20;
 }
 
-.server-owner { top: 24px; left: 24px; }
-.server-lk { top: 24px; left: 24px; }
-.player-info { top: 24px; right: 24px; display: flex; align-items: center; gap: 12px; }
+/* Контейнер для TG и ЛК */
+.left-panels {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* TG + ЛК */
+.server-owner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 260px;
+}
+
+.owner-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 255, 128, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 128, 0.6);
+}
+
+/* Игрок */
+.player-info {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
 .avatar {
   width: 40px; height: 40px;
   background: rgba(0, 255, 128, 0.1);
   border: 1px solid rgba(0, 255, 128, 0.4);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
-
 .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-.server-rules { bottom: 24px; left: 24px; }
+.server-rules { bottom: 24px; left: 24px; position: absolute; }
 
+/* Основной контент */
 .main-content {
   position: relative; z-index: 10; min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -88,7 +117,6 @@ body {
   border: 1px solid rgba(0, 255, 128, 0.3);
   border-radius: 9999px; overflow: hidden;
 }
-
 .progress-fill {
   height: 100%;
   background: linear-gradient(to right, #00ff80, #00ff40);
@@ -98,7 +126,6 @@ body {
 
 .server-info span { color: rgba(0, 255, 128, 0.6); font-size: 0.875rem; }
 .server-info .value { color: #00ff80; font-weight: 500; }
-
 .separator { color: rgba(0, 255, 128, 0.5); }
 .map-info { color: rgba(0, 255, 128, 0.7); font-size: 0.875rem; }
 .map-info .value { color: #00ff80; font-weight: 500; }
@@ -121,12 +148,12 @@ body {
   animation: spin 1s linear infinite;
   margin: 0 auto 24px;
 }
-
 @keyframes spin { 
   0% { transform: rotate(0deg);} 
   100% { transform: rotate(360deg);} 
 }
 
+/* Кнопка музыки */
 .audio-control {
   position: fixed; top: 50%; right: 24px;
   width: 56px; height: 56px;
@@ -137,22 +164,15 @@ body {
   font-size: 18px; transform: translateY(-50%);
   box-shadow: 0 4px 16px rgba(0, 255, 128, 0.3);
 }
-
 .audio-control:hover {
   background: rgba(0, 255, 128, 0.2);
   color: #00ff40; border-color: rgba(0, 255, 128, 0.6);
   transform: translateY(-50%) scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 255, 128, 0.5);
 }
+.audio-control:active { transform: translateY(-50%) scale(0.95); }
 
-.audio-control:active { 
-  transform: translateY(-50%) scale(0.95); 
-}
-
-@media (max-width: 768px) { 
-  .title { font-size: 2.5rem; } 
-}
-
+/* Баннер */
 .banner-box {
   margin-top: 8px;
   display: flex;
@@ -166,21 +186,18 @@ body {
   z-index: 30;
   max-width: 500px;
 }
-
 .banner-box iframe {
   display: block;
   border: none;
   width: 400px;
   height: 150px;
 }
-
 #bannerText {
   font-size: 0.8rem;
   color: #00ff80;
   text-shadow: 0 0 8px rgba(0, 255, 128, 0.5);
   line-height: 1.2;
 }
-
 .banner-close {
   position: absolute;
   top: 4px;
@@ -190,42 +207,7 @@ body {
   color: #00ff80;
   transition: 0.2s;
 }
-
 .banner-close:hover {
   color: #ff0040;
   transform: scale(1.2);
-}
-
-.server-owner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-width: 260px;
-}
-
-.server-owner .owner-logo {
-  width: 55px;
-  height: 55px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 1px solid rgba(0, 255, 128, 0.5);
-  box-shadow: 0 0 10px rgba(0, 255, 128, 0.6);
-}
-
-.server-lk {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-width: 260px;
-}
-
-.server-lk .lk-logo {
-  width: 55px;
-  height: 55px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 1px solid rgba(0, 255, 128, 0.5);
-  box-shadow: 0 0 10px rgba(0, 255, 128, 0.6);
 }
