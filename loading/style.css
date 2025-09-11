@@ -45,6 +45,7 @@ body {
 }
 
 .server-owner { top: 24px; left: 24px; }
+.server-lk { top: 24px; left: 24px; }
 .player-info { top: 24px; right: 24px; display: flex; align-items: center; gap: 12px; }
 
 .avatar {
