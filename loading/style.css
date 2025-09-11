@@ -212,3 +212,20 @@ body {
   border: 1px solid rgba(0, 255, 128, 0.5);
   box-shadow: 0 0 10px rgba(0, 255, 128, 0.6);
 }
+
+.server-lk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 260px;
+}
+
+.server-lk .lk-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 255, 128, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 128, 0.6);
+}
