@@ -211,3 +211,22 @@ body {
   color: #ff0040;
   transform: scale(1.2);
 }
+
+.banner-box {
+  position: relative;
+}
+
+.banner-box iframe {
+  pointer-events: none; /* iframe больше не блокирует клики */
+}
+
+.banner-close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #00ff80;
+  transition: 0.2s;
+  z-index: 10; /* чтобы точно было выше iframe */
+}
