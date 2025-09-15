@@ -173,6 +173,14 @@ body {
 .audio-control:active { transform: translateY(-50%) scale(0.95); }
 
 /* Баннер */
+.banner-frame {
+  position: absolute;
+  top: 0; left: 0;
+  width: 400px;
+  height: 150px;
+  z-index: 0; /* всегда ниже текста и крестика */
+  pointer-events: none; /* отключаем клики полностью */
+}
 .banner-box {
   margin-top: 8px;
   display: flex;
