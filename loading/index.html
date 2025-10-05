@@ -4,55 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GMOD PROJECTBW PROP HUNTS - Загрузка</title>
-  <link rel="stylesheet" href="style.css?v=1.0.3">
+  <link rel="stylesheet" href="style.css?v=1.0.4">
 </head>
 
 <body>
   <div class="overlay"></div>
   <div class="glow-orb"></div>
 
-  <!-- Контейнер для TG и ЛК -->
+  <!-- Левые панели -->
   <div class="left-panels">
-    <!-- Блок с TG-каналом -->
     <div class="info-panel server-owner">
       <div class="owner-text">
         <p class="text-label">TG-канал сервера:</p>
         <p class="text-value">t.me/projectbw_news</p>
       </div>
-      <img class="owner-logo" 
-           src="https://gmodloading.projectbw.ru/qr/IMG_7370.jpeg" 
-           alt="TG Logo">
+      <img class="owner-logo" src="https://gmodloading.projectbw.ru/qr/IMG_7370.jpeg" alt="TG Logo">
     </div>
 
-    <!-- Блок с ЛК -->
     <div class="info-panel server-owner">
       <div class="owner-text">
         <p class="text-label">Личный кабинет:</p>
         <p class="text-value">gmod.projectbw.ru</p>
       </div>
-      <img class="owner-logo" 
-           src="https://gmodloading.projectbw.ru/qr/IMG_7411.jpeg" 
-           alt="LK Logo">
+      <img class="owner-logo" src="https://gmodloading.projectbw.ru/qr/IMG_7411.jpeg" alt="LK Logo">
     </div>
   </div>
 
-  <!-- Блок с игроком -->
+  <!-- Инфо об игроке -->
   <div class="info-panel player-info">
     <div class="avatar">
-      <img id="playerAvatar" src="" alt="Player Avatar" style="display: none;"
+      <img id="playerAvatar" src="" alt="Player Avatar" style="display:none;"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <span id="playerInitial" style="color: #f87171; font-size: 12px; font-weight: bold;">?</span>
+      <span id="playerInitial" style="color:#f87171;font-size:12px;font-weight:bold;">?</span>
     </div>
     <div>
       <p class="text-value" id="playerName">Loading...</p>
-      <p class="text-value" style="font-size: 10px;">ID: <span id="playerSteamId">...</span></p>
+      <p class="text-value" style="font-size:10px;">ID: <span id="playerSteamId">...</span></p>
     </div>
   </div>
 
   <!-- Правила -->
   <div class="info-panel server-rules">
     <p class="text-label">Правила сервера:</p>
-    <p class="text-value">Все правила сервера можно прочитать на WIKI:</p>
     <p class="text-value">wiki.projectbw.ru</p>
   </div>
 
@@ -63,71 +56,44 @@
       <p class="subtitle" id="statusText">Подключение...</p>
     </div>
 
-    <!-- Прогресс -->
     <div class="progress-container">
       <div class="progress-header">
         <span class="text-progress">Загрузка</span>
         <span class="text-percent" id="progressPercent">0%</span>
       </div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
       </div>
     </div>
 
-    <!-- Инфо о сервере -->
-    <div>
-      <div class="server-info">
-        <span>Сервер: <span class="value" id="serverName">Загрузка...</span></span>
-        <span class="separator">•</span>
-        <span>Режим: <span class="value" id="gameMode">Загрузка...</span></span>
-      </div>
-      <p class="map-info">Карта: <span class="value" id="mapName">Загрузка...</span></p>
+    <div class="server-info">
+      <span>Сервер: <span class="value" id="serverName">Загрузка...</span></span>
+      <span class="separator">•</span>
+      <span>Режим: <span class="value" id="gameMode">Загрузка...</span></span>
     </div>
+    <p class="map-info">Карта: <span class="value" id="mapName">Загрузка...</span></p>
 
-    <!-- Баннер -->
     <div class="banner-box">
-      <iframe 
-        src="https://projectbw.ru/reklama/rsy2.html" 
-        width="300" 
-        height="100" 
-        frameborder="0" 
-        scrolling="no">
-      </iframe>
-
-      <div id="bannerText">
-        <br>Простите, но разраб хочет вкусно кушац<br>
-        <small>Рекламу можно скрыть на крестик</small>
-      </div>
-
+      <iframe src="https://projectbw.ru/reklama/rsy2.html" width="300" height="100" frameborder="0" scrolling="no"></iframe>
+      <div id="bannerText"><br>Простите, но разраб хочет вкусно кушац<br><small>Рекламу можно скрыть на крестик</small></div>
       <div class="banner-close">✖</div>
     </div>
 
-    <!-- Футер -->
-    <div class="footer">
-      Powered by ProjectBW / The_Mr_Mes109 
-    </div>
+    <div class="footer">Powered by ProjectBW / The_Mr_Mes109</div>
   </div>
 
-  <!-- Доступ запрещен -->
-  <div class="main-content access-denied" id="accessDenied" style="display: none;">
+  <div class="main-content access-denied" id="accessDenied" style="display:none;">
     <div class="spinner"></div>
-    <h1 style="font-size: 2.5rem; font-weight: bold; color: #ef4444; margin-bottom: 16px;">Access Denied</h1>
-    <p style="color: rgba(254, 202, 202, 0.7); font-size: 1.125rem; margin-bottom: 8px;">
-      This loading screen is only accessible from Garry's Mod
-    </p>
-    <p style="color: rgba(239, 68, 68, 0.6); font-size: 0.875rem;">
-      Please connect through the game client
-    </p>
+    <h1 style="font-size:2.5rem;font-weight:bold;color:#ef4444;margin-bottom:16px;">Access Denied</h1>
+    <p style="color:rgba(254,202,202,0.7);font-size:1.125rem;margin-bottom:8px;">This loading screen is only accessible from Garry's Mod</p>
+    <p style="color:rgba(239,68,68,0.6);font-size:0.875rem;">Please connect through the game client</p>
   </div>
 
-  <!-- Музыка -->
-  <audio id="backgroundAudio" loop preload="auto" style="display: none;">
+  <audio id="backgroundAudio" loop preload="auto" style="display:none;">
     <source src="loading-music.mp3" type="audio/mpeg">
   </audio>
-
-  <!-- Кнопка управления звуком -->
   <button class="audio-control" id="audioControl" title="Toggle Audio">🔇</button>
 
-  <script src="script.js?v=1.0.3"></script>
+  <script src="script.js?v=1.0.4"></script>
 </body>
 </html>

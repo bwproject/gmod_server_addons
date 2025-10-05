@@ -11,20 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const playerInitial = document.getElementById("playerInitial");
   const backgroundAudio = document.getElementById("backgroundAudio");
   const audioControl = document.getElementById("audioControl");
-  const body = document.body;
 
   // --- Баннер ---
   const bannerBox = document.querySelector(".banner-box");
   const bannerClose = document.querySelector(".banner-close");
-
-  if (bannerBox && bannerClose) {
-    bannerClose.addEventListener("click", () => {
-      bannerBox.style.display = "none";
-    });
-  }
-
-  let totalFiles = 0;
-  let neededFiles = 0;
+  if (bannerBox && bannerClose) bannerClose.addEventListener("click", () => bannerBox.style.display = "none");
 
   // --- Музыка ---
   audioControl.addEventListener("click", () => {
@@ -37,23 +28,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- API Garry’s Mod ---
-  window.SetStatusChanged = function(status) {
-    statusText.textContent = status;
+  // --- Чтение параметров из URL ---
+  const params = new URLSearchParams(window.location.search);
+  const sid = params.get("sid");
+  const name = params.get("name");
+  const avatar = params.get("avatar");
+
+  if (sid) playerSteamId.textContent = sid;
+  if (name) playerName.textContent = decodeURIComponent(name);
+  if (avatar) {
+    playerAvatar.src = avatar;
+    playerAvatar.style.display = "block";
+    playerInitial.style.display = "none";
+  }
+
+  // --- Фолбэк для стандартного вызова GMod ---
+  window.GameDetails = function(servername, serverurl, mapname, maxplayers, steamid, gamemode) {
+    serverName.textContent = servername;
+    mapName.textContent = mapname;
+    gameMode.textContent = gamemode;
+    playerSteamId.textContent = steamid || "N/A";
+
+    if (!name) playerName.textContent = "Player " + (steamid || "");
   };
 
+  // --- Обновление статуса и загрузки ---
+  window.SetStatusChanged = function(status) { statusText.textContent = status; };
+  let totalFiles = 0, neededFiles = 0;
+
   window.SetFilesTotal = function(total) {
-    totalFiles = total;
-    neededFiles = total;
+    totalFiles = total; neededFiles = total;
     progressFill.style.width = "0%";
     progressPercent.textContent = "0%";
   };
-
-  window.SetFilesNeeded = function(needed) {
-    neededFiles = needed;
-    updateProgress();
-  };
-
+  window.SetFilesNeeded = function(needed) { neededFiles = needed; updateProgress(); };
   window.SetFilesDownloaded = function(downloaded) {
     const percent = (downloaded / totalFiles) * 100;
     progressFill.style.width = percent + "%";
@@ -69,46 +77,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  window.GameDetails = function(server, gm, map, name, sid, avatar) {
-    serverName.textContent = server;
-    gameMode.textContent = gm;
-    mapName.textContent = map;
-    playerName.textContent = name;
-    playerSteamId.textContent = sid;
-
-    if (avatar && avatar.length > 0) {
-      playerAvatar.src = avatar;
-      playerAvatar.style.display = "block";
-      playerInitial.style.display = "none";
-    } else {
-      playerAvatar.style.display = "none";
-      playerInitial.textContent = name.charAt(0).toUpperCase();
-      playerInitial.style.display = "flex";
-    }
-  };
-
-  // --- Смена фоновых картинок ---
-  let currentIndex = 0;
-  let images = [];
-
+  // --- Фоновые картинки ---
+  let currentIndex = 0, images = [];
   fetch("images.json")
     .then(res => res.json())
     .then(data => {
-      images = data.map(file => `img/${file}`);
-      if (images.length > 0) {
+      images = data.map(f => `img/${f}`);
+      if (images.length) {
         changeBackground();
-        setInterval(changeBackground, 120000); // каждые 2 минуты
+        setInterval(changeBackground, 120000);
       }
     })
     .catch(err => console.error("Не удалось загрузить список картинок:", err));
 
   function changeBackground() {
-    body.style.backgroundImage = `url(${images[currentIndex]})`;
-    body.style.backgroundSize = "cover";
-    body.style.backgroundPosition = "center";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.transition = "background-image 1s ease-in-out";
-
+    document.body.style.backgroundImage = `url(${images[currentIndex]})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.transition = "background-image 1s ease-in-out";
     currentIndex = (currentIndex + 1) % images.length;
   }
 });
