@@ -5,20 +5,20 @@ if SERVER then return end
 
 PHX = PHX or {}
 PHX.BWMenuAssets = PHX.BWMenuAssets or {
-    Admin = "vgui/ph_iconmenu/m_admin.png",
-    Donate = "vgui/ph_iconmenu/m_donate.png",
-    GroupAccess = "vgui/ph_iconmenu/m_groupacc.png",
-    Help = "vgui/ph_iconmenu/m_help.png",
-    Info = "vgui/ph_iconmenu/m_info.png",
-    MapVote = "vgui/ph_iconmenu/m_map.png",
-    Player = "vgui/ph_iconmenu/m_player.png",
-    PlayerModel = "vgui/ph_iconmenu/m_plmodel.png",
-    Plugins = "vgui/ph_iconmenu/m_plugins.png",
-    Plus = "vgui/ph_iconmenu/m_plus.png",
-    Voice = "vgui/ph_iconmenu/m_voice.png",
+    Admin = "vgui/phx_menu/m_admin.png",
+    Donate = "vgui/phx_menu/m_donate.png",
+    GroupAccess = "vgui/phx_menu/m_groupacc.png",
+    Help = "vgui/phx_menu/m_help.png",
+    Info = "vgui/phx_menu/m_info.png",
+    MapVote = "vgui/phx_menu/m_map.png",
+    Player = "vgui/phx_menu/m_player.png",
+    PlayerModel = "vgui/phx_menu/m_plmodel.png",
+    Plugins = "vgui/phx_menu/m_plugins.png",
+    Plus = "vgui/phx_menu/m_plus.png",
+    Voice = "vgui/phx_menu/m_voice.png",
     HelpPages = {
-        "vgui/phhelp1.vmt", "vgui/phhelp2.vmt", "vgui/phhelp3.vmt", "vgui/phhelp4.vmt", "vgui/phhelp5.vmt",
-        "vgui/phhelp6.vmt", "vgui/phhelp7.vmt", "vgui/phhelp8.vmt", "vgui/phhelp9.vmt", "vgui/phhelp10.vmt"
+        "vgui/phx_menu/phhelp1.png", "vgui/phx_menu/phhelp2.png", "vgui/phx_menu/phhelp3.png", "vgui/phx_menu/phhelp4.png", "vgui/phx_menu/phhelp5.png",
+        "vgui/phx_menu/phhelp6.png", "vgui/phx_menu/phhelp7.png", "vgui/phx_menu/phhelp8.png", "vgui/phx_menu/phhelp9.png", "vgui/phx_menu/phhelp10.png"
     }
 }
 

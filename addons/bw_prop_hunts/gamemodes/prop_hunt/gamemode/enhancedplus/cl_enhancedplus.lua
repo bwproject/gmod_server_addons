@@ -378,7 +378,7 @@ hook.Add("PH_CustomTabMenu", "PHX.EnhancedPlusMenu", function(tab, pVgui, PaintF
 
     if ( LocalPlayer():PHXIsStaff() ) then
         local pan = plus:CreatePanel( tab, pVgui )
-        local mod = tab:AddSheet("", pan, "vgui/ph_iconmenu/m_plus.png")
+        local mod = tab:AddSheet("", pan, "vgui/phx_menu/m_plus.png")
         PaintFunc(mod, PHX:FTranslate("PHXM_TAB_PHEPLUS"))
     end
 	

@@ -1,17 +1,13 @@
--- ProjectBW Prop Hunt group labels
--- Internal ULX/ULib group IDs stay lowercase for compatibility.
--- This only changes what staff see in the Prop Hunt Admin Groups menu.
+-- ProjectBW Prop Hunt group labels (client)
+-- Внутренние ID групп ULib/ULib остаются в нижнем регистре для совместимости.
+-- Это меняет только то, что персонал видит в меню "Группы" админки Prop Hunt.
 
-local GROUP_LABELS = {
-    uncommon  = "Uncommon",
-    rare      = "Rare",
-    mythical  = "Mythical",
-    legendary = "Legendary",
-    immortal  = "Immortal",
-    ancient   = "Ancient",
-    moderator = "Moderator",
-    admin     = "Admin",
-}
+local GROUP_LABELS = {}
+if BW_PHX_GROUPS then
+    for _, g in ipairs(BW_PHX_GROUPS) do
+        GROUP_LABELS[g.id] = BW_PHX_GroupDisplay(g.id)
+    end
+end
 
 hook.Add("PH_CustomTabMenu", "ProjectBW.GroupDisplayNames", function()
     timer.Simple(0, function()

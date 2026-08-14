@@ -13,8 +13,12 @@ local nets = {
     "SvCheckboxReq",
     "PHX.AdminGroupInfo",
     "PHX.CLAdminGroupInfo",
-	"PHX.MutedGroupInfo",
+    "PHX.MutedGroupInfo",
 	"PHX.CLMutedGroupInfo",
+    -- ProjectBW Group Manager
+    "BW.PHX.SetGroup",
+    "BW.PHX.SetGroupResult",
+    "BW.PHX.SetGroupNotif",
 	-- Enhanced Plus
 	"PHX.ResetRotateTeams",
 	"PHX.ForceHunterAsProp",

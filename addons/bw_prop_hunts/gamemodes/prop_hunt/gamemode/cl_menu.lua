@@ -162,11 +162,11 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		local BMAC = pn:Add("DImage")
 		BMAC:SetPos(0,0)
 		BMAC:SetSize(256,128)
-		BMAC:SetImage("vgui/bmac.vmt")
+		BMAC:SetImage("vgui/phx_menu/bmac.png")
 		local KOFI = pn:Add("DImage")
 		KOFI:SetPos(260,0)
 		KOFI:SetSize(256,128)
-		KOFI:SetImage("vgui/kofi.vmt")
+		KOFI:SetImage("vgui/phx_menu/kofi.png")
 		
 		local btnDn = pn:Add("DButton")
 		btnDn:SetPos(6,110)
@@ -183,7 +183,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			gui.OpenURL(GAMEMODE.DONATEURL)
 		end
 		
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_donate.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_donate.png")
 		PHX.UI.PaintTabButton(PanelModify, "Поддержать")
 	end
 	
@@ -207,7 +207,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		helpImage.Count = 1
 		helpImage:Dock(FILL)
 		helpImage:DockMargin(0,32,0,32)
-		helpImage:SetImage("vgui/phhelp1.vmt")
+		helpImage:SetImage("vgui/phx_menu/phhelp1.png")
 	
 		local pBottom = vgui.Create("DPanel", panel)
 		pBottom:Dock(BOTTOM)
@@ -258,7 +258,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			if helpImage.Count > 10 then
 				helpImage.Count = 1
 			end
-			helpImage:SetImage("vgui/phhelp"..helpImage.Count..".vmt")
+			helpImage:SetImage("vgui/phx_menu/phhelp"..helpImage.Count..".png")
 		end
 		
 		local bprev = vgui.Create("DButton", pBottom)
@@ -287,10 +287,10 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			if helpImage.Count < 1 then
 				helpImage.Count = 10
 			end
-			helpImage:SetImage("vgui/phhelp"..helpImage.Count..".vmt")
+			helpImage:SetImage("vgui/phx_menu/phhelp"..helpImage.Count..".png")
 		end
 
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_help.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_help.png")
 		PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_HELP"))
 	end
 	
@@ -478,7 +478,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			end
 		end
 		
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_plmodel.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_plmodel.png")
 		PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_MODEL"))
 	end
 	
@@ -546,7 +546,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		PHX.UI:CreateVGUIType("ph_show_custom_crosshair", "check", "CLIENT", gridpl, "PHXM_PLAYER_USE_NEW_CROSSHAIR")
 		PHX.UI:CreateVGUIType("ph_show_team_topbar", "check", "CLIENT", gridpl, "PHXM_PLAYER_SHOW_TEAM_TOPBAR")
 		
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_player.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_player.png")
 		PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_PLAYER"))
 	end
 	
@@ -568,7 +568,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			PHX.UI:CreateVGUIType("","mute",Plys,gridmute,"")
 		end
 	
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_voice.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_voice.png")
 		PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_MUTE"))
 	end
 	
@@ -815,7 +815,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		PHX.UI:CreateVGUIType("","spacer",nil,grid,"" )
 		
 		
-	local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_admin.png")
+	local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_admin.png")
 	PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_ADMIN"))
 	
 	end
@@ -862,7 +862,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 			end}
 			}, grid,"")
 	
-		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_map.png")
+		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_map.png")
 		PHX.UI.PaintTabButton(PanelModify, PHX:FTranslate("PHXM_TAB_MAPVOTE"))
 	end
 	

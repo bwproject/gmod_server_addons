@@ -266,7 +266,7 @@ function PCR.openTutorialWindow()
 	w.frame:SetDraggable(false)
 	
 	w.image = w.frame:Add( "DImage" )
-	w.image:SetImage("pcr/idbs_guide")
+	w.image:SetImage("vgui/phx_menu/idbs_guide.png")
 	w.image:Dock(FILL)
 	
 	w.frame:MakePopup()

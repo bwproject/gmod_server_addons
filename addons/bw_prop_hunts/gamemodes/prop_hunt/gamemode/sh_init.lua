@@ -542,7 +542,7 @@ if CLIENT then
 			end
 		end
 	
-	local PanelModify = tab:AddSheet("", main.panel, "vgui/ph_iconmenu/m_plugins.png")
+	local PanelModify = tab:AddSheet("", main.panel, "vgui/phx_menu/m_plugins.png")
 	paintPanelFunc(PanelModify, PHX:FTranslate("PHXM_TAB_PLUGINS"))
 	
 	end)

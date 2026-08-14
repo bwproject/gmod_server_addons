@@ -69,6 +69,6 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
         pVgui("","label","PHX.TopBarFont",grid, names )
     end
 	
-	local PanelModify = tab:AddSheet("", panel, "vgui/ph_iconmenu/m_info.png")
+	local PanelModify = tab:AddSheet("", panel, "vgui/phx_menu/m_info.png")
 	paintPanelFunc(PanelModify, PHX:FTranslate("PHXM_TAB_ABOUT"))
 end)

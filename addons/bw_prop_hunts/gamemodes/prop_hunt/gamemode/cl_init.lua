@@ -46,7 +46,7 @@ local mat 		            = "prophunt_enhanced/sprites/luckyball"
 local pointer 	            = "prophunt_enhanced/sprites/luckyball_pointer"
 local dmat		            = "prophunt_enhanced/sprites/devilball"
 local dpointer	            = "prophunt_enhanced/sprites/devilball_pointer"
-local tutormat 	            = "vgui/hud_control_help.png"
+local tutormat 	            = "vgui/phx_menu/hud_control_help.png"
 local crosshair             = Material("vgui/hud_crosshair")
 local curshow 	            = 0
 local lgWind 	            = {}
@@ -1119,7 +1119,7 @@ local function ShowVeryFirstTutorial()
 		fh.helpImage = vgui.Create("DImage", fh.panel)
 		fh.helpImage.Count = 1
 		fh.helpImage:Dock(FILL)
-		fh.helpImage:SetImage("vgui/phhelp1.vmt")
+		fh.helpImage:SetImage("vgui/phx_menu/phhelp1.png")
 	
 		fh.pBottom = vgui.Create("DPanel", fh.panel)
 		fh.pBottom:Dock(BOTTOM)
@@ -1155,7 +1155,7 @@ local function ShowVeryFirstTutorial()
 			if fh.helpImage.Count > 10 then
 				fh.helpImage.Count = 1
 			end
-			fh.helpImage:SetImage("vgui/phhelp" .. fh.helpImage.Count .. ".vmt")
+			fh.helpImage:SetImage("vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png")
 		end
 		
 		fh.bprev = vgui.Create("DButton", fh.pBottom)
@@ -1168,7 +1168,7 @@ local function ShowVeryFirstTutorial()
 			if fh.helpImage.Count < 1 then
 				fh.helpImage.Count = 10
 			end
-			fh.helpImage:SetImage("vgui/phhelp" .. fh.helpImage.Count .. ".vmt")
+			fh.helpImage:SetImage("vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png")
 		end
 	
 	fh.frame:MakePopup()
