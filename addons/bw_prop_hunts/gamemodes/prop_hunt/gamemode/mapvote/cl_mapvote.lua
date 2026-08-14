@@ -109,10 +109,10 @@ function PANEL:Init()
 	
 	self.CancelBtn = vgui.Create("DButton", self.Canvas)
 	self.CancelBtn:SetPos(0,0)
-	self.CancelBtn:SetText("Cancel MapVote")
+	self.CancelBtn:SetText("Отменить голосование")
 	self.CancelBtn:SetSize(160,32)
 	self.CancelBtn.DoClick = function()
-		chat.AddText( "MapVote has been stopped." )
+		chat.AddText( "Голосование за карту остановлено." )
 		LocalPlayer():ConCommand("mv_stop")
 		self:SetVisible(false)
 	end
@@ -240,7 +240,7 @@ function PANEL:Think()
     
     local timeLeft = math.Round(math.Clamp(MapVote.EndTime - CurTime(), 0, math.huge))
     
-    self.countDown:SetText(tostring(timeLeft or 0).." seconds")
+    self.countDown:SetText(tostring(timeLeft or 0).." сек.")
     self.countDown:SizeToContents()
     self.countDown:CenterHorizontal()
 end

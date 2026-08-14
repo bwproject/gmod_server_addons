@@ -137,11 +137,11 @@ function GM:AddDeathNotice( Attacker, team1, Inflictor, Victim , team2 )
 	
 	if Victim == Attacker then
 		pnl:AddText( Attacker, color1 )
-		pnl:AddText( PHX:GetRandomTranslated("SUICIDEMSG") or "is ded." )
+		pnl:AddText( PHX:GetRandomTranslated("SUICIDEMSG") or "погиб." )
 	elseif Victim == "#ph_fake_prop" then
 		pnl:AddText( Attacker, Color(255,174,200,255) )
         pnl:AddIcon( "ph_fake_prop" )
-		pnl:AddText( PHX:GetRandomTranslated("DECOY_PROP") or "Decoy Prop" )
+		pnl:AddText( PHX:GetRandomTranslated("DECOY_PROP") or "Объект-приманка" )
 	else
 		pnl:AddText( Attacker, color1)
 		pnl:AddIcon( Inflictor )

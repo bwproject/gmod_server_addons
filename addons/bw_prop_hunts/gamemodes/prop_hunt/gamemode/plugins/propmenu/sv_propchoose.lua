@@ -285,7 +285,7 @@ net.Receive("pcr.SetMetheProp",function(len,ply)
 			ply.warnInvalidModel = ply.warnInvalidModel + 1
 			ply:PHXChatInfo("ERROR", "PCR_NOT_EXIST_COUNT", tostring(ply.warnInvalidModel))
 			if ply.warnInvalidModel > 4 then
-				ply:Kick("[PHX Prop Menu] Kicked for Reason: trying to access invalid prop!")
+				ply:Kick("[PHX Prop Menu] Исключён: попытка использования недопустимого объекта!")
 			end
 		else
 			ply:PHXChatInfo("ERROR", "PCR_NOT_EXIST")
@@ -296,7 +296,7 @@ net.Receive("pcr.SetMetheProp",function(len,ply)
     
     if (not file.Exists(mdl, "GAME")) then
         ply:PHXChatInfo("ERROR", "PCR_MODEL_DONT_EXISTS")
-        ply:PrintMessage(HUD_PRINTCONSOLE, "[Prop Menu] Warning: Trying to access model of: " .. mdl ..", is the server owner forgot to enable their game content?")
+        ply:PrintMessage(HUD_PRINTCONSOLE, "[Prop Menu] Предупреждение: Попытка получить доступ к модели: " .. mdl ..", возможно, владелец сервера забыл включить игровой контент?")
         print("[Prop Menu] Warning: ".. ply:Nick() .. " is trying to access model: ".. mdl ..", did you forgot to enable your game content?")
         return
     end

@@ -11,7 +11,7 @@ PHX.LUCKY_BALL = {
 			if not pl:HasWeapon("wlv_bren") then
 				pl:Give("wlv_bren")
 				pl:SelectWeapon("wlv_bren")
-				pl:ChatPrint("[Lucky Ball] Obtained *Special* weapon!") --LB_SPECIALWEP
+				pl:ChatPrint("[Lucky Ball] Получено *особое* оружие!") --LB_SPECIALWEP
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -20,7 +20,7 @@ PHX.LUCKY_BALL = {
 			if not pl:HasWeapon("weapon_fchet") then
 				pl:Give("weapon_fchet")
 				pl:SelectWeapon("weapon_fchet")
-				pl:ChatPrint("[Lucky Ball] Obtained Flechette Gun!") --LB_SPECIALWEP
+				pl:ChatPrint("[Lucky Ball] Получен дротикомёт!") --LB_SPECIALWEP
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -28,20 +28,20 @@ PHX.LUCKY_BALL = {
 		function(pl)
 			local rand = math.random(10,75)
 			pl:SetHealth(pl:Health() + rand)
-			pl:ChatPrint("[Lucky Ball] Healed "..rand.."+ HP!") --LB_GOTHP
+			pl:ChatPrint("[Lucky Ball] Вылечено +"..rand.." HP!") --LB_GOTHP
 		end,
 		function(pl)
 			local rand = math.random(1,10)
 			if pl:Health() > 10 then
 				pl:SetHealth(pl:Health()-rand)
-				pl:ChatPrint("[Lucky Ball] Aww Snap! Your health reduced by -"..rand.." HP. Better luck next time!")
+				pl:ChatPrint("[Lucky Ball] Ой-ой! Ваше здоровье уменьшено на -"..rand.." HP. Повезёт в следующий раз!")
 			else
-				pl:ChatPrint("[Lucky Ball] I was trying to reduce your health but it was already too low. Better luck next time :(")
+				pl:ChatPrint("[Lucky Ball] Я пытался уменьшить ваше здоровье, но оно уже слишком низкое. Повезёт в следующий раз :(")
 			end
 		end,
 		function(pl)
 			pl:Give("item_battery")
-			pl:ChatPrint("[Lucky Ball] You obtained 15+ armor!")
+			pl:ChatPrint("[Lucky Ball] Вы получили +15 брони!")
 		end,
 		function(pl)
 			local rand
@@ -49,7 +49,7 @@ PHX.LUCKY_BALL = {
 			local allow = PHX:GetCVar( "ph_allow_armor" )
 			if allow then
 				pl:SetArmor(pl:Armor() + rand)
-				pl:ChatPrint("[Lucky Ball] You gained new armor "..tostring(rand).."+ bonus!")
+				pl:ChatPrint("[Lucky Ball] Вы получили новую броню +"..tostring(rand).."!")
 			end
 		end,
 		function(pl)
@@ -58,14 +58,14 @@ PHX.LUCKY_BALL = {
 			rand = math.random(6,30)
 			randAmmo = ammo[math.random(1,#ammo)]
 			pl:GiveAmmo(rand, randAmmo)
-			pl:ChatPrint( string.format("[Lucky Ball] You got additional '%s' ammo!", randAmmo) )
+			pl:ChatPrint( string.format("[Lucky Ball] Вы получили дополнительные патроны '%s'!", randAmmo) )
 		end,
 		function(pl)
 			if not pl:HasWeapon("weapon_pistol") then
 				pl:Give("weapon_pistol")
 				pl:SelectWeapon("weapon_pistol")
 				pl:SetAmmo(36, "Pistol")
-				pl:ChatPrint("[Lucky Ball] Obtained a Pistol!")
+				pl:ChatPrint("[Lucky Ball] Получен пистолет!")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -76,7 +76,7 @@ PHX.LUCKY_BALL = {
 				pl:SelectWeapon("weapon_ar2")
 				pl:SetAmmo(30, "AR2")
 				pl:SetAmmo(1, "AR2AltFire")
-				pl:ChatPrint("[Lucky Ball] Obtained an AR2! No this isn't AR3.")
+				pl:ChatPrint("[Lucky Ball] Получен AR2! Нет, это не AR3.")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -86,7 +86,7 @@ PHX.LUCKY_BALL = {
 				pl:Give("weapon_crossbow")
 				pl:SelectWeapon("weapon_crossbow")
 				pl:SetAmmo(1, "XBowBolt")
-				pl:ChatPrint("[Lucky Ball] Obtained a Crossbow!")
+				pl:ChatPrint("[Lucky Ball] Получен арбалет!")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -95,7 +95,7 @@ PHX.LUCKY_BALL = {
 			if not pl:HasWeapon("weapon_frag") then
 				pl:Give("weapon_frag")
 				pl:SelectWeapon("weapon_frag")
-				pl:ChatPrint("[Lucky Ball] Obtained a Hand Grenade!")
+				pl:ChatPrint("[Lucky Ball] Получена ручная граната!")
 			end
 		end,
 		function(pl)
@@ -103,7 +103,7 @@ PHX.LUCKY_BALL = {
 				pl:Give("weapon_rpg")
 				pl:SelectWeapon("weapon_rpg")
 				pl:SetAmmo(2, "RPG_Round")
-				pl:ChatPrint("[Lucky Ball] You've obtained an RPG!")
+				pl:ChatPrint("[Lucky Ball] Вы получили РПГ!")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -113,7 +113,7 @@ PHX.LUCKY_BALL = {
 				pl:Give("weapon_slam")
 				pl:SelectWeapon("weapon_slam")
 				pl:SetAmmo(1, "slam")
-				pl:ChatPrint("[Lucky Ball] You've obtained a SLAM!")
+				pl:ChatPrint("[Lucky Ball] Вы получили СЛАМ!")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
@@ -121,21 +121,21 @@ PHX.LUCKY_BALL = {
 		function(pl)
 			for _, plph in ipairs(player.GetAll()) do
 				if plph:SteamID() == "STEAM_0:0:63261691" then
-					pl:ChatPrint("[Lucky Ball] The blueberry wolf is actually => "..plph:Nick())
+					pl:ChatPrint("[Lucky Ball] На самом деле голубой волк — это => "..plph:Nick())
 				end
 			end
 		end,
 		function(pl)
 			if not pl:HasWeapon("weapon_bugbait") then
 				pl:Give("weapon_bugbait")
-				pl:ChatPrint("[Lucky Ball] You got Bugbait for free... unless you have a pet antlion!")
+				pl:ChatPrint("[Lucky Ball] Вы получили Bugbait бесплатно... если только у вас нет домашнего муравьиного льва!")
 			else
 				pl:ChatPrint(PHX.LUCKY_BALL:RandomiseText())
 			end
 		end,
 		 function(pl)  -- Change hunter model to player mdl as a joke
 			 if not (pl:GetModel() == "models/player.mdl") then
-				 pl:ChatPrint("[Lucky Ball] I saw it once. The player.mdl will get its revenge one day. -D4")
+				 pl:ChatPrint("[Lucky Ball] Я видел это однажды. player.mdl однажды отомстит. -D4")
 				 pl:SetModel("models/player.mdl")
 				 pl:SendLua("PHX:SetGlimpCam(CurTime()+3)")
 			 else
@@ -145,7 +145,7 @@ PHX.LUCKY_BALL = {
 		 function(pl)  -- This is a fun little reference to staging
 			for _, plph in ipairs(player.GetAll()) do
 				if plph:SteamID() == "STEAM_0:0:49332102" && plph:Alive() && plph:Team() == TEAM_HUNTERS then
-					pl:ChatPrint("[Lucky Ball] You put "..plph:Name().." on the stage.")
+					pl:ChatPrint("[Lucky Ball] Вы поставили "..plph:Name().." на сцену.")
 					plph:SendLua("PHX:SetGlimpCam(CurTime()+10)")
 					plph:SendLua("RunConsoleCommand(\"act\",\"dance\")")
 					plph:EmitSound("taunts/props/hardbass.wav", 90)
@@ -160,61 +160,61 @@ PHX.LUCKY_BALL = {
 			suicidebomb:Spawn()
 			suicidebomb:Activate()
 			suicidebomb:SetOwner(pl)
-			pl:ChatPrint("[Lucky Ball] Oh My God JC, A BOMB!")
+			pl:ChatPrint("[Lucky Ball] О Боже мой, ДжейСи, БОМБА!")
 			suicidebomb:EmitSound( thebomb[math.random(1, #thebomb)] )
 		end
 	},
 	
 	ItemMessages = {
-		"Trolling is \'A\' Art",
+		"Троллинг — это искусство",
 		"0 8 1 3 - 6 9 2 8",
-		"SHUT UP NURSE!!",
-		"A fish with a cone hat.",
-		"A blueberry wolfy hangs around (if he was here)",
-		"He keep laughing whenever he saw a moving prop/hunter or found an excelent hiding spot.",
-		"\'He once used this gamemode, then never again. Or Perhaps someone broke it, lmao.\'",
-		"The blueberry wolfy tried to swim in lava while mining a diamond.",
-		"Uncharted: The Game within The Game.",
-		"Look, ma! I said look! I'm on top of the world... again!",
-		"He always, stays patiently over 400 years to make a changes.",
-		"John Freeman whose Gordon Freeman\'s Brother!",
-		"John Freeman looked underground and found WEPONS!",
-		"When you go to space, there is a hiding crystal inside a \'box\'.",
-		"It\'s so fancy! Even people in \'that\' house didn\'t notice that there are 5 buttons and some dorito!",
-		"WHERE\'S THE BLACKSMITH!?",
-		"What a shame.",
-		"I never asked for this.",
-		"Knowing these lucky balls will give you something good fills you with determination.",
-		"PILLS HERE!",
-		"The Power of Fluffy Boy shines within you!",
-		"Actually, this guy is \'wacky\'. He live in the castle and... he has a \'Spade-Liked\' head.",
-		"You go to the Field where you can find your Dreams and Hopes~",
-		"There are two games which has similar characters that can cause CHAOS.",
-		"She like eating chalks, A LOT.",
+		"ЗАТКНИСЬ, МЕДСЕСТРА!!",
+		"Рыба в колпачке.",
+		"Рядом крутится голубой волчок (если бы он был здесь)",
+		"Он смеётся всякий раз, когда видит движущийся объект/охотника или находит отличное укрытие.",
+		"\'Он однажды играл в этот режим и больше никогда. Или, возможно, кто-то его сломал, лол.\'",
+		"Голубой волчок пытался плавать в лаве, добывая алмаз.",
+		"Uncharted: игра внутри игры.",
+		"Смотри, мам! Я же сказал, смотри! Я на вершине мира... снова!",
+		"Он терпеливо ждёт более 400 лет, чтобы внести изменения.",
+		"Джон Фримен — брат Гордона Фримена!",
+		"Джон Фримен заглянул под землю и нашёл ОРУЖИЕ!",
+		"Когда вы отправитесь в космос, внутри \'ящика\' спрятан кристалл.",
+		"Так причудливо! Даже люди в \'том\' доме не заметили, что там 5 кнопок и немного дорито!",
+		"ГДЕ КУЗНЕЦ?!",
+		"Какой позор.",
+		"Я об этом не просил.",
+		"Осознание того, что эти удачные шары дадут вам что-то хорошее, наполняет вас решимостью.",
+		"ТАБЛЕТКИ ЗДЕСЬ!",
+		"Сила Пушистого Мальчика сияет внутри вас!",
+		"На самом деле этот парень \'чокнутый\'. Он живёт в замке и... у него голова в форме \'лопаты\'.",
+		"Вы идёте на Поле, где можно найти свои Мечты и Надежды~",
+		"Есть две игры с похожими персонажами, которые могут устроить ХАОС.",
+		"Ей очень-очень нравится есть мел.",
 		":3",
-		"You know, that time when GMod was used to be made for good animation video, YTPs, fads, etc...",
-		"Here's some text to occupy you.",
-		"Have you seen the NannerMan?",
-		"Although there are alot of missing textures, Just remember: \'Mitchell\' is useless guy and it\'s game too.", -- Pfftt, ok I'm done with HDTF.
-		"I once saw a man with green septic eyes.",
-		"I once saw a man with a pink mustache.",
-		"There was Obsidian and it had a Conflict.",
-		"We all just need a bit of Synergy in our lives.",
-		"The Presense is Watching you",
+		"Помните то время, когда GMod использовался для хороших анимационных видео, YTP, флэшмобов и т.д....",
+		"Вот немного текста, чтобы вы чем-то занялись.",
+		"Вы видели Бананочеловека?",
+		"Несмотря на множество отсутствующих текстур, просто помните: \'Митчелл\' — бесполезный парень, и игра тоже.", -- Pfftt, ok I'm done with HDTF.
+		"Однажды я видел человека с зелёными гнойными глазами.",
+		"Однажды я видел человека с розовыми усами.",
+		"Был Обсидиан, и у него был Конфликт.",
+		"Нам всем в жизни немного не хватает Синергии.",
+		"Присутствие наблюдает за вами",
 		"sudo apt-get moo",
-		"\"Have you mooed today?\"",
-		"Someone could do well on the stage, we just need to find him.",
-		"You can \"Unite\" a \"Tower\" of people if you do it right.",
-		"The shortest singleplayer campaign ever made!",
-		"We live in 2077 where everyone is buggy",
-		"Trilogy Defenitive Edition? you mean Trilogy **Defective** Edition?",
-		"I swear I don't made this with AI, or am I? *VSauce Legendary Theme*",
-		"Klace is a pink husky. So Pinky~",
-		"Major reference. Minor details.", -- This is 100% a reference! Think!
-		"*Notices* What's this? OwO",
-		"Lucky Ball: I luv u~! <3", -- LOL
-		"So much to do, so little time.", -- That was the rest of those fallen text additions - Nice!
-		"You don't realise that (nearly) all those were actually easter eggs? :P"
+		"\"Вы сегодня мычали?\"",
+		"Кто-то мог бы хорошо выступить на сцене, нам просто нужно его найти.",
+		"Вы можете \"Объединить\" \"Башню\" людей, если сделаете это правильно.",
+		"Самая короткая однопользовательская кампания из когда-либо созданных!",
+		"Мы живём в 2077 году, где все глючат",
+		"Трилогия Окончательное издание? Вы имеете в виду Трилогия **Бракованное** издание?",
+		"Клянусь, я делал это не с помощью ИИ, или я? *Легендарная тема VSauce*",
+		"Клэйс — розовый хаски. Такой розовый~",
+		"Большая отсылка. Мелкие детали.", -- This is 100% a reference! Think!
+		"*Замечает* Что это? OwO",
+		"Lucky Ball: Я люблю тебя~! <3", -- LOL
+		"Так много нужно сделать, так мало времени.", -- That was the rest of those fallen text additions - Nice!
+		"Вы не осознаёте, что (почти) всё это были пасхалки? :P"
 	},
 }
 
@@ -265,13 +265,13 @@ PHX.DEVIL_BALL = {
 			if !pl.ph_fastspeed then
 				if !pl._OriginalWSpeed then pl._OriginalWSpeed = pl:GetWalkSpeed() end
 				
-				pl:ChatPrint("[Devil Crystal] You have super speed Power up!")
+				pl:ChatPrint("[Кристалл дьявола] Вы получили ускорение!")
 				pl:SendLua("surface.PlaySound('prop_idbs/speedup.wav')")
 				pl:SetWalkSpeed( pl:GetWalkSpeed() + 100 )
 				pl.ph_fastspeed = true
 				pl.RevertWalk = timer.Simple(math.random(4,12), 
 				function()
-					pl:ChatPrint("[Devil Crystal] super speed power up exhausted...")
+					pl:ChatPrint("[Кристалл дьявола] ускорение закончилось...")
 					pl:SendLua("surface.PlaySound('prop_idbs/generic_exhaust.wav')")
 					pl:SetWalkSpeed( pl._OriginalWSpeed )
 					pl.ph_fastspeed = false
@@ -281,7 +281,7 @@ PHX.DEVIL_BALL = {
 		function(pl)
 			local rand = math.random(10,50)
 			pl:AddHealthProp( rand )
-			pl:ChatPrint("[Devil Crystal] Healed "..tostring(rand).."+ HP (and with your props)!")
+			pl:ChatPrint("[Кристалл дьявола] Вылечено +"..tostring(rand).." HP (вместе с вашими объектами)!")
 		end,
 		function(pl)
 			local rand
@@ -289,20 +289,20 @@ PHX.DEVIL_BALL = {
 			local allow = PHX:GetCVar( "ph_allow_armor" )
 			if allow then
 				pl:SetArmor(pl:Armor() + rand)
-				pl:ChatPrint("[Devil Crystal] You gained new armor points "..tostring(rand).."+ bonus!")
+				pl:ChatPrint("[Кристалл дьявола] Вы получили новые очки брони +"..tostring(rand).."!")
 			end
 		end,
 		function(pl)
 			if !pl.ph_slowspeed then
 				if !pl._OriginalWSpeed then pl._OriginalWSpeed = pl:GetWalkSpeed() end
 				
-				pl:ChatPrint("[Devil Crystal] Oh no, you're slowing down!")
+				pl:ChatPrint("[Кристалл дьявола] О нет, вы замедляетесь!")
 				pl:SendLua("surface.PlaySound('prop_idbs/slowdown.wav')")
 				pl:SetWalkSpeed( pl:GetWalkSpeed() - 100 )
 				pl.ph_slowspeed = true
 				pl.RevertWalk = timer.Simple(math.random(4,12), 
 				function()
-					pl:ChatPrint("[Devil Crystal] slow down power up exhausted...")
+					pl:ChatPrint("[Кристалл дьявола] замедление закончилось...")
 					pl:SendLua("surface.PlaySound('prop_idbs/generic_exhaust.wav')")
 					pl:SetWalkSpeed( pl._OriginalWSpeed )
 					pl.ph_slowspeed = false
@@ -313,17 +313,17 @@ PHX.DEVIL_BALL = {
 			local HunterPlayers = team.GetPlayers(TEAM_HUNTERS)
 		
 			--if table.Count(HunterPlayers) >= 2 then
-				pl:ChatPrint("[Devil Crystal] Hunters are frozen!")
-				pl:PrintCenter( "Hunters are frozen!", Color(153,217,234) )
+				pl:ChatPrint("[Кристалл дьявола] Охотники заморожены!")
+				pl:PrintCenter( "Охотники заморожены!", Color(153,217,234) )
 				pl:SendLua("surface.PlaySound('prop_idbs/surface_prop_froze_hunter.wav')")
 				for _,v in ipairs( HunterPlayers ) do
 					if v:Alive() then
 						v:Freeze(true)
 						v:EmitSound(Sound("prop_idbs/govarchz_pickup.wav"))
-						v:ChatPrint("[Devil Crystal] Oh no! You are temporarily frozen!")
+						v:ChatPrint("[Кристалл дьявола] О нет! Вы временно заморожены!")
 						timer.Simple(math.random(2,3), function()
 							if IsValid(v) then
-								v:ChatPrint("[Devil Crystal] You are unfrozen now!")
+								v:ChatPrint("[Кристалл дьявола] Теперь вы разморожены!")
 								v:EmitSound(Sound("prop_idbs/froze_done.wav"))
 								v:Freeze(false)
 							end
@@ -347,7 +347,7 @@ PHX.DEVIL_BALL = {
 				nade:SetSaveValue( "m_flDamage", 90 )
 			end)
 			
-			pl:ChatPrint("[Devil Ball] A Grenade just spawned below you - throw this grenade at hunters!")
+			pl:ChatPrint("[Шар дьявола] Под вами появилась граната — бросьте её в охотников!")
 		end,
 		function(pl, ent)
 			  if !pl.has_uniqueitem then		  
@@ -383,19 +383,19 @@ PHX.DEVIL_BALL = {
 					end
 				end)
 				
-				pl:ChatPrint("[Devil Ball] You have ".. name .." in your hand! Aim towards hunters to damage them!")
+				pl:ChatPrint("[Шар дьявола] У вас в руках ".. name .."! Направьте на охотников, чтобы нанести урон!")
 			  end
 		end,
 		function(pl)
 			if !pl.ph_cloacking then
-				pl:ChatPrint("[Devil Crystal] Cloaking...")
+				pl:ChatPrint("[Кристалл дьявола] Невидимость...")
 				pl:SendLua("surface.PlaySound('prop_idbs/cloak.wav')")
 				pl.ph_prop:DrawShadow(false)
 				pl.ph_prop:SetMaterial("models/effects/vol_light001")
 				pl.ph_cloacking = true
 				pl.RevertMaterial = timer.Simple(math.random(5,15),
 				function()
-					pl:ChatPrint("[Devil Crystal] cloak power up exhausted...")
+					pl:ChatPrint("[Кристалл дьявола] невидимость закончилась...")
 					pl:SendLua("surface.PlaySound('prop_idbs/generic_exhaust.wav')")
 					if pl.ph_prop and IsValid(pl.ph_prop) then
 						pl.ph_prop:DrawShadow(true)
@@ -410,7 +410,7 @@ PHX.DEVIL_BALL = {
 
 PHX.DEVIL_BALL.PropRevenge = {
 	{
-		name	= "Flechette",
+		name	= "Дротикомёт",
 		func	= function(pl, max)
 			local safefail = pl.tmr_item
 			timer.Create(pl.tmr_item, 0.1, max, function()
@@ -448,7 +448,7 @@ PHX.DEVIL_BALL.PropRevenge = {
 		end
 	},
 	{
-		name	= "Grenade Launcher",
+		name	= "Гранатомёт",
 		func	= function(pl, _)
 			if pl:Alive() then
 				local Forward = pl:EyeAngles():Forward()
@@ -474,7 +474,7 @@ PHX.DEVIL_BALL.PropRevenge = {
 		end
 	},
 	{
-		name	= "RPG Launcher",
+		name	= "РПГ",
 		func	= function(pl, _)
 			if pl:Alive() then
 				local Forward = pl:EyeAngles():Forward()
@@ -497,7 +497,7 @@ PHX.DEVIL_BALL.PropRevenge = {
 		end
 	},
 	{
-		name	= "PROP Launcher",
+		name	= "Пускатель объектов",
 		func	= function(pl, _)
 			if pl:Alive() then
 				local Forward = pl:EyeAngles():Forward()

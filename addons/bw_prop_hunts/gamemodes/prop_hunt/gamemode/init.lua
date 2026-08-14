@@ -997,11 +997,11 @@ local function ForceEndRound( ply )
         if ply == NULL then
 			print( "[PHX] Cannot Restart round: Not in active round!" )
 		else
-			ply:PrintMessage(HUD_PRINTTALK, "[PHX] Sorry, this command is unavailable.")
+			ply:PrintMessage(HUD_PRINTTALK, "[PHX] Извините, эта команда недоступна.")
 		end
     end
 end
-concommand.Add("ph_force_end_round", ForceEndRound, nil, "Force End Active Round")
+concommand.Add("ph_force_end_round", ForceEndRound, nil, "Принудительно завершить активный раунд")
 
 -- Called before start of round
 function GM:OnPreRoundStart(num)

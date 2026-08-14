@@ -29,7 +29,7 @@ function PANEL:Think()
 	if ( self.PlayerCount != Count ) then
 		self.PlayerCount = Count
 		--self.TeamName:SetText( team.GetName( self.iTeamID ) .. " (" .. self.PlayerCount .. " Players)" )
-		self.TeamName:SetText( PHX:TranslateName( self.iTeamID ) .. " (" .. self.PlayerCount .. " Players)" )
+		self.TeamName:SetText( PHX:TranslateName( self.iTeamID ) .. " (" .. self.PlayerCount .. " Игроков)" )
 	end
 	
 	self.TeamScore:SetText( team.GetScore( self.iTeamID ) )

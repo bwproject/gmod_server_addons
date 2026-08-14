@@ -12,13 +12,13 @@ end
 function PHX.UI.BaseMainMenu(ply, cmd, args)
 
     if (game.SinglePlayer()) then
-        chat.AddText(Color(255,0,0), "WARNING: Menu is not available in Single Player Mode!")
+        chat.AddText(Color(255,0,0), "ВНИМАНИЕ: меню недоступно в одиночной игре!")
         return
     end
 	
 	if (PHX.LANGUAGES[PHX:GetCLCVar( "ph_cl_language" )] == nil or table.IsEmpty(PHX.LANGUAGES[PHX:GetCLCVar( "ph_cl_language" )])) then
-		PHX:AddChat("Error: Cannot open Prop Hunt X Menu because the language you're using is not available.", Color(255,0,0))
-		PHX:AddChat("Please revert to default language by typing 'ph_cl_language en_us' in the console!", Color(255,255,0))
+		PHX:AddChat("Ошибка: невозможно открыть меню Prop Hunt X, поскольку выбранный язык недоступен.", Color(255,0,0))
+		PHX:AddChat("Вернитесь к языку по умолчанию, введя в консоли: ph_cl_language en_us", Color(255,255,0))
 		return
 	end
 
@@ -146,14 +146,14 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		title:Dock(TOP)
 		title:SetSize(0,30)
 		title:SetFont("Trebuchet24")
-		title:SetText("Support Prop Hunt: X!")
+		title:SetText("Поддержать проект")
 		
 		local title = panel:Add("DLabel")
 		title:Dock(TOP)
 		title:DockMargin(0,6,0,6)
 		title:SetSize(0,18)
 		title:SetFont("HudHintTextLarge")
-		title:SetText("If you liked with this gamemode or update and wanted to help with PH:X2Z Development, you can help me by donating!")
+		title:SetText("Если вам нравится этот игровой режим или обновление и вы хотите помочь разработке PH:X2Z, вы можете помочь пожертвованием!")
 		
 		local pn = panel:Add("DPanel")
 		pn:Dock(TOP)
@@ -171,20 +171,20 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		local btnDn = pn:Add("DButton")
 		btnDn:SetPos(6,110)
 		btnDn:SetSize(240,24)
-		btnDn:SetText("Donate via Buy me a Coffee")
+		btnDn:SetText("Пожертвовать через Buy me a Coffee")
 		btnDn.DoClick = function()
 			gui.OpenURL("https://www.buymeacoffee.com/wolvindra")
 		end
 		local btnKf = pn:Add("DButton")
 		btnKf:SetPos(266,110)
 		btnKf:SetSize(240,24)
-		btnKf:SetText("Donate via Buy Ko-Fi")
+		btnKf:SetText("Пожертвовать через Buy Ko-Fi")
 		btnKf.DoClick = function()
 			gui.OpenURL(GAMEMODE.DONATEURL)
 		end
 		
 		local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/ph_iconmenu/m_donate.png")
-		PHX.UI.PaintTabButton(PanelModify, "Donate")
+		PHX.UI.PaintTabButton(PanelModify, "Поддержать")
 	end
 	
 	--[[
@@ -401,7 +401,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 				-- Right click functions
 				icon.DoRightClick = function()
 					local menu = DermaMenu()
-					menu:AddOption( "Apply Model", function() 
+					menu:AddOption( PHX:QTrans("MISC_APPLYMDL"), function() 
 						surface.PlaySound( "buttons/combine_button3.wav" )
 						RunConsoleCommand( "cl_playermodel", name )
 						modelPreview:SetModel(model)
@@ -494,11 +494,11 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 
 		PHX.UI:CreateVGUIType("", "label", "PHX.MenuCategoryLabel", gridpl, "PHXM_PLAYER_LANG")
 		if (PHX:GetCVar( "ph_use_lang" )) then
-			PHX.UI:CreateVGUIType("", "label", false, gridpl, "Server is currently using a forced language. Current Language is: " .. PHX.LANGUAGES[PHX:GetCVar( "ph_force_lang" )].NameEnglish)
+			PHX.UI:CreateVGUIType("", "label", false, gridpl, PHX:QTrans( { "PHXM_PLAYER_FORCED_LANGUAGE", PHX.LANGUAGES[PHX:GetCVar( "ph_force_lang" )].NameEnglish } ))
 		else
 			PHX.UI:CreateVGUIType(nil, "langcombobox", nil, gridpl, nil)
 			PHX.UI:CreateVGUIType("", "btn", {
-			[1] = {"See all available Languages" , 
+			[1] = {"PHXM_PLAYER_SEE_LANGUAGES" , 
 			function(self)
 				PHX:showLangPreview()
 			end}
@@ -890,4 +890,4 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 	end)
 	
 end
-concommand.Add("ph_x_menu", PHX.UI.BaseMainMenu, nil, "Open Prop Hunt X Advanced Menu window." )
+concommand.Add("ph_x_menu", PHX.UI.BaseMainMenu, nil, "Открыть расширенное меню Prop Hunt X." )

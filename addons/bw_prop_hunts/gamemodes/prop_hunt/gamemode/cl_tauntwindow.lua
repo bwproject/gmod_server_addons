@@ -546,7 +546,7 @@ local function MainFrame()
 
 	function window.input:OnEnter( val )
 		if (window.CurrentCategory == PHX.FAVORITE_CATEGORY) then
-			self:SetText("Sorry, Cannot find in 'favorite' category at the moment")
+			self:SetText(PHX:FTranslate("PHX_TM_FAVORITE_NOT_FOUND"))
 			return
 		end
 		
@@ -786,8 +786,8 @@ end)
 concommand.Add("ph_showtaunts", function(ply)
 	if (TAUNT_FALLBACK) then --play default cheer sound if taunt table is empty
 		SendToServer( "___fail", "___fail", false )
-		MsgN("WARNING: Taunt Table is Empty (No taunts detected), playing default sound!")
-		LocalPlayer():ChatPrint("WARNING: No taunts detected, playing default sound!")
+		MsgN("ВНИМАНИЕ: таблица насмешек пуста (насмешки не обнаружены), воспроизводится стандартный звук!")
+		LocalPlayer():ChatPrint(PHX:FTranslate("PHX_TM_NO_TAUNTS_CHAT"))
 		return
 	end
 
@@ -800,4 +800,4 @@ concommand.Add("ph_showtaunts", function(ply)
 	else
 		PHX:ChatInfo( PHX:Translate("TM_PLAY_ONLY_ALIVE"), "WARNING" )
 	end
-end, nil, "Show Prop Hunt taunt menu")
+end, nil, "Открыть меню насмешек Prop Hunt")

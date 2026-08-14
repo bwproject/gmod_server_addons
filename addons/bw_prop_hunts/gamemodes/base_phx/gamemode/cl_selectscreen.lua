@@ -32,7 +32,7 @@ function PANEL:Init()
 		
 	self.btnCancel = vgui.Create( "DButton", self )
 		--self.btnCancel:SetText( "#Close" )
-		self.btnCancel:SetText( PHX:FTranslate("MISC_CLOSE") or "#Close" )
+		self.btnCancel:SetText( PHX:FTranslate("MISC_CLOSE") or "#Закрыть" )
 		self.btnCancel:SetSize( 100, 30 )
 		self.btnCancel:SetFGColor( Color( 0, 0, 0, 200 ) )
 		self.btnCancel:SetFont( "FRETTA_SMALL" )
@@ -149,7 +149,7 @@ end
 
 function PANEL:SetForHelp( strHelpText, ContribsText )
 	
-	self.lblHoverText:SetText( PHX:FTranslate("HELP_F1")  or "Error: No Help found." )
+	self.lblHoverText:SetText( PHX:FTranslate("HELP_F1")  or "Ошибка: справка не найдена." )
 	
 	-- Contributors & Donators
     local c =""

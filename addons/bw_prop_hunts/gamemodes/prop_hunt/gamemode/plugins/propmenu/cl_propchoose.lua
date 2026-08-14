@@ -13,7 +13,7 @@ net.Receive("pcr.PropListData", function()
 	local model = util.JSONToTable(util.Decompress(data))
     
     if !model or model == nil then
-        local err = "[!!PHX Prop Menu] Error: We got empty prop list. Something terribly went wrong with Networking!!!"
+        local err = "[!!PHX Prop Menu] Ошибка: получен пустой список объектов. Что-то ужасно пошло не так с сетью!!!"
         chat.AddText(Color(255,0,0), err)
         MsgC(Color(255,0,0), err.."\n")
         return
@@ -36,7 +36,7 @@ net.Receive("pcr.EditorCustomData", function()
 	local model = util.JSONToTable(util.Decompress(data))
 	
 	if !model or model == nil then
-        local err = "[!!PHX Prop Menu Editor] Error: We got empty custom prop list. Something terribly went wrong with Networking!!!"
+        local err = "[!!PHX Prop Menu Editor] Ошибка: получен пустой список кастомных объектов. Что-то ужасно пошло не так с сетью!!!"
         chat.AddText(Color(255,0,0), err)
         MsgC(Color(255,0,0), err.."\n")
         return
@@ -163,7 +163,7 @@ function PCR:MainWindow()
 			if ( LocalPlayer():PHXIsStaff() ) then
 				icon.DoRightClick = function()
 					local m = DermaMenu()
-					m:AddOption("Copy Model", function() SetClipboardText( p ) end):SetIcon("icon16/page_copy.png")
+					m:AddOption("Скопировать модель", function() SetClipboardText( p ) end):SetIcon("icon16/page_copy.png")
 					m:Open()
 					
 					-- This is place holder. The idea is that, you can mark and add prop ban from here.

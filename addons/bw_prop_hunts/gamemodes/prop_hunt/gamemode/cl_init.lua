@@ -253,7 +253,7 @@ function GM:ShowTeam()
 
     -- Add Warning that if the game rans on singleplayer.
     if (game.SinglePlayer()) then
-        chat.AddText(Color(255,0,0), "WARNING: This Game cannot be played on Single Player. You need to host a Multiplayer Game in order to play this game!")
+        chat.AddText(Color(255,0,0), "ВНИМАНИЕ: в эту игру нельзя играть в одиночном режиме. Вам нужно запустить мультиплеерную игру, чтобы играть в этот режим!")
         return
     end
 
@@ -1026,7 +1026,7 @@ function PHX:showLangPreview()
 	
 	lgWind.frame = vgui.Create("DFrame")
 	lgWind.frame:SetSize(600, ScrH()-200)
-	lgWind.frame:SetTitle("Language List & Preview")
+	lgWind.frame:SetTitle("Список языков и предпросмотр")
 	lgWind.frame:Center()
 	lgWind.frame:MakePopup()
 	
@@ -1082,7 +1082,7 @@ function PHX:showLangPreview()
 		lbl:Dock(TOP)
 		lbl:DockMargin( 6, 0, 6, 4 )
 		lbl:SetSize(0,12)
-		lbl:SetText( "Author(s): " .. Author )
+		lbl:SetText( "Автор(ы): " .. Author )
 		lbl:SetTextColor(color_white)
 		lbl:SetFont("PHX.AmmoFont")
 		
@@ -1134,14 +1134,14 @@ local function ShowVeryFirstTutorial()
 		fh.btnSetting = vgui.Create("DLabel", fh.center)
 		fh.btnSetting:Dock(FILL)
 		fh.btnSetting:SetContentAlignment(5)
-		fh.btnSetting:SetText("Hint: To Change Settings such as Languages, Models, Admin & Host settings,\nAccess by pressing [F1] and click [Prop Hunt Menu] button.")
+		fh.btnSetting:SetText("Подсказка: чтобы изменить настройки (язык, модели, настройки админа и сервера),\nнажмите [F1] и выберите кнопку [Меню Prop Hunt].")
 		fh.btnSetting:SetFont( "PHX.TopBarFont" )
 		fh.btnSetting:SetTextColor( Color(238,185,12) )
 
 		fh.bOpenMenu = vgui.Create("DButton", fh.pBottom)
 		fh.bOpenMenu:Dock(RIGHT)
 		fh.bOpenMenu:SetSize(160,40)
-		fh.bOpenMenu:SetText( "Settings Menu" )
+		fh.bOpenMenu:SetText( "Меню настроек" )
 		fh.bOpenMenu:SetFont( "RobotoInfo" )
 		fh.bOpenMenu.DoClick = function() RunConsoleCommand("ph_x_menu", ""); fh.frame:Close() end
 		
@@ -1178,9 +1178,9 @@ end
 
 net.Receive("phx_showVeryFirstTutorial", function()
 	if ShowIntro:GetBool() then
-		Derma_Query("Prop Hunt: X2Z Introduces many new features.\nWould you like to see the Tutorial window & access [Prop Hunt Menu] before playing?", "Prop Hunt X2Z",
-		"Yes", function() ShowVeryFirstTutorial() end,
-		"No", function() RunConsoleCommand("ph_cl_show_introduction", "0") end)
+		Derma_Query("Prop Hunt: X2Z добавляет множество новых функций.\nХотите посмотреть обучающее окно и открыть [Меню Prop Hunt] перед игрой?", "Prop Hunt X2Z",
+		PHX:FTranslate("MISC_YES"), function() ShowVeryFirstTutorial() end,
+		PHX:FTranslate("MISC_NO"), function() RunConsoleCommand("ph_cl_show_introduction", "0") end)
 	end
 end)
 
@@ -1191,11 +1191,11 @@ hook.Add("InitPostEntity", "PHX.ShowDonateMessage", function()
 	if ShowDonate:GetBool() then
 		timer.Simple(2, function()
 			Derma_Query(
-				"Thank you for using Prop Hunt: X2Z! However Modifying & Updating this gamemode and making it to stay updated requires a lot of effort...\n\nIf you can help me to keep updated with PH:X, would you like to help me to Support by Donating?\nAny amount of donation is Highly appreciated though, Thanks!", "Have a moment?",
-				"Yes", function()
+				"Спасибо, что используете Prop Hunt: X2Z! Однако изменение и обновление этого игрового режима и его поддержка требуют больших усилий...\n\nЕсли вы хотите помочь мне поддерживать актуальность PH:X, не хотели бы вы поддержать меня пожертвованием?\nЛюбое пожертвование будет высоко оценено, спасибо!", "Есть минутка?",
+				PHX:FTranslate("MISC_YES"), function()
 					gui.OpenURL( GAMEMODE.DONATEURL )
 				 end,
-				"No", function() 
+				PHX:FTranslate("MISC_NO"), function() 
 				end
 			)
 			RunConsoleCommand("ph_cl_show_donate", "0")

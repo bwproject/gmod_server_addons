@@ -51,28 +51,28 @@ end
 function GM:AddScoreboardName( ScoreBoard )
 
 	local f = function( ply ) return ply:Name() end
-	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_NAME") or "Name", nil, f, 10, nil, 4, 4 )
+	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_NAME") or "Имя", nil, f, 10, nil, 4, 4 )
 
 end
 
 function GM:AddScoreboardKills( ScoreBoard )
 
 	local f = function( ply ) return ply:Frags() end
-	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_KILLS") or "Kills", 40, f, 0.5, nil, 6, 6 )
+	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_KILLS") or "Убийства", 40, f, 0.5, nil, 6, 6 )
 
 end
 
 function GM:AddScoreboardDeaths( ScoreBoard )
 
 	local f = function( ply ) return ply:Deaths() end
-	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_DEATHS") or "Deaths", 60, f, 0.5, nil, 6, 6 )
+	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_DEATHS") or "Смерти", 60, f, 0.5, nil, 6, 6 )
 	
 end
 
 function GM:AddScoreboardPing( ScoreBoard )
 
-	local f = function( ply ) return PHX:FTranslate( ply:ScoreboardPing() ) or "SV" end -- Original: ply:ScoreboardPing()
-	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_PING") or "Ping", 40, f, 0.1, nil, 6, 6 )
+	local f = function( ply ) return PHX:FTranslate( ply:ScoreboardPing() ) or "ПИНГ" end -- Original: ply:ScoreboardPing()
+	ScoreBoard:AddColumn( PHX:FTranslate("DERMA_PING") or "Пинг", 40, f, 0.1, nil, 6, 6 )
 
 end
 

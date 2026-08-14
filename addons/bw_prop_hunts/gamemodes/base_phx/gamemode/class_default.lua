@@ -1,7 +1,7 @@
 
 local CLASS = {}
 
-CLASS.DisplayName			= "Default Class"
+CLASS.DisplayName			= "Класс по умолчанию"
 CLASS.WalkSpeed 			= 400
 CLASS.CrouchedWalkSpeed 	= 0.2
 CLASS.RunSpeed				= 600
@@ -58,7 +58,7 @@ end
 player_class.Register( "Default", CLASS )
 
 local CLASS = {}
-CLASS.DisplayName			= "Spectator Class"
+CLASS.DisplayName			= "Класс наблюдателя"
 CLASS.DrawTeamRing			= false
 CLASS.PlayerModel			= "models/player.mdl"
 

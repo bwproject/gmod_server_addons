@@ -195,7 +195,7 @@ if SERVER then
 	
     local function SendTauntsInfo( ply )
         if !PHX:QCVar( "ph_enable_taunt_scanner" ) then
-			ply:PrintMessage(HUD_PRINTCONSOLE, "[PHX] Taunt Scanner is Disabled.")
+			ply:PrintMessage(HUD_PRINTCONSOLE, "[PHX] Сканер насмешек отключён.")
 			return
 		end
 
@@ -216,7 +216,7 @@ if SERVER then
 				ply.HasTauntScannedData = true
 			end)
 		else
-			ply:PrintMessage(HUD_PRINTCONSOLE, "[PHX] Request Rejected: You have requested Taunt Scanner data ONCE. To refresh, please reconnect to the server!")
+			ply:PrintMessage(HUD_PRINTCONSOLE, "[PHX] Запрос отклонён: данные сканера насмешек запрашиваются только ОДИН раз. Чтобы обновить список, переподключитесь к серверу!")
 		end
 		-- you can't request anymore unless reconnect to get a refresh list!
     end

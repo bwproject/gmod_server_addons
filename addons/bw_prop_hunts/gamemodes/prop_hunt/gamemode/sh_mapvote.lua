@@ -18,15 +18,15 @@ local MapVote = PHX.MV
 MapVote.PHXConfig = {}
 
 local convarlist = {
-	{"mv_maplimit", 		"24",		CVAR_SERVER_ONLY_NO_NOTIFY, "numbers of map that shown on mapvote.", 5 },
-	{"mv_timelimit",		"28",		CVAR_SERVER_ONLY, "time in second for default mapvotes time.", 10 },
-	{"mv_change_when_no_player", "1", 	CVAR_SERVER_ONLY, "change the map after no players in the server?", 0, 1 },
-	{"mv_allowcurmap",		"0",		CVAR_SERVER_ONLY_NO_NOTIFY, "allow current map to be voted (1/0)", 0, 1 },
-	{"mv_use_ulx_votemaps", "0",		CVAR_SERVER_ONLY_NO_NOTIFY, "Use map listing from ULX Mapvote? 1 = use from ULX mapvote list (which you can whitelist them), 0 = use default maps/*.bsp directory listing.", 0, 1 },
-	{"mv_cooldown",			"1",		CVAR_SERVER_ONLY, "enable cooldown for voting a map", 0, 1 },
-	{"mv_mapbeforerevote",	"2", 		CVAR_SERVER_ONLY, "how many times that the map which cooldown can be shown again?", 2, 20 }, -- We will clamp max to 20 maps instead.
-	{"mv_rtvcount",			"3", 		CVAR_SERVER_ONLY, "number of required players to use rtv mapvote.", 2, game.MaxPlayers() },
-	{"mv_map_prefix",		"phx_,ph_",	CVAR_SERVER_ONLY_NO_NOTIFY, "Map Prefixes that will be shown under mapvote. Use the following example:\n  \"phx_,ph_\" (Dont forget to use quotation marks!)." }
+	{"mv_maplimit", 		"24",		CVAR_SERVER_ONLY_NO_NOTIFY, "количество карт, показываемых при голосовании.", 5 },
+	{"mv_timelimit",		"28",		CVAR_SERVER_ONLY, "время в секундах голосования за карты по умолчанию.", 10 },
+	{"mv_change_when_no_player", "1", 	CVAR_SERVER_ONLY, "менять карту, если на сервере нет игроков?", 0, 1 },
+	{"mv_allowcurmap",		"0",		CVAR_SERVER_ONLY_NO_NOTIFY, "разрешить голосовать за текущую карту (1/0)", 0, 1 },
+	{"mv_use_ulx_votemaps", "0",		CVAR_SERVER_ONLY_NO_NOTIFY, "Использовать список карт из голосования ULX? 1 = использовать список голосования ULX (который можно внести в белый список), 0 = использовать стандартный список каталога maps/*.bsp.", 0, 1 },
+	{"mv_cooldown",			"1",		CVAR_SERVER_ONLY, "включить перезарядку голосования за карту", 0, 1 },
+	{"mv_mapbeforerevote",	"2", 		CVAR_SERVER_ONLY, "сколько раз карта в перезарядке может снова появиться?", 2, 20 }, -- We will clamp max to 20 maps instead.
+	{"mv_rtvcount",			"3", 		CVAR_SERVER_ONLY, "количество требуемых игроков для использования rtv-голосования.", 2, game.MaxPlayers() },
+	{"mv_map_prefix",		"phx_,ph_",	CVAR_SERVER_ONLY_NO_NOTIFY, "Префиксы карт, которые будут показаны при голосовании. Используйте следующий пример:\n  \"phx_,ph_\" (не забудьте использовать кавычки!)." }
 }
 
 if !ConVarExists("mv_maplimit") then
@@ -54,7 +54,7 @@ if SERVER then
 		if ( util.IsStaff( ply ) ) then
 			
 			if PHX:GetCVar( "ph_use_custom_mapvote_cmd" ) or PHX:GetCVar( "ph_use_custom_mapvote" ) then
-				ply:ChatPrint("Custom External MapVote is enabled. You need to disable them in order to use PH:X's MapVote system.")
+				ply:ChatPrint("Включена сторонняя система голосования за карты. Отключите её, чтобы использовать систему голосования PH:X.")
 				return
 			end
 			
@@ -63,13 +63,13 @@ if SERVER then
 		else
 			ply:PHXChatInfo("ERROR", "MISC_ACCESSDENIED")
 		end
-	end, nil, "Start MapVote (without ULX)")
+	end, nil, "Запустить голосование за карту (без ULX)")
 
 	concommand.Add("mv_stop", function(ply)
 		if ( util.IsStaff( ply ) ) then
 			
 			if PHX:GetCVar( "ph_use_custom_mapvote_cmd" ) or PHX:GetCVar( "ph_use_custom_mapvote" ) then
-				ply:ChatPrint("Couldn't stop PH:X MapVote because Custom External MapVote is currently enabled!")
+				ply:ChatPrint("Не удалось остановить голосование PH:X, так как включена сторонняя система голосования!")
 				return
 			end
 		

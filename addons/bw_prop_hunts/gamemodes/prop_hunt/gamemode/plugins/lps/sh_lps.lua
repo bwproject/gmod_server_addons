@@ -17,11 +17,11 @@ PHX.LPS.WEAPON2         = {
 }
 PHX.LPS.DUMMYWEAPON     = "weapon_lps"  -- Never change this Constant. It will break the whole LPS Predictions!
 
-cvar["lps_enable"]              = { CTYPE_BOOL,     "1",        CVAR_SERVER_ONLY, "Enable Last Prop Standing?" }
-cvar["lps_weapon"]              = { CTYPE_STRING,   "random",   CVAR_SERVER_ONLY, "If set, should the weapon given by 'random' or specific. See 'lps_weapon_list' for more info." }
-cvar["lps_show_weapon"]			= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Make Last Prop Standing's weapon visible or holstered" }
+cvar["lps_enable"]              = { CTYPE_BOOL,     "1",        CVAR_SERVER_ONLY, "Включить «Последний выживший объект»?" }
+cvar["lps_weapon"]              = { CTYPE_STRING,   "random",   CVAR_SERVER_ONLY, "Если задано, оружие выдаётся как 'random' или конкретное. См. 'lps_weapon_list' для подробностей." }
+cvar["lps_show_weapon"]			= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Сделать оружие последнего объекта видимым или убранным" }
 
-cvar["lps_start_random_round"]        = { CTYPE_BOOL,		"0",		CVAR_SERVER_ONLY, "Should LPS will begin Randomly? This will overrides 'lps_start_every_x_rounds' ConVar.",
+cvar["lps_start_random_round"]        = { CTYPE_BOOL,		"0",		CVAR_SERVER_ONLY, "Должен ли LPS начинаться случайно? Это переопределяет ConVar 'lps_start_every_x_rounds'.",
 function(cvarname,value)
     cvars.AddChangeCallback(cvarname, function(_,_,new)
         if tonumber(new) and tonumber(new) == 0 then
@@ -30,7 +30,7 @@ function(cvarname,value)
         SetGlobalBool(cvarname, tobool(new))
     end, "phx.cvbool_"..cvarname)
 end }
-cvar["lps_start_delayed_rounds"] = { CTYPE_BOOL,    "0",        CVAR_SERVER_ONLY, "Should LPS Start on Every X Rounds? If so, see 'lps_start_every_x_rounds' ConVar.",
+cvar["lps_start_delayed_rounds"] = { CTYPE_BOOL,    "0",        CVAR_SERVER_ONLY, "Начинать ли LPS каждые X раундов? Если да, см. ConVar 'lps_start_every_x_rounds'.",
 function(cvarname,value)
     cvars.AddChangeCallback(cvarname, function(_,_,new)
         if tonumber(new) and tonumber(new) == 1 then
@@ -39,7 +39,7 @@ function(cvarname,value)
         SetGlobalBool(cvarname, tobool(new))
     end, "phx.cvbool_"..cvarname)
 end }
-cvar["lps_start_every_x_rounds"] = { CTYPE_NUMBER,  "2",        CVAR_SERVER_ONLY, "Numbers of X rounds that should make the event starts", {min = 2, max = PHX:GetCVar( "ph_rounds_per_map" ) },
+cvar["lps_start_every_x_rounds"] = { CTYPE_NUMBER,  "2",        CVAR_SERVER_ONLY, "Через сколько X раундов должно начаться событие", {min = 2, max = PHX:GetCVar( "ph_rounds_per_map" ) },
 function(cvarname,value)
     cvars.AddChangeCallback(cvarname, function(_,_,new)
         -- update immediately
@@ -48,34 +48,34 @@ function(cvarname,value)
     end, "phx.cvnum_"..cvarname)
 end }
 
-cvar["lps_use_normal_health"]   = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Should LPS Players STARTS with 100 HP? Changing to other props doesn't keep this." }
-cvar["lps_use_armor"]           = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Should Give LPS Players an Armor? (Default is 100 armor points)" }
-cvar["lps_allow_holster"]		= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Allow prop to holster their weapon. This also temporarily hide trails and halo effects when enabled." }
+cvar["lps_use_normal_health"]   = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Должны ли игроки LPS НАЧИНАТЬ со 100 HP? Смена на другой объект не сохраняет это." }
+cvar["lps_use_armor"]           = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Давать ли игрокам LPS броню? (по умолчанию 100 очков брони)" }
+cvar["lps_allow_holster"]		= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Разрешить объекту убирать оружие. Это также временно скрывает следы и эффект контура." }
 
-cvar["lps_halo_show"]         = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Draw a halo effect around the last prop?" }
-cvar["lps_halo_walls"]          = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Draw the halo effect through walls?" }
-cvar["lps_halo_color"]          = { CTYPE_STRING,   "#14FA00",  CVAR_SERVER_ONLY, "Halo Effect Color (use \"rainbow\" or hex code)" }
-cvar["lps_trail_show"]        = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Draw a trail behind the last prop?" }
-cvar["lps_trail_color"]         = { CTYPE_STRING,   "#FFFFFF",  CVAR_SERVER_ONLY, "Trail Color (use hex code)" }
-cvar["lps_trail_texture"]       = { CTYPE_STRING,   "trails/laser", CVAR_SERVER_ONLY, "Draw a trail with what texture?" }
-cvar["lps_enable_music"]		= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Enable background music when LPS begins. Require round restart to take effect." }
-cvar["lps_laser_color"]         = { CTYPE_STRING,   "#CC0000",  CVAR_SERVER_ONLY, "Laser Beam Color for Laser Gun (use \"rainbow\" or hex code)" }
+cvar["lps_halo_show"]         = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Рисовать эффект контура вокруг последнего объекта?" }
+cvar["lps_halo_walls"]          = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Рисовать эффект контура сквозь стены?" }
+cvar["lps_halo_color"]          = { CTYPE_STRING,   "#14FA00",  CVAR_SERVER_ONLY, "Цвет эффекта контура (используйте \"rainbow\" или шестнадцатеричный код)" }
+cvar["lps_trail_show"]        = { CTYPE_BOOL,     "0",        CVAR_SERVER_ONLY, "Рисовать след за последним объектом?" }
+cvar["lps_trail_color"]         = { CTYPE_STRING,   "#FFFFFF",  CVAR_SERVER_ONLY, "Цвет следа (используйте шестнадцатеричный код)" }
+cvar["lps_trail_texture"]       = { CTYPE_STRING,   "trails/laser", CVAR_SERVER_ONLY, "Рисовать след с какой текстурой?" }
+cvar["lps_enable_music"]		= { CTYPE_BOOL,		"1",		CVAR_SERVER_ONLY, "Включить фоновую музыку при начале LPS. Для вступления в силу требуется перезагрузка раунда." }
+cvar["lps_laser_color"]         = { CTYPE_STRING,   "#CC0000",  CVAR_SERVER_ONLY, "Цвет лазерного луча лазерной пушки (используйте \"rainbow\" или шестнадцатеричный код)" }
 
-cvar["lps_mins_prop_players"]   = { CTYPE_NUMBER,   "2",        CVAR_SERVER_ONLY, "Minimum player counts on prop team. Minimum is 2.", {min = 2, max = game.MaxPlayers()} }
+cvar["lps_mins_prop_players"]   = { CTYPE_NUMBER,   "2",        CVAR_SERVER_ONLY, "Минимальное количество игроков в команде объектов. Минимум: 2.", {min = 2, max = game.MaxPlayers()} }
 
-cvar["lps_ammocount_revolver"]  = { CTYPE_NUMBER, "120",    CVAR_SERVER_ONLY, "Ammo for Revolver gun given by Last Standing prop. -1 = Unlimited." }
-cvar["lps_ammocount_smg"]       = { CTYPE_NUMBER, "300",    CVAR_SERVER_ONLY, "Ammo for SMG gun given by Last Standing prop. -1 = Unlimited." }
-cvar["lps_ammocount_airboat"]   = { CTYPE_NUMBER, "500", CVAR_SERVER_ONLY, "Ammo for Airboat Gun given by Last Standing Prop. -1 = Unlimited" }
-cvar["lps_ammocount_shotgun"]   = { CTYPE_NUMBER, "150", CVAR_SERVER_ONLY, "Ammo for Shotgun given by Last Standing Prop. -1 = Unlimited" }
-cvar["lps_ammocount_rocket"]    = { CTYPE_NUMBER, "30",  CVAR_SERVER_ONLY, "Ammo for RPG given by Last Standing Prop. -1 = Unlimited" }
+cvar["lps_ammocount_revolver"]  = { CTYPE_NUMBER, "120",    CVAR_SERVER_ONLY, "Патроны револьвера, выдаваемые последнему объекту. -1 = Бесконечно." }
+cvar["lps_ammocount_smg"]       = { CTYPE_NUMBER, "300",    CVAR_SERVER_ONLY, "Патроны пистолета-пулемёта, выдаваемые последнему объекту. -1 = Бесконечно." }
+cvar["lps_ammocount_airboat"]   = { CTYPE_NUMBER, "500", CVAR_SERVER_ONLY, "Патроны катерного пулемёта, выдаваемые последнему объекту. -1 = Бесконечно" }
+cvar["lps_ammocount_shotgun"]   = { CTYPE_NUMBER, "150", CVAR_SERVER_ONLY, "Патроны дробовика, выдаваемые последнему объекту. -1 = Бесконечно" }
+cvar["lps_ammocount_rocket"]    = { CTYPE_NUMBER, "30",  CVAR_SERVER_ONLY, "Патроны РПГ, выдаваемые последнему объекту. -1 = Бесконечно" }
 
-cvar["lps_wepdamage_blaster"]   = { CTYPE_NUMBER, "60",    CVAR_SERVER_ONLY, "Damage for 'Blaster' gun used by Last Standing prop.", {min=5, max=200} }
-cvar["lps_wepdamage_revolver"]  = { CTYPE_NUMBER, "40",    CVAR_SERVER_ONLY, "Damage for 'Revolver' gun used by Last Standing prop.", {min=5, max=100} }
-cvar["lps_wepdamage_smg"]       = { CTYPE_NUMBER, "10",    CVAR_SERVER_ONLY, "Damage for 'SMG' gun used by Last Standing prop.", {min=5, max=100} }
-cvar["lps_wepdamage_airboat"]           = { CTYPE_NUMBER, "8",    CVAR_SERVER_ONLY, "Damage for 'Airboat Gun' gun used by Last Standing prop.", {min=5, max=100} }
-cvar["lps_wepdamage_shotgunpelet"]      = { CTYPE_NUMBER, "6",    CVAR_SERVER_ONLY, "Damage per 1 Pellet for 'Shotgun' gun used by Last Standing prop. The shotgun will fires 8 pellets.", {min=5, max=100} }
-cvar["lps_wepdamage_rocket"]            = { CTYPE_NUMBER, "80",    CVAR_SERVER_ONLY, "Damage for 'RPG' gun used by Last Standing prop.", {min=20, max=200} }
-cvar["lps_wepdamage_laser"]             = { CTYPE_NUMBER, "8",    CVAR_SERVER_ONLY, "Damage for 'Laser' in per Tick Delay used by Last Standing prop.", {min=5, max=100} }
+cvar["lps_wepdamage_blaster"]   = { CTYPE_NUMBER, "60",    CVAR_SERVER_ONLY, "Урон пушки 'Blaster', используемой последним объектом.", {min=5, max=200} }
+cvar["lps_wepdamage_revolver"]  = { CTYPE_NUMBER, "40",    CVAR_SERVER_ONLY, "Урон револьвера, используемого последним объектом.", {min=5, max=100} }
+cvar["lps_wepdamage_smg"]       = { CTYPE_NUMBER, "10",    CVAR_SERVER_ONLY, "Урон пистолета-пулемёта, используемого последним объектом.", {min=5, max=100} }
+cvar["lps_wepdamage_airboat"]           = { CTYPE_NUMBER, "8",    CVAR_SERVER_ONLY, "Урон катерного пулемёта, используемого последним объектом.", {min=5, max=100} }
+cvar["lps_wepdamage_shotgunpelet"]      = { CTYPE_NUMBER, "6",    CVAR_SERVER_ONLY, "Урон за 1 дробинку дробовика, используемого последним объектом. Дробовик выпускает 8 дробинок.", {min=5, max=100} }
+cvar["lps_wepdamage_rocket"]            = { CTYPE_NUMBER, "80",    CVAR_SERVER_ONLY, "Урон РПГ, используемой последним объектом.", {min=20, max=200} }
+cvar["lps_wepdamage_laser"]             = { CTYPE_NUMBER, "8",    CVAR_SERVER_ONLY, "Урон лазера за каждый тик задержки, используемого последним объектом.", {min=5, max=100} }
 
 -- Let's create convars first
 for ConVar,data in pairs( cvar ) do
@@ -87,15 +87,15 @@ PHX:Includes("plugins/"..PHX.LPS._pluginname.."/lang", "LPS Language", true)
 
 if CLIENT then    
 
-    PHX:AddCLCVar( CTYPE_BOOL, "lps_cl_listen_music", "1", true, true, "Play Background music when LPS event begin." )
-    PHX:AddCLCVar( CTYPE_BOOL, "lps_cl_draw_halo",  "1", true, false, "Draw/Hide halo, even server sets it." )
+    PHX:AddCLCVar( CTYPE_BOOL, "lps_cl_listen_music", "1", true, true, "Играть фоновую музыку при начале события LPS." )
+    PHX:AddCLCVar( CTYPE_BOOL, "lps_cl_draw_halo",  "1", true, false, "Показывать/скрывать контур, даже если его устанавливает сервер." )
     
     -- Store Settings Info
 	
     local ADDON_INFO = {
-        name    = "Last Prop Standing for PH:X",
+        name    = "Последний выживший объект для PH:X",
         version = "1.3",
-        info    = "Gives the last prop a chance to kill all living hunters by using weapon/ability.",
+        info    = "Даёт последнему объекту шанс убить всех живых охотников с помощью оружия/способности.",
         
         settings = {
             -- Warning: This will use QTrans->FTranslate that use English fallback!

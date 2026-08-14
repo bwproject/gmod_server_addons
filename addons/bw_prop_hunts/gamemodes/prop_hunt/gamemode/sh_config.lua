@@ -197,18 +197,18 @@ PHX.PROHIBITTED_MDLS = {
 }
 
 -- This is default English as Fallback. DO NOT TRANSLATE HERE, USE YOUR TRANSLATED LANGUAGE FILE INSTEAD!
-PHX.DefaultHelp = [[A Prop Hunt: X Project.
+PHX.DefaultHelp = [[Проект Prop Hunt: X.
 
-A project to make Prop Hunt X modern and customisable.
+Проект, делающий Prop Hunt X современным и настраиваемым.
 
-More info can be found at:
+Больше информации можно найти на:
 https://gmodgameservers.com/prophuntx
 
-To See more info, help and guide, Press [F1] key and then click [Prop Hunt Menu] button.
+Чтобы увидеть больше информации, помощи и гайд, нажмите клавишу [F1], а затем кнопку [Меню Prop Hunt].
 
-Version: ]].. PHX.VERSION ..[[ Revision: ]].. PHX.REVISION ..[[
+Версия: ]].. PHX.VERSION ..[[ Редакция: ]].. PHX.REVISION ..[[
 
-Have Fun!]]
+Приятной игры!]]
 
 PHX.IgnoreMutedUserGroup = {
 	-- Use from Group Edit in F1 Menu.
@@ -223,11 +223,11 @@ PHX.SVAdmins = {
 }
 -- Bootstrap 4 colour base. This only works on clientside :(
 PHX.info = {
-	["PRIMARY"] = { Color(200,200,200), "INFO"		},
-	["NOTICE"]	= { Color(40 ,150,255), "NOTICE"	},
-	["ERROR"]	= { Color(250, 86, 46), "ALERT"		},
-	["WARNING"] = { Color(252,221,  3), "WARNING"	},
-	["GOOD"]	= { Color(34 ,177, 76), "INFO"		}
+	["PRIMARY"] = { Color(200,200,200), "ИНФО"		},
+	["NOTICE"]	= { Color(40 ,150,255), "УВЕДОМЛЕНИЕ"	},
+	["ERROR"]	= { Color(250, 86, 46), "ОШИБКА"		},
+	["WARNING"] = { Color(252,221,  3), "ВНИМАНИЕ"	},
+	["GOOD"]	= { Color(34 ,177, 76), "ИНФО"		}
 }
 -- End of Stock Config
 

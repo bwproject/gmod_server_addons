@@ -80,7 +80,7 @@ if CLIENT then
 		antialias = true
 	})
 
-	language.Add("ph_lps_weapon", "Prop LPS Gun")
+	language.Add("ph_lps_weapon", "Пушка LPS объекта")
 	killicon.Add("ph_lps_weapon", "vgui/hud/ph_lps_weapon", Color(248,200,0,255))
 end
 

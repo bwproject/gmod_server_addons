@@ -8,7 +8,7 @@
 list.Set("DevilBallsAddition", "UniqueName", function(pl)
 	
 	-- give something to the player or modify something to pl.ph_prop. for example:
-	pl:ChatPrint("Hello! Let me change the prop color and revert in 5 seconds!")
+	pl:ChatPrint("Привет! Сейчас я изменю цвет объекта и верну его через 5 секунд!")
 	
 	if IsValid(pl.ph_prop) then
 		pl.ph_prop:SetMaterials("models/shiny")

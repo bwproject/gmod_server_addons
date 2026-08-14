@@ -184,7 +184,7 @@ local net_functions = {
 		local l = PHX.LANGUAGES
 		
 		if (l[lang] == nil or table.IsEmpty(l[lang])) then
-			ply:PHXChatPrint("Error: Language " .. lang .. " could not be found in Language Table.", Color(220,30,30))
+			ply:PHXChatPrint("Ошибка: Язык " .. lang .. " не найден в таблице языков.", Color(220,30,30))
 			return
 		end
 		

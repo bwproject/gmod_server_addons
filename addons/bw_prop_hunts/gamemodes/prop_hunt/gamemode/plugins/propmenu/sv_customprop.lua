@@ -210,7 +210,7 @@ if SERVER then
 	
 		if CheckUser(ply) then
 			MsgAll( "Is someone editing?: " .. tostring(inEditing == true) .. "\n" )
-			ply:ChatPrint( "Is someone editing?: " .. tostring(inEditing == true) )
+			ply:ChatPrint( "Кто-то сейчас редактирует?: " .. tostring(inEditing == true) )
 		end
 	end
 	concommand.Add("is_someone_editing", checkifsomeoneediting)

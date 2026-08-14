@@ -3,10 +3,10 @@ concommand.Add( "pcr_debug_model_list",function( ply )
 		PrintTable(PCR.PropList)
 	else
 		if ( ply:PHXIsStaff() ) then
-			ply:ChatPrint("[Prop Menu] Check on your Console!")
+			ply:ChatPrint("[Prop Menu] Смотрите в консоли!")
 			PrintTable(PCR.PropList)
 		else
-			ply:ChatPrint("[Prop Menu] Sorry, you can not use this command.")
+			ply:ChatPrint("[Prop Menu] Извините, вы не можете использовать эту команду.")
 		end
 	end
 end)
@@ -35,5 +35,5 @@ if (!ulx or ulx == nil) then
 else
 	local cmd = ulx.command( CATEGORY_NAME, "ulx propmenu", PHX_PropMenu, "!propmenu" )
 	cmd:defaultAccess( ULib.ACCESS_ALL )
-	cmd:help( "Open PHX Prop Menu" )
+	cmd:help( "Открыть меню объектов PHX" )
 end

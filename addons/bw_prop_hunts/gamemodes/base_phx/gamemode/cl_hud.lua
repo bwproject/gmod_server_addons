@@ -115,9 +115,9 @@ function GM:UpdateHUD_RoundResult( RoundResult, Alive )
 	-- doesn't required but we'll keep this.
 	if ( type( RoundResult ) == "number" ) && ( team.GetAllTeams()[ RoundResult ] && txt == "" ) then
 		local TeamName = team.GetName( RoundResult )
-		if ( TeamName ) then txt = TeamName .. " Wins!" end
+		if ( TeamName ) then txt = TeamName .. " Побеждает!" end
 	elseif ( type( RoundResult ) == "Player" && IsValid( RoundResult ) && txt == "" ) then
-		txt = RoundResult:Name() .. " Wins!"
+		txt = RoundResult:Name() .. " Побеждает!"
 	end
 
 	local RespawnText = vgui.Create( "DHudElement" );
@@ -164,7 +164,7 @@ function GM:UpdateHUD_Dead( bWaitingToSpawn, InRound )
 	
 		local RespawnText = vgui.Create( "DHudElement" );
 			RespawnText:SizeToContents()
-			RespawnText:SetText( "Waiting for round start" )
+			RespawnText:SetText( "Ожидание начала раунда" )
 		GAMEMODE:AddHUDItem( RespawnText, 8 )
 		return
 		
@@ -175,7 +175,7 @@ function GM:UpdateHUD_Dead( bWaitingToSpawn, InRound )
 		local RespawnTimer = vgui.Create( "DHudCountdown" );
 			RespawnTimer:SizeToContents()
 			RespawnTimer:SetValueFunction( function() return LocalPlayer():GetNWFloat( "RespawnTime", 0 ) end )
-			RespawnTimer:SetLabel( "SPAWN IN" )
+			RespawnTimer:SetLabel( "ПОЯВЛЕНИЕ" )
 		GAMEMODE:AddHUDItem( RespawnTimer, 8 )
 		return
 
@@ -239,7 +239,7 @@ function GM:UpdateHUD_Dead( bWaitingToSpawn, InRound )
 	
 		local RespawnText = vgui.Create( "DHudElement" );
 			RespawnText:SizeToContents()
-			RespawnText:SetText( "Press Fire to Spawn" )
+			RespawnText:SetText( "Нажмите на стрельбу, чтобы появиться" )
 		GAMEMODE:AddHUDItem( RespawnText, 8 )
 		
 	end

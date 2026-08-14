@@ -316,7 +316,7 @@ end,
 	btn:Dock(LEFT)
 	btn:SetSize(64,0)
 	btn:DockMargin(4,2,0,2)
-	btn:SetText("Apply")
+	btn:SetText(PHX:QTrans("MISC_APPLY"))
 	btn:SetDisabled(true)
 	
 	function btn:DoClick()
@@ -333,7 +333,7 @@ end,
 				-- because this is for client, force this to use ph_cl_language.
 				RunConsoleCommand("ph_cl_language", cbox.selLang)
 				chat.AddText( Color(60,220,30), PHX:Translate( "LANGUAGE_CHANGED", cbox.selLangName ) )
-				print("[PHX] Prefered Language has changed to " .. cbox.selLangName )
+				print("[PHX] Язык изменён на " .. cbox.selLangName )
 				if PHX.UI.MainForm:IsValid() then PHX.UI.MainForm:Close() end
 			end
 			
@@ -356,7 +356,7 @@ end,
 	if (!table.IsEmpty(langList[langCode])) then
 		cbox:SetValue( langList[langCode].Name )
 	else
-		cbox:SetValue( "Error: Language " .. langCode .. " doesn't exists." )
+		cbox:SetValue( PHX:QTrans({ "PHXM_LANGUAGE_NOT_FOUND", langCode }) )
 	end
 	
 	for code,_ in pairs(langList) do

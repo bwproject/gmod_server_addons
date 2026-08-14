@@ -9,7 +9,7 @@ list.Set("LuckyBallsAddition", "UniqueName", function(pl)
 	
 	-- give something to the player. for example: Stunstick
 
-	pl:ChatPrint("Hello! Here is your free Stunstick! :D")
+	pl:ChatPrint("Привет! Вот ваш бесплатный электрошокер! :D")
 	pl:Give("weapon_stunstick")
 	
 end)

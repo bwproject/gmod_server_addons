@@ -156,7 +156,7 @@ function MapVote.PHXStart(length, current, limit, prefix)
 	if (not PHX:GetCVar( "ph_enable_mapvote" )) then
 		MsgAll("PH:X MapVote is disabled!\n")
 		for _,v in pairs(player.GetAll()) do
-			v:ChatPrint("Warning: MapVote is disabled.")
+			v:ChatPrint("Предупреждение: Голосование за карту отключено.")
 		end
 		return
 	end

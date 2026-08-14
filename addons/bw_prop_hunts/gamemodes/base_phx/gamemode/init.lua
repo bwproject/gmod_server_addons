@@ -277,7 +277,7 @@ function GM:PlayerRequestClass( ply, class, disablemessage )
 		ply.m_SpawnAsClass = RequestedClass
 		
 		if ( !disablemessage ) then
-			ply:ChatPrint( "Your class will change to '".. player_class.GetClassName( RequestedClass ) .. "' when you respawn" )
+			ply:ChatPrint( "Ваш класс изменится на '".. player_class.GetClassName( RequestedClass ) .. "' при возрождении" )
 		end
 		
 	else
