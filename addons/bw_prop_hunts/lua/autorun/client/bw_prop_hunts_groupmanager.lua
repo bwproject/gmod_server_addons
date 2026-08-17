@@ -73,7 +73,6 @@ hook.Add("PH_CustomTabMenu", "ProjectBW.GroupManager", function(tab, pVgui, Pain
         local combo = vgui.Create("DComboBox", row)
         combo:Dock(RIGHT)
         combo:DockMargin(8, 7, 0, 7)
-        combo:SetFont("HudHintTextLarge")
         combo:SetWide(280)
 
         combo:AddChoice("Обычный игрок (user)", "user")
@@ -104,7 +103,7 @@ hook.Add("PH_CustomTabMenu", "ProjectBW.GroupManager", function(tab, pVgui, Pain
         name:SetToolTip(ply:SteamID())
 
         btn.DoClick = function()
-            local value = combo:GetSelectedValue()
+            local _, value = combo:GetSelected()
             if not value then return end
             btn:SetEnabled(false)
             net.Start("BW.PHX.SetGroup")
