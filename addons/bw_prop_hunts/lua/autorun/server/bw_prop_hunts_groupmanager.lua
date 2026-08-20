@@ -46,7 +46,7 @@ net.Receive("BW.PHX.SetGroup", function(_, ply)
     if group == "user" then
         ULib.ucl.removeUser(steamid)
     else
-        ULib.ucl.addUser(steamid, group, 0)
+        ULib.ucl.addUser(steamid, nil, nil, group)
     end
 
     net.Start("BW.PHX.SetGroupResult")
