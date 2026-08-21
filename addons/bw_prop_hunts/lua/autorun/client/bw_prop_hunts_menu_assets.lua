@@ -1,5 +1,5 @@
 -- ProjectBW Prop Hunt X - centralized menu assets.
--- Edit this file to change menu images without editing cl_menu.lua.
+-- Меняй пути ниже, если захочешь заменить оформление меню.
 
 if SERVER then return end
 
@@ -16,9 +16,24 @@ PHX.BWMenuAssets = PHX.BWMenuAssets or {
     Plugins = "vgui/phx_menu/m_plugins.png",
     Plus = "vgui/phx_menu/m_plus.png",
     Voice = "vgui/phx_menu/m_voice.png",
+
+    -- ProjectBW links.
+    DonateRushURL = "https://dalink.to/the_mr_mes109",
+    ShopURL = "https://projectbw.ru/shop",
+
+    -- Эти страницы оставлены совместимыми с оригинальным Prop Hunt X.
+    -- Если добавишь свои изображения в phx_menu, достаточно заменить пути здесь.
     HelpPages = {
-        "vgui/phx_menu/phhelp1.png", "vgui/phx_menu/phhelp2.png", "vgui/phx_menu/phhelp3.png", "vgui/phx_menu/phhelp4.png", "vgui/phx_menu/phhelp5.png",
-        "vgui/phx_menu/phhelp6.png", "vgui/phx_menu/phhelp7.png", "vgui/phx_menu/phhelp8.png", "vgui/phx_menu/phhelp9.png", "vgui/phx_menu/phhelp10.png"
+        "vgui/phx_menu/phhelp1.png",
+        "vgui/phx_menu/phhelp2.png",
+        "vgui/phx_menu/phhelp3.png",
+        "vgui/phx_menu/phhelp4.png",
+        "vgui/phx_menu/phhelp5.png",
+        "vgui/phx_menu/phhelp6.png",
+        "vgui/phx_menu/phhelp7.png",
+        "vgui/phx_menu/phhelp8.png",
+        "vgui/phx_menu/phhelp9.png",
+        "vgui/phx_menu/phhelp10.png"
     }
 }
 
