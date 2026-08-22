@@ -1,8 +1,8 @@
 --[[
 
-( This License Applies to all files writen in "base_phx" and "prop_hunt" PH:X2Z's gamemode directories )
+( This License Applies to all files writen in "base_phx" and "prop_hunt" PH:BW's gamemode directories )
 
-You are free to use, copy, modify, contribute, distribute, or make profit (server or community) when using the Prop Hunt: X/X2Z Gamemode ("SOFTWARE") as long as it stated exclusively and made only available for Garry's Mod.
+You are free to use, copy, modify, contribute, distribute, or make profit (server or community) when using the Prop Hunt: BW Gamemode ("SOFTWARE") as long as it stated exclusively and made only available for Garry's Mod.
 Any changes or modification you have made publicly on Steam Workshop must include this license OR a link back to this GitHub Repository Page/Official Website in your credits page.
 You are, however, not permitted to:
 - Selling the source codes.
@@ -14,21 +14,21 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 ]]--
 
 PHX = PHX or {}
-PHX.TITLE = "Prop Hunt: X2Z"
+PHX.TITLE = "Prop Hunt: BW"
 
 TEAM_HUNTERS 	= 1
 TEAM_PROPS 	 	= 2
 IS_PHX		 	= true	-- an easy check if PHX is installed.
 
 PHX.ConfigPath 	= "phx_data"
-PHX.VERSION		= "X2Z"
+PHX.VERSION		= "BW"
 PHX.REVISION	= "21.03.25" --Format: dd/mm/yy.
 
 --Include Languages
 PHX.LANGUAGES = {}
 
 -- ////////////////// Verbose Message ////////////////// --
-local verbHelp="Enable more detailed and verbose messages when Prop Hunt: X2Z is running."
+local verbHelp="Enable more detailed and verbose messages when Prop Hunt: BW is running."
 local MsgErrorLevel = {
 	{ "[INFO]", 	color_white },
 	{ "[WARN]", 	Color(246,246,2) },
@@ -311,10 +311,10 @@ end
 local getloadedgamemodes = engine.GetGamemodes()
 for _,data in ipairs(getloadedgamemodes) do
 	if (data.name) and (string.find(data.name, "fretta")) then
-		MsgN("------------!! WARNING: DEFAULT FRETTA: [".. data.name .."] HAS DETECTED - THIS MAY CAUSE PH:X TO STOP WORKING !!------------")
-		MsgN("Unless if you use other gamemode that is still using fretta, ignore this message but this wont guarantee to make PH:X to work.")
+		MsgN("------------!! WARNING: DEFAULT FRETTA: [".. data.name .."] HAS DETECTED - THIS MAY CAUSE PH:BW TO STOP WORKING !!------------")
+		MsgN("Unless if you use other gamemode that is still using fretta, ignore this message but this wont guarantee to make PH:BW to work.")
 		MsgN("------------!! Please uninstall any gamemodes/Other Prop Hunt Version that uses fretta otherwise use this gamemode at your own risk! !!------------")
-		ErrorNoHalt("Prop Hunt X2Z Warning - Please check console for more info!")
+		ErrorNoHalt("Prop Hunt BW Warning - Please check console for more info!")
 	end
 end
 

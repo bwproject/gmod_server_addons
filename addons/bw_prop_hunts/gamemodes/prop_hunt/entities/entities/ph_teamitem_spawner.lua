@@ -2,7 +2,7 @@ ENT.Type = "point"
 ENT.Base = "base_point"
 
 ENT.Items 		= { "ph_luckyball", "ph_devilball", "ph_ultpointball" }
-ENT.MsgPrefix 	= "[PH:X Item Spawner] "
+ENT.MsgPrefix 	= "[PH:BW Item Spawner] "
 
 local cvEnableTeamSpawner --temp cvar because we dont want to mess sh_convars.lua due to new upcoming PHX update
 if !ConVarExists( "ph_enable_team_itemspawner" ) then
@@ -96,7 +96,7 @@ end
 function ENT:makeEntity()
 
 	if not GetGlobalBool("InRound", false) then
-		MsgC(Color(240,72,86), self.MsgPrefix .. "Cannot spawn PH:X Item because round isn't properly started!\n")
+		MsgC(Color(240,72,86), self.MsgPrefix .. "Cannot spawn PH:BW Item because round isn't properly started!\n")
 		return 
 	end
 

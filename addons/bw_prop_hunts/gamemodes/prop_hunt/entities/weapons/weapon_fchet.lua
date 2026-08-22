@@ -15,7 +15,7 @@ if (CLIENT) then
 	end
 end
 
-SWEP.Category 	= "Prop Hunt: X2Z" -- Used for Weapon Manager Plugin
+SWEP.Category 	= "Prop Hunt: BW" -- Used for Weapon Manager Plugin
 
 SWEP.PrintName 	= "#GMOD_FlechetteGun"
 SWEP.Author 	= "garry"

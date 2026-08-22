@@ -6,7 +6,7 @@ DEFINE_BASECLASS( "base_anim" )
 
 ENT.PrintName   = "Prop Entity"
 ENT.Author      = "Wolvindra-Vinzuerio"
-ENT.Information	= "A prop entity for Prop Hunt: X"
+ENT.Information	= "A prop entity for Prop Hunt: BW"
 ENT.Category    = ""
 ENT.Editable    = true
 ENT.Spawnable   = true

@@ -46,7 +46,7 @@ if CLIENT then
 		-- name, version, info ARE NOT TRANSLATEABLE!!!
 		name	= "Prop Menu", 	-- DO NOT TRANSLATE
 		version	= PCR._VERSION, -- DO NOT TRANSLATE
-		info	= "Prop Menu Integrated Plugin for Prop Hunt: X", -- DO NOT TRANSLATE
+		info	= "Prop Menu Integrated Plugin for Prop Hunt: BW", -- DO NOT TRANSLATE
 		
 		settings = {
 			{"", "label", false, "PCR_PLUG_LBL_BINDKEY" },

@@ -304,7 +304,7 @@ L["PHXM_MODE3"]						= "Mode [3]: Aufheben erlaubt"
 L["PHXM_ADMIN_DEVSECTION"]		= "Entwickler Optionen/Experimentelle Features"
 L["PHXM_ADMIN_ROOMCHECK"]		= "Grenzen Check Aktiviren? Dies verhindert das du in Objekten ider Wänden Steckenbleibst."
 L["PHXM_ADMIN_USENEWMKBREN"]		= "Bentze das nue model für die Bren MK II bonus waffe? (Erfordert Neustart der Karte)"
-L["PHXM_ADMIN_BEVERBOSE"]		= "Entwickler: Sei Ausführlich - Ak PH:X Alle informationen und events Ausfürhlich drucken?"
+L["PHXM_ADMIN_BEVERBOSE"]		= "Entwickler: Sei Ausführlich - Ak PH:BW Alle informationen und events Ausfürhlich drucken?"
 L["PHXM_ADMIN_SHOWPLNAMEHEAD"]	= "Aktivire das team namen auf dem bildschirm erscheinen."
 L["PHXM_ADMIN_USESINGLE_FZCAM"]	= "Benutze einen einziges Freezecam geräusch Anstatt von der liste (Nutze 'ph_fc_cue_path' Um das Geräusch zu bestimmen)"
 L["PHXM_ADMIN_MODELLISTINGTYPE"] = "Benutze Verebrte Model Liste: 0: Alle Spielermodele, 1: Benutze Erbe: list.Get('PlayerOptionsModel')"
@@ -313,7 +313,7 @@ L["PHXM_ADMIN_ENABLE_OBB"]		= "Developer: Enable Customized Prop Entities Model 
 L["PHXM_ADMIN_RELOAD_OBB"]		= "Developer: Reload OBB Modifier data every round restarts"
 
 --[[
-	Experimental & PH:X Features
+	Experimental & PH:BW Features
 ]]
 L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "Neue PHX Experimentale Eigenschaften"
 
@@ -371,7 +371,7 @@ L["UPDATE_BTN_SEEFULL"]			= "See Full Changes"
 -- [[ FIX ME ]] --
 L["PHXM_ABOUT_LINKS"]			= "Links und credits"
 L["PHXM_ABOUT_THANKS"]			= "Spezielles Danke für Den Unterschtüzung, Vorschläge & Mitarbeit:\n %s"
-L["PHXM_ABOUT_BTN_DONATE"]		= "Unterschtüze PH:X by donating"
+L["PHXM_ABOUT_BTN_DONATE"]		= "Unterschtüze PH:BW by donating"
 L["PHXM_ABOUT_BTN_HOME"]			= "PHX Homepage"
 L["PHXM_ABOUT_BTN_GITHUB"]		= "PHX GitHub Repository"
 L["PHXM_ABOUT_BTN_PLUGINS"]		= "PHX Addons/Plugins"
@@ -738,7 +738,7 @@ L["PHXM_DROP_RESPAWNBLIND_BOTH"] = "Both Teams"
 L["PHXM_TAB_ADMINGROUPS"]        = "Group & Access Option"
 L["PHXM_TAB_PHEPLUS"]			= "Enhanced Plus Settings"
 
-L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:X Admin Settings, Enhanced Plus & Plugin Settings page."
+L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:BW Admin Settings, Enhanced Plus & Plugin Settings page."
 L["PHXM_ADMIN_ACCESS_GROUP_HINT"] = "Please note that \"superadmins\" cannot be revoked."
 L["PHXM_ADMIN_ACCESS_GROUP_NOULX"] = "Error: ULib & ULX is not installed on your server."
 L["PHXM_ADMIN_ACCESS_NOREVOKE"]  = " (Cannot be revoked)"
@@ -774,7 +774,7 @@ L["PHXM_PLUS_LISTTIPS"]			= "Tips: Double Click to toggle Force Player as Prop."
 L["PHXM_ADMIN_ENABLEUNSTUCK"]		= "Toggle Enable/Disable Built-in unstuck feature. If you use an addon, disable this."
 L["PHXM_ADMIN_NOTPUNSTUCKINROUND"]	= "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" --ph_disabletpunstuckinround
 L["PHXM_ADMIN_UNSTUCK_WAITTIME"]		= "How much seconds must pass between each unstuck attempt" --ph_unstuck_waittime
-L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:X's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
+L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:BW's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
 L["PHXM_ADMIN_FORCESPECTOPLAY"]		= "Force spectators to play by including them when balancing teams" --ph_forcespectatorstoplay
 L["PHXM_ADMIN_NO_H_CONSECUTIVE"]		= "Prevent players from being a Hunter twice in a row (only works in shuffle mode)" --ph_preventconsecutivehunting
 L["PHXM_ADMIN_HUNTER_COUNT"] 		= "Hunter count (0 = automatic)" --ph_huntercount

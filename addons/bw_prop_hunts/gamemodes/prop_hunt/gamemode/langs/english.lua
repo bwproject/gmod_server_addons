@@ -197,7 +197,7 @@ L["PHXM_TAB_PLAYER"]			= "Player Settings"
 L["PHXM_TAB_MODEL"] 			= "Model Browser"
 L["PHXM_TAB_MODEL_DISABLED"]	= "Model Browser (Disabled)"
 L["PHXM_TAB_ADMIN"]			= "Admin Settings"
-L["PHXM_TAB_ABOUT"]			= "About PH:X"
+L["PHXM_TAB_ABOUT"]			= "About PH:BW"
 L["PHXM_TAB_MAPVOTE"]		= "MapVote"
 L["PHXM_TAB_PLUGINS"]		= "Addons/Plugins"
 
@@ -314,7 +314,7 @@ L["PHXM_MODE3"]						= "Mode [3]: Allow Pickup"
 L["PHXM_ADMIN_DEVSECTION"]		= "Developer Options"
 L["PHXM_ADMIN_ROOMCHECK"]		= "Enable Boundaries Check? This prevents you getting stuck with objects/walls."
 L["PHXM_ADMIN_USENEWMKBREN"]		= "Use new model for Bren MK II bonus weapon (Require Map Restart)"
-L["PHXM_ADMIN_BEVERBOSE"]		= "Developer: Be Verbose - Enable PH:X to print all information and events verbosely?"
+L["PHXM_ADMIN_BEVERBOSE"]		= "Developer: Be Verbose - Enable PH:BW to print all information and events verbosely?"
 L["PHXM_ADMIN_SHOWPLNAMEHEAD"]	= "Enable Player team names to appear on their screen."
 L["PHXM_ADMIN_USESINGLE_FZCAM"]	= "Use single Freezecam sound instead of sound list (Use 'ph_fc_cue_path' to determine Freezecam sound path)"
 L["PHXM_ADMIN_MODELLISTINGTYPE"] = "Player Models Listing Method: 0: Include Everything, 1: Use list.Get('PlayerOptionsModel')"
@@ -323,9 +323,9 @@ L["PHXM_ADMIN_ENABLE_OBB"]		= "Developer: Enable Customized Prop Entities Model 
 L["PHXM_ADMIN_RELOAD_OBB"]		= "Developer: Reload OBB Modifier data every round restarts"
 
 --[[
-	Experimental & PH:X Features
+	Experimental & PH:BW Features
 ]]
-L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "Prop Hunt: X Experimental Stuff"
+L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "Prop Hunt: BW Experimental Stuff"
 
 L["PHXM_ADMIN_HLA_COMBINE"]				= "Add HL: Alyx Combine model support"
 L["PHXM_ADMIN_TEAMBALANCE"]				= "Basic Team Settings"
@@ -381,7 +381,7 @@ L["UPDATE_BTN_SEEFULL"]			= "See Full Changes"
 
 L["PHXM_ABOUT_LINKS"]			= "Links and credits"
 L["PHXM_ABOUT_THANKS"]			= "Special Thanks for the Support, Suggestion & Contributions:\n %s"
-L["PHXM_ABOUT_BTN_DONATE"]		= "Support PH:X by donating"
+L["PHXM_ABOUT_BTN_DONATE"]		= "Support PH:BW by donating"
 L["PHXM_ABOUT_BTN_HOME"]			= "PHX Homepage"
 L["PHXM_ABOUT_BTN_GITHUB"]		= "PHX GitHub Repository"
 L["PHXM_ABOUT_BTN_PLUGINS"]		= "PHX Addons/Plugins"
@@ -467,7 +467,7 @@ L["PCR_CL_GROUP"]			= " Only certain groups can open this menu!"
 L["PCR_CL_LIMIT"]			= " You have reached the limit!"
 
 L["PCR_UNLIMIT_TEXT"]		= "Unlimited"
-L["PCR_WINDOW_TITLE"]		= "PH:X Prop Menu"
+L["PCR_WINDOW_TITLE"]		= "PH:BW Prop Menu"
 L["PCR_HEADER_TOP"]			= "Choose any prop you want. You have"
 L["PCR_HEADER_MID"]			= "%s usage limit"
 L["PCR_HEADER_BOTTOM"]		= "to use this prop chooser!"
@@ -539,7 +539,7 @@ L["PHXM_TAUNT_PITCH_ENABLE"]		= "Enable Taunt Pitch"
 L["PHXM_TAUNT_PITCH_RANGE_MIN"]		= "Minimum threshold/acceptable pitch range for a taunt. 1 to 99."
 L["PHXM_TAUNT_PITCH_RANGE_MAX"]		= "Maximum threshold/acceptable pitch range for a taunt. 100 to 255."
 
-L["PHXM_TAUNT_INCLUDE_DEF"]			= "Include stock default PH:X & Taunt Scanner dir?\nIf this disabled, we will use any available custom taunts and if no custom taunts installed will use fallbacks (REQUIRE MAP RESTART)"
+L["PHXM_TAUNT_INCLUDE_DEF"]			= "Include stock default PH:BW & Taunt Scanner dir?\nIf this disabled, we will use any available custom taunts and if no custom taunts installed will use fallbacks (REQUIRE MAP RESTART)"
 L["PHXM_TAUNT_DOOVERLAP"]			= "Should any played taunts overlap with newly played taunt?\nDisabling this mean to stop and plays new one. Enable to keep classic behaviour."
 L["PHXM_TAUNT_SNDLVL"]				= "Taunt Sound Level to use\n1=75dB 2=80dB 3=85dB 4=90dB 5=95dB 6=100dB (Default is 6)"
 
@@ -741,7 +741,7 @@ L["PHXM_DROP_RESPAWNBLIND_BOTH"] = "Both Teams"
 L["PHXM_TAB_ADMINGROUPS"]        = "Group & Access Option"
 L["PHXM_TAB_PHEPLUS"]			= "Enhanced Plus Settings"
 
-L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:X Admin Settings, Enhanced Plus & Plugin Settings page."
+L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:BW Admin Settings, Enhanced Plus & Plugin Settings page."
 L["PHXM_ADMIN_ACCESS_GROUP_HINT"] = "Please note that \"superadmins\" cannot be revoked."
 L["PHXM_ADMIN_ACCESS_GROUP_NOULX"] = "Error: ULib & ULX is not installed on your server."
 L["PHXM_ADMIN_ACCESS_NOREVOKE"]  = " (Cannot be revoked)"
@@ -777,7 +777,7 @@ L["PHXM_PLUS_LISTTIPS"]			= "Tips: Double Click to toggle Force Player as Prop."
 L["PHXM_ADMIN_ENABLEUNSTUCK"]		= "Toggle Enable/Disable Built-in unstuck feature. If you use an addon, disable this."
 L["PHXM_ADMIN_NOTPUNSTUCKINROUND"]	= "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" --ph_disabletpunstuckinround
 L["PHXM_ADMIN_UNSTUCK_WAITTIME"]		= "How much seconds must pass between each unstuck attempt" --ph_unstuck_waittime
-L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:X's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
+L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:BW's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
 L["PHXM_ADMIN_TEAMBAL_UNCHECK"] 		= "Uncheck the previous checkbox to access the advanced team balance options." --ph_originalteambalance_uncheck [UNUSED]
 L["PHXM_ADMIN_FORCESPECTOPLAY"]		= "Force spectators to play by including them when balancing teams (This will also Set Players into Prop/Hunter Immediately after joining to server!)" --ph_forcespectatorstoplay
 L["PHXM_ADMIN_NO_H_CONSECUTIVE"]		= "Prevent players from being a Hunter twice in a row (only works in shuffle mode)" --ph_preventconsecutivehunting

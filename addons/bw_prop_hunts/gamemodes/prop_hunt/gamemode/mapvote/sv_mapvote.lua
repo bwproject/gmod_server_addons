@@ -154,7 +154,7 @@ end
 function MapVote.PHXStart(length, current, limit, prefix)
 
 	if (not PHX:GetCVar( "ph_enable_mapvote" )) then
-		MsgAll("PH:X MapVote is disabled!\n")
+		MsgAll("PH:BW MapVote is disabled!\n")
 		for _,v in pairs(player.GetAll()) do
 			v:ChatPrint("Предупреждение: Голосование за карту отключено.")
 		end
@@ -287,7 +287,7 @@ end )
 function MapVote.PHXCancel()
 
 	if (not PHX:GetCVar( "ph_enable_mapvote" )) then
-		MsgAll("PH:X MapVote is disabled.\n")
+		MsgAll("PH:BW MapVote is disabled.\n")
 		return
 	end
 
@@ -318,7 +318,7 @@ function PHX.StartMapVote()
 	if (not PHX:GetCVar( "ph_enable_mapvote" )) then
 		local result = hook.Call( "PH_OverrideMapVote", nil )
         if (result) then
-		    MsgAll("PH:X MapVote is disabled. Calling Map Vote Overrides Hook... \n")
+		    MsgAll("PH:BW MapVote is disabled. Calling Map Vote Overrides Hook... \n")
 		    return
         else
             MsgAll("WARNING: Detected no external Map Votes Call from [PH_OverrideMapVote] hook, Falling back! (Did you forget to `return true`?)\n")

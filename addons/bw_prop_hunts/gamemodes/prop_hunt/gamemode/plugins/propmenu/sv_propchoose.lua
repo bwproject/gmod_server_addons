@@ -45,18 +45,18 @@ function PCR:ReadBannedProps()
 	local path = PHX.ConfigPath .. "/prop_model_bans"
 	
 	if !file.Exists(path,"DATA") then
-		PHX:VerboseMsg("[Prop Menu] !!WARNING : Prop Hunt: X's Prop Ban Data does not exist. Did you forgot to install Prop Hunt: X? Creating the folder anyway...")
+		PHX:VerboseMsg("[Prop Menu] !!WARNING : Prop Hunt: BW's Prop Ban Data does not exist. Did you forgot to install Prop Hunt: BW? Creating the folder anyway...")
 		file.CreateDir(path)
 	end
 	
 	if file.Exists(path.."/model_bans.txt","DATA") then
-		PHX:VerboseMsg("[Prop Menu] Reading Prop Hunt: X's Prop Ban Data...")	-- PHX.BANNED_PROP_MODELS
+		PHX:VerboseMsg("[Prop Menu] Reading Prop Hunt: BW's Prop Ban Data...")	-- PHX.BANNED_PROP_MODELS
 		local read = util.JSONToTable(file.Read(path.."/model_bans.txt"))
 		for _,mdl in pairs(read) do
 			table.insert(self.BannedProp, mdl)
 		end
 	else
-		PHX:VerboseMsg("[Prop Menu] !!WARNING: Prop Hunt: X's Prop Ban Data does not exists, Ignoring..!")
+		PHX:VerboseMsg("[Prop Menu] !!WARNING: Prop Hunt: BW's Prop Ban Data does not exists, Ignoring..!")
 	end
 	
 	if file.Exists(path.."/pcr_bans.txt","DATA") then

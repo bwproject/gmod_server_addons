@@ -313,7 +313,7 @@ L["PHXM_MODE3"]						= "模式 [3]: 允許拾取"
 L["PHXM_ADMIN_DEVSECTION"]		= "開發人員選項/實驗功能"
 L["PHXM_ADMIN_ROOMCHECK"]		= "開啟邊界檢查? 能防止你卡在物體/牆壁上"
 L["PHXM_ADMIN_USENEWMKBREN"]		= "對Bren MK II獎勵武器使用新模型(需要重新啟動地圖)"
-L["PHXM_ADMIN_BEVERBOSE"]		= "開發人員: 詳細 - 開啟打印PH:X詳細訊息和事件嗎?"
+L["PHXM_ADMIN_BEVERBOSE"]		= "開發人員: 詳細 - 開啟打印PH:BW詳細訊息和事件嗎?"
 L["PHXM_ADMIN_SHOWPLNAMEHEAD"]	= "開啟隊伍玩家名稱顯示在螢幕上."
 L["PHXM_ADMIN_USESINGLE_FZCAM"]	= "使用獨一死亡特寫的聲音，而不是聲音清單(使用'ph_fc_cue_path'來確認死亡特寫的聲音路徑)"
 L["PHXM_ADMIN_MODELLISTINGTYPE"] = "使用舊版模型清單: 0: 所有玩家模型, 1: 使用舊版: list.Get('PlayerOptionsModel')"
@@ -322,7 +322,7 @@ L["PHXM_ADMIN_ENABLE_OBB"]		= "開發人員: 從配置數據開啟自訂物品�
 L["PHXM_ADMIN_RELOAD_OBB"]		= "開發人員: 每次重新啟動時重新載入OBB編輯器數據"
 
 --[[
-	Experimental & PH:X Features
+	Experimental & PH:BW Features
 ]]
 L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "新的PHX實驗部分"
 
@@ -380,7 +380,7 @@ L["UPDATE_BTN_SEEFULL"]			= "See Full Changes"
 -- [[ FIX ME ]] --
 L["PHXM_ABOUT_LINKS"]			= "連結和名單"
 L["PHXM_ABOUT_THANKS"]			= "特別感謝支持、建議與貢獻:\n %s"
-L["PHXM_ABOUT_BTN_DONATE"]		= "捐款支持PH:X"
+L["PHXM_ABOUT_BTN_DONATE"]		= "捐款支持PH:BW"
 L["PHXM_ABOUT_BTN_HOME"]			= "PHX 主頁"
 L["PHXM_ABOUT_BTN_GITHUB"]		= "PHX GitHub 資料庫"
 L["PHXM_ABOUT_BTN_PLUGINS"]		= "PHX 插件/外掛"
@@ -753,7 +753,7 @@ L["PHXM_DROP_RESPAWNBLIND_BOTH"] = "Both Teams"
 L["PHXM_TAB_ADMINGROUPS"]        = "Group & Access Option"
 L["PHXM_TAB_PHEPLUS"]			= "Enhanced Plus Settings"
 
-L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:X Admin Settings, Enhanced Plus & Plugin Settings page."
+L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:BW Admin Settings, Enhanced Plus & Plugin Settings page."
 L["PHXM_ADMIN_ACCESS_GROUP_HINT"] = "Please note that \"superadmins\" cannot be revoked."
 L["PHXM_ADMIN_ACCESS_GROUP_NOULX"] = "Error: ULib & ULX is not installed on your server."
 L["PHXM_ADMIN_ACCESS_NOREVOKE"]  = " (Cannot be revoked)"
@@ -789,7 +789,7 @@ L["PHXM_PLUS_LISTTIPS"]			= "Tips: Double Click to toggle Force Player as Prop."
 L["PHXM_ADMIN_ENABLEUNSTUCK"]		= "Toggle Enable/Disable Built-in unstuck feature. If you use an addon, disable this."
 L["PHXM_ADMIN_NOTPUNSTUCKINROUND"]	= "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" --ph_disabletpunstuckinround
 L["PHXM_ADMIN_UNSTUCK_WAITTIME"]		= "How much seconds must pass between each unstuck attempt" --ph_unstuck_waittime
-L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:X's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
+L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:BW's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
 L["PHXM_ADMIN_FORCESPECTOPLAY"]		= "Force spectators to play by including them when balancing teams" --ph_forcespectatorstoplay
 L["PHXM_ADMIN_NO_H_CONSECUTIVE"]		= "Prevent players from being a Hunter twice in a row (only works in shuffle mode)" --ph_preventconsecutivehunting
 L["PHXM_ADMIN_HUNTER_COUNT"] 		= "Hunter count (0 = automatic)" --ph_huntercount

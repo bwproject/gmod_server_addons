@@ -21,7 +21,7 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
 	grid:SetRowHeight(32)
 	
 	local label = {
-		title 	= "Prop Hunt: X2Z",
+		title 	= "Prop Hunt: BW",
 		author	= GAMEMODE.Author,
 		version = GAMEMODE._VERSION,
 		rev 	= GAMEMODE.REVISION,

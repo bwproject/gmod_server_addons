@@ -54,7 +54,7 @@ if SERVER then
 		if ( util.IsStaff( ply ) ) then
 			
 			if PHX:GetCVar( "ph_use_custom_mapvote_cmd" ) or PHX:GetCVar( "ph_use_custom_mapvote" ) then
-				ply:ChatPrint("Включена сторонняя система голосования за карты. Отключите её, чтобы использовать систему голосования PH:X.")
+				ply:ChatPrint("Включена сторонняя система голосования за карты. Отключите её, чтобы использовать систему голосования PH:BW.")
 				return
 			end
 			
@@ -69,7 +69,7 @@ if SERVER then
 		if ( util.IsStaff( ply ) ) then
 			
 			if PHX:GetCVar( "ph_use_custom_mapvote_cmd" ) or PHX:GetCVar( "ph_use_custom_mapvote" ) then
-				ply:ChatPrint("Не удалось остановить голосование PH:X, так как включена сторонняя система голосования!")
+				ply:ChatPrint("Не удалось остановить голосование PH:BW, так как включена сторонняя система голосования!")
 				return
 			end
 		

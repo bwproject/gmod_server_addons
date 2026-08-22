@@ -204,7 +204,7 @@ function GM:ShowHelp()
 	if GAMEMODE.VGUISplash and GAMEMODE.VGUISplash ~= nil and istable(GAMEMODE.VGUISplash) then
 	
 		local Help = vgui.CreateFromTable( GAMEMODE.VGUISplash )
-		Help:SetHeaderText( GAMEMODE.Name or "Prop Hunt: X2Z" )
+		Help:SetHeaderText( GAMEMODE.Name or "Prop Hunt: BW" )
 		Help:SetForHelp( "HELP_F1", GAMEMODE.PHXContributors )
 		
 		Help.lblFooterText.Think = function( panel ) 
@@ -239,7 +239,7 @@ function GM:ShowHelp()
         
         Help:MakePopup()
         Help:NoFadeIn()
-		ErrorNoHalt("[Prop Hunt: X] - Unable to open Help splash screen!!!")
+		ErrorNoHalt("[Prop Hunt: BW] - Unable to open Help splash screen!!!")
 
 	end
 	
@@ -1099,7 +1099,7 @@ function PHX:showLangPreview()
 end
 
 --Very First Tutorial - this will only show ONCE.
-local ShowIntro = CreateClientConVar("ph_cl_show_introduction","1",true,true,"Show PH:X introduction.")
+local ShowIntro = CreateClientConVar("ph_cl_show_introduction","1",true,true,"Show PH:BW introduction.")
 local function ShowVeryFirstTutorial()
 	local fh = {}
 	local WFix=ScrW()*0.8
@@ -1110,7 +1110,7 @@ local function ShowVeryFirstTutorial()
 	fh.frame = vgui.Create("DFrame")
 	fh.frame:SetSize( WFix, HFix )
 	fh.frame:Center()
-	fh.frame:SetTitle("Prop Hunt X2Z: Tutorial")
+	fh.frame:SetTitle("Prop Hunt BW: Tutorial")
 	
 		fh.panel = vgui.Create("DPanel", fh.frame)
 		fh.panel:SetBackgroundColor(Color(100,100,100,255))
@@ -1178,7 +1178,7 @@ end
 
 net.Receive("phx_showVeryFirstTutorial", function()
 	if ShowIntro:GetBool() then
-		Derma_Query("Prop Hunt: X2Z добавляет множество новых функций.\nХотите посмотреть обучающее окно и открыть [Меню Prop Hunt] перед игрой?", "Prop Hunt X2Z",
+		Derma_Query("Prop Hunt: BW добавляет множество новых функций.\nХотите посмотреть обучающее окно и открыть [Меню Prop Hunt] перед игрой?", "Prop Hunt BW",
 		PHX:FTranslate("MISC_YES"), function() ShowVeryFirstTutorial() end,
 		PHX:FTranslate("MISC_NO"), function() RunConsoleCommand("ph_cl_show_introduction", "0") end)
 	end
@@ -1191,7 +1191,7 @@ hook.Add("InitPostEntity", "PHX.ShowDonateMessage", function()
 	if ShowDonate:GetBool() then
 		timer.Simple(2, function()
 			Derma_Query(
-				"Спасибо, что используете Prop Hunt: X2Z! Однако изменение и обновление этого игрового режима и его поддержка требуют больших усилий...\n\nЕсли вы хотите помочь мне поддерживать актуальность PH:X, не хотели бы вы поддержать меня пожертвованием?\nЛюбое пожертвование будет высоко оценено, спасибо!", "Есть минутка?",
+				"Спасибо, что используете Prop Hunt: BW! Однако изменение и обновление этого игрового режима и его поддержка требуют больших усилий...\n\nЕсли вы хотите помочь мне поддерживать актуальность PH:BW, не хотели бы вы поддержать меня пожертвованием?\nЛюбое пожертвование будет высоко оценено, спасибо!", "Есть минутка?",
 				PHX:FTranslate("MISC_YES"), function()
 					gui.OpenURL( GAMEMODE.DONATEURL )
 				 end,

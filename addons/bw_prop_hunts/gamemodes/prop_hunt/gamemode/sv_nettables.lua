@@ -1,4 +1,4 @@
--- Wolvin: Warning: there are already like 250+ net tables in PH:X.
+-- Wolvin: Warning: there are already like 250+ net tables in PH:BW.
 -- Mostly those are occupied by GetGlobals* from ConVars.
 -- Reduce Next Time!
 

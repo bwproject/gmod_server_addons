@@ -6,7 +6,7 @@ PHEPLUSCVAR["ph_unstuckrange"] 					= { CTYPE_NUMBER, 	"250", CVAR_SERVER_ONLY_N
 PHEPLUSCVAR["ph_disabletpunstuckinround"] 		= { CTYPE_BOOL, 	"0", CVAR_SERVER_ONLY, "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" }
 PHEPLUSCVAR["ph_unstuck_waittime"] 				= { CTYPE_NUMBER, 	"5", CVAR_SERVER_ONLY, "How much in seconds must pass between each unstuck attempt" }
 
-PHEPLUSCVAR["ph_team_balance_classic"] 			= { CTYPE_BOOL, 	"1", CVAR_SERVER_ONLY, "Use default PH:X/E+ original auto-balancing (disables all following team-related options)", 
+PHEPLUSCVAR["ph_team_balance_classic"] 			= { CTYPE_BOOL, 	"1", CVAR_SERVER_ONLY, "Use default PH:BW/E+ original auto-balancing (disables all following team-related options)", 
 function(cvarname, value)
 	cvars.AddChangeCallback( cvarname, function(cv, _, new)
 		

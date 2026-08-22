@@ -68,7 +68,7 @@ end
 
 -- Useful ULX Stuff
 if (!ulx or ulx == nil) then
-    PHX:VerboseMsg( "[ULX:Addition] ULX Is Not available to create additional PH:X features, skipping...",2)
+    PHX:VerboseMsg( "[ULX:Addition] ULX Is Not available to create additional PH:BW features, skipping...",2)
     return
 end
 -- Force End Round, sadmin
@@ -99,4 +99,4 @@ local function OpenMenu( calling_ply )
 end
 local openmenu = ulx.command( PHX.TITLE, "ulx phmenu", OpenMenu, "!phmenu" )
 openmenu:defaultAccess( ULib.ACCESS_ALL )
-openmenu:help( "Open PH:X2Z Menu" )
+openmenu:help( "Open PH:BW Menu" )

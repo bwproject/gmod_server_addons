@@ -9,7 +9,7 @@ local function BWPHX_Translate(text)
         ["Error: Cannot open Prop Hunt X Menu because the language you're using is not available."] = "Ошибка: невозможно открыть меню Prop Hunt X, поскольку выбранный язык недоступен.",
         ["Please revert to default language by typing 'ph_cl_language en_us' in the console!"] = "Вернитесь к языку по умолчанию, введя в консоли: ph_cl_language en_us",
         ["Support Prop Hunt: X!"] = "Поддержать проект",
-        ["If you liked with this gamemode or update and wanted to help with PH:X2Z Development, you can help me by donating!"] = "Если вам нравится наш Prop Hunt и вы хотите поддержать развитие проекта, вы можете помочь разработчику или приобрести привилегию на сервере.",
+        ["If you liked with this gamemode or update and wanted to help with PH:BW Development, you can help me by donating!"] = "Если вам нравится наш Prop Hunt и вы хотите поддержать развитие проекта, вы можете помочь разработчику или приобрести привилегию на сервере.",
         ["Donate via Buy me a Coffee"] = "Скинуть разрабу на Adrenaline Rush",
         ["Donate via Buy Ko-Fi"] = "Купить привилегию на сервере",
         ["Donate"] = "Поддержать",

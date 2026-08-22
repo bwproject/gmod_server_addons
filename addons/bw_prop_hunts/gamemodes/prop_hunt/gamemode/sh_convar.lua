@@ -87,7 +87,7 @@ local CVAR = {}
 CVAR["ph_show_splash_screen"]           =   { CTYPE_BOOL,   "1", CVAR_SERVER_ONLY, "Показывать заставку при входе на сервер." }
 CVAR["ph_tmp_accurate_hull"]            =   { CTYPE_BOOL,   "1", CVAR_SERVER_ONLY, "(Экспериментально) Включить точный размер хитбокса вместо округления.\nПримечание: вы можете застрять в стенах, но это может вызывать некоторые проблемы, используйте с осторожностью." }
 
-CVAR["ph_include_default_taunt"]        =   { CTYPE_BOOL,   "1", CVAR_SERVER_ONLY, "Включать ли стандартные насмешки PH:X из игрового режима?" }
+CVAR["ph_include_default_taunt"]        =   { CTYPE_BOOL,   "1", CVAR_SERVER_ONLY, "Включать ли стандартные насмешки PH:BW из игрового режима?" }
 CVAR["ph_taunt_soundlevel"]        		=   { CTYPE_NUMBER, "6", CVAR_SERVER_ONLY, "Уровень громкости насмешек, значение от 1 до 6.\n1=75дБ\n2=80дБ\n3=85дБ\n4=90дБ\n5=95дБ\n6=100дБ — по умолчанию.", { min = 1, max = 6 } }
 CVAR["ph_overlap_taunt"]				=	{ CTYPE_BOOL,   "0", CVAR_SERVER_ONLY, "Должны ли воспроизводимые насмешки перекрывать новую насмешку? Отключение означает остановить и проигрывать новую. Включите, чтобы сохранить классическое поведение." }
 
@@ -243,7 +243,7 @@ CVAR["ph_allow_respawnonblind_teamchange"]	=	{ CTYPE_BOOL, 	"0", CVAR_SERVER_ONL
 CVAR["ph_allow_pickup_object"]				=	{ CTYPE_NUMBER, "3", CVAR_SERVER_ONLY, "Разрешить подбирать объекты? 0=Нет, 1=Только охотники, 2=Только объекты, 3=Все", { min = 0, max = 3 } }
 
 -- MapVotes, these aren't listed on F1 Prop Hunt Menu, this needs to be set manually through your server.cfg!!
-CVAR["ph_enable_mapvote"]					=	{ CTYPE_BOOL, 	"1", CVAR_SERVER_ONLY, "Включить/отключить встроенную систему голосования за карты PH:X? Установите 0, чтобы отключить и использовать аддон голосования, будет вызван хук 'PH_OverrideMapVote'.\nЕсли 'ph_use_custom_mapvote' и 'ph_use_custom_mapvote_cmd' установлены в 1, они всё равно вызываются." }
+CVAR["ph_enable_mapvote"]					=	{ CTYPE_BOOL, 	"1", CVAR_SERVER_ONLY, "Включить/отключить встроенную систему голосования за карты PH:BW? Установите 0, чтобы отключить и использовать аддон голосования, будет вызван хук 'PH_OverrideMapVote'.\nЕсли 'ph_use_custom_mapvote' и 'ph_use_custom_mapvote_cmd' установлены в 1, они всё равно вызываются." }
 CVAR["ph_use_custom_mapvote"]				=	{ CTYPE_BOOL, 	"0", CVAR_SERVER_ONLY_NO_NOTIFY, "Использовать внешнюю систему голосования за карты? Это переопределит встроенное голосование. См. помощь 'ph_custom_mv_func'." }
 CVAR["ph_use_custom_mapvote_cmd"]			=	{ CTYPE_BOOL, 	"0", CVAR_SERVER_ONLY_NO_NOTIFY, "Использовать внешнее голосование за карты через консольную команду? Это переопределит встроенное голосование И 'ph_use_custom_mapvote'. См. помощь 'ph_custom_mv_concmd'." }
 CVAR["ph_custom_mv_func"]					=	{ CTYPE_STRING, "PHX.StartMapVote()", CVAR_SERVER_ONLY_NO_NOTIFY, "Если установлен 'ph_use_custom_mapvote', используйте функцию для вызова не встроенной системы голосования (например, из аддонов).\nПРИМЕЧАНИЕ: 'Регистр важен' и локальные переменные не будут переданы в указанный код!" }

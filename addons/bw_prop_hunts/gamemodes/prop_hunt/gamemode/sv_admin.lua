@@ -133,7 +133,7 @@ end
 
 local function doKickInvalidAccess(ply, cmd, identifier)
 	if GetConVar("ph_kick_non_admin_access"):GetBool() then
-		game.KickID(ply:SteamID(), "[PH:X - NOT ADMIN] Illegal server command access found from: "..ply:Nick())
+		game.KickID(ply:SteamID(), "[PH:BW - NOT ADMIN] Illegal server command access found from: "..ply:Nick())
 	else
 		ply:PHXChatInfo( "ERROR", "PHX_ADMIN_ACCESS_ONLY", ply:Nick() )
 	end

@@ -334,7 +334,7 @@ L["PHXM_ADMIN_ENABLE_OBB"] =
 L["PHXM_ADMIN_RELOAD_OBB"] = "개발자: 매 라운드 재시작마다 OBB 수정자 데이터 불러오기"
 
 --[[
-	Experimental & PH:X Features
+	Experimental & PH:BW Features
 ]]
 L["PHXM_ADMIN_EXPERIMENTALPHX"] = "새 Prop Hunt X 실험 섹션"
 
@@ -398,7 +398,7 @@ L["UPDATE_BTN_SEEFULL"]			= "변경사항 전체보기"
 -- [[ FIX ME ]] --
 L["PHXM_ABOUT_LINKS"] = "링크 및 제작자"
 L["PHXM_ABOUT_THANKS"] = "후원, 아이디어 제공 및 기여에 도움주신 다음 분들께 감사드립니다.\n%s"
-L["PHXM_ABOUT_BTN_DONATE"] = "PH:X를 후원으로 도와주세요"
+L["PHXM_ABOUT_BTN_DONATE"] = "PH:BW를 후원으로 도와주세요"
 L["PHXM_ABOUT_BTN_HOME"] = "PHX 홈페이지"
 L["PHXM_ABOUT_BTN_GITHUB"] = "PHX GitHub 저장소"
 L["PHXM_ABOUT_BTN_PLUGINS"] = "PHX 에드온/플러그인"
@@ -760,7 +760,7 @@ L["PHXM_DROP_RESPAWNBLIND_BOTH"] = "Both Teams"
 L["PHXM_TAB_ADMINGROUPS"]        = "Group & Access Option"
 L["PHXM_TAB_PHEPLUS"]			= "Enhanced Plus Settings"
 
-L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:X Admin Settings, Enhanced Plus & Plugin Settings page."
+L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:BW Admin Settings, Enhanced Plus & Plugin Settings page."
 L["PHXM_ADMIN_ACCESS_GROUP_HINT"] = "Please note that \"superadmins\" cannot be revoked."
 L["PHXM_ADMIN_ACCESS_GROUP_NOULX"] = "Error: ULib & ULX is not installed on your server."
 L["PHXM_ADMIN_ACCESS_NOREVOKE"]  = " (Cannot be revoked)"
@@ -796,7 +796,7 @@ L["PHXM_PLUS_LISTTIPS"]			= "Tips: Double Click to toggle Force Player as Prop."
 L["PHXM_ADMIN_ENABLEUNSTUCK"]		= "Toggle Enable/Disable Built-in unstuck feature. If you use an addon, disable this."
 L["PHXM_ADMIN_NOTPUNSTUCKINROUND"]	= "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" --ph_disabletpunstuckinround
 L["PHXM_ADMIN_UNSTUCK_WAITTIME"]		= "How much seconds must pass between each unstuck attempt" --ph_unstuck_waittime
-L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:X's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
+L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:BW's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
 L["PHXM_ADMIN_TEAMBAL_UNCHECK"] 		= "Uncheck the previous checkbox to access the advanced team balance options." --ph_originalteambalance_uncheck [UNUSED]
 L["PHXM_ADMIN_FORCESPECTOPLAY"]		= "Force spectators to play by including them when balancing teams" --ph_forcespectatorstoplay
 L["PHXM_ADMIN_NO_H_CONSECUTIVE"]		= "Prevent players from being a Hunter twice in a row (only works in shuffle mode)" --ph_preventconsecutivehunting

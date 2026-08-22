@@ -153,7 +153,7 @@ function PHX.UI.BaseMainMenu(ply, cmd, args)
 		title:DockMargin(0,6,0,6)
 		title:SetSize(0,18)
 		title:SetFont("HudHintTextLarge")
-		title:SetText("Если вам нравится этот игровой режим или обновление и вы хотите помочь разработке PH:X2Z, вы можете помочь пожертвованием!")
+		title:SetText("Если вам нравится этот игровой режим или обновление и вы хотите помочь разработке PH:BW, вы можете помочь пожертвованием!")
 		
 		local pn = panel:Add("DPanel")
 		pn:Dock(TOP)

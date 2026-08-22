@@ -1,6 +1,6 @@
 --[=[
 
-You are free to use, modify, contribute, or distribute the Prop Hunt: X2Z ("SOFTWARE") as long as it stated exclusively for Garry's Mod.
+You are free to use, modify, contribute, or distribute the Prop Hunt: BW ("SOFTWARE") as long as it stated exclusively for Garry's Mod.
 Any changes or modification you have made publicly on Steam Workshop must include this license and a link back to this page in your credits page.
 You are, however, not permitted to use for:
 - Commercial Purposes, including selling the source code.
@@ -92,7 +92,7 @@ local function PHX___openWarningDialog( bFoundError, tResult )
 	form.Header = form.PanelHeader:Add("DLabel")
 	form.Header:Dock(FILL)
 	form.Header:DockMargin(12,0,8,4)
-	form.Header:SetText("Prop Hunt: X перестал работать из-за обнаруженных ошибок/конфликтов!")
+	form.Header:SetText("Prop Hunt: BW перестал работать из-за обнаруженных ошибок/конфликтов!")
 	form.Header:SetFont("HudHintTextLarge")
 	form.Header:SetTextColor(color_white)
 	form.Header:SetWrap(true)

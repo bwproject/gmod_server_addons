@@ -2,7 +2,7 @@ PHX.Messagedata = {}
 
 local function UPDATE_DO_FETCH_BACKUP()
 	
-	print( "[!PH:X Update] Retrying with backup update... " )
+	print( "[!PH:BW Update] Retrying with backup update... " )
 	
 	http.Fetch(
 		GAMEMODE.UPDATEURLBACKUP,
@@ -12,10 +12,10 @@ local function UPDATE_DO_FETCH_BACKUP()
 				return
 			end
 			
-			print( "[!PH:X Update] Error retreiving backup update info. Reason: Data is Empty or Unknown Error. (HTTP Code: "..tostring(code)..", Size: ".. len )
+			print( "[!PH:BW Update] Error retreiving backup update info. Reason: Data is Empty or Unknown Error. (HTTP Code: "..tostring(code)..", Size: ".. len )
 		end,
 		function(err)
-			print("[!PH:X Update] Error retreiving backup update info. Reason: " .. err)
+			print("[!PH:BW Update] Error retreiving backup update info. Reason: " .. err)
 		end
 	)
 	
@@ -31,11 +31,11 @@ local function UPDATE_DO_FETCH()
 				return
 			end
 			
-			print( "[!PH:X Update] Error retreiving update info. Reason: Data is Empty or Unknown Error. (HTTP Code: "..tostring(code)..", Size: ".. len )
+			print( "[!PH:BW Update] Error retreiving update info. Reason: Data is Empty or Unknown Error. (HTTP Code: "..tostring(code)..", Size: ".. len )
 			UPDATE_DO_FETCH_BACKUP()
 		end,
 		function(err)
-			print("[!PH:X Update] Error retreiving update info. Reason: " .. err)
+			print("[!PH:BW Update] Error retreiving update info. Reason: " .. err)
 			UPDATE_DO_FETCH_BACKUP()
 		end
 	)
@@ -64,7 +64,7 @@ end
 function PHX:NotifyUpdate(result)
 	
 	if (!result or result == "") then
-		print("[!PH:X Update] Warning: Data contains nothing!")
+		print("[!PH:BW Update] Warning: Data contains nothing!")
 		return false,false,false
 	end
 	
@@ -72,7 +72,7 @@ function PHX:NotifyUpdate(result)
 	local data = util.JSONToTable(result)
 	
 	if !data or data == nil then
-		print("[!PH:X Update] Error: Unable to parse update info, aborting!")
+		print("[!PH:BW Update] Error: Unable to parse update info, aborting!")
 		return false,false,false
 	end
 	
@@ -119,7 +119,7 @@ function PHX:CheckUpdate()
 	UPDATE_DO_FETCH()
 end
 
-concommand.Add("ph_check_update", function() PHX:CheckUpdate() end , nil, "Force Check Update Prop Hunt: X.")
+concommand.Add("ph_check_update", function() PHX:CheckUpdate() end , nil, "Force Check Update Prop Hunt: BW.")
 
 local cooldown	= 86400
 hook.Add("Initialize", "PHX.CheckUpdateInit", function()

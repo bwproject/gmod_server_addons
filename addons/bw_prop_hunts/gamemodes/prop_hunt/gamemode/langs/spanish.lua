@@ -311,7 +311,7 @@ L["PHXM_MODE3"]						= "Modo [3]: Permitido"
 L["PHXM_ADMIN_DEVSECTION"]		= "Opciones de desarrollo/Características experimentales"
 L["PHXM_ADMIN_ROOMCHECK"]		= "¿Activar límites? Esto evita que los jugadores queden atascados con otros objetos o en paredes."
 L["PHXM_ADMIN_USENEWMKBREN"]		= "Usar nuevo modelo del arma Bren MK II (es necesario reiniciar el mapa)."
-L["PHXM_ADMIN_BEVERBOSE"]		= "Desarrollador: Detallista. ¿Activar PH:X para imprimir toda la información y eventos detalladamente?"
+L["PHXM_ADMIN_BEVERBOSE"]		= "Desarrollador: Detallista. ¿Activar PH:BW para imprimir toda la información y eventos detalladamente?"
 L["PHXM_ADMIN_SHOWPLNAMEHEAD"]	= "Activar para que aparezcan los nombres de los compañeros de equipo en pantalla."
 L["PHXM_ADMIN_USESINGLE_FZCAM"]	= "Usar un único sonido de instantánea en vez de una lista de sonidos (usa «ph_fc_cue_path» para determinar la ruta del sonido)."
 L["PHXM_ADMIN_MODELLISTINGTYPE"] = "Usar lista de modelos: 0: Todos los modelos, 1: Usar lista: list.Get('PlayerOptionsModel')"
@@ -320,9 +320,9 @@ L["PHXM_ADMIN_ENABLE_OBB"]		= "Desarrollador: Activar modificador de límites de
 L["PHXM_ADMIN_RELOAD_OBB"]		= "Desarrollador: Recargar modificador de límites de la configuración al reiniciar cada ronda."
 
 --[[
-	Experimental & PH:X Features
+	Experimental & PH:BW Features
 ]]
-L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "Nuevas secciones experimentales de PH:X"
+L["PHXM_ADMIN_EXPERIMENTALPHX"]			= "Nuevas secciones experimentales de PH:BW"
 
 L["PHXM_ADMIN_HLA_COMBINE"]				= "Añadir modelo de Combine de HL:A"
 L["PHXM_ADMIN_TEAMBALANCE"]				= "Activar función de autoequilibrado"
@@ -378,11 +378,11 @@ L["UPDATE_BTN_SEEFULL"]			= "See Full Changes"
 -- [[ FIX ME ]] --
 L["PHXM_ABOUT_LINKS"]			= "Enlaces y créditos"
 L["PHXM_ABOUT_THANKS"]			= "Agradecimientos especiales por el apoyo, sugerencias y contribuciones:\n %s"
-L["PHXM_ABOUT_BTN_DONATE"]		= "Apoya a PH:X donando"
-L["PHXM_ABOUT_BTN_HOME"]			= "Página de inicio de PH:X"
-L["PHXM_ABOUT_BTN_GITHUB"]		= "Repositorio GitHub de PH:X"
-L["PHXM_ABOUT_BTN_PLUGINS"]		= "Extensiones de PH:X"
-L["PHXM_ABOUT_BTN_CHANGELOGS"]	= "Notas de actualización de PH:X"
+L["PHXM_ABOUT_BTN_DONATE"]		= "Apoya a PH:BW donando"
+L["PHXM_ABOUT_BTN_HOME"]			= "Página de inicio de PH:BW"
+L["PHXM_ABOUT_BTN_GITHUB"]		= "Repositorio GitHub de PH:BW"
+L["PHXM_ABOUT_BTN_PLUGINS"]		= "Extensiones de PH:BW"
+L["PHXM_ABOUT_BTN_CHANGELOGS"]	= "Notas de actualización de PH:BW"
 
 --[[
 	Late Additionals
@@ -420,7 +420,7 @@ L["MISC_GAME_ENDED"]		= "La partida ha acabado."
 	Credits: Late Addition: Revision: 16.09.21/X2Z
 ]]
 
-L["PHXM_ABOUT_BTN_WIKI"]			= "PH:X Wiki y manuales"
+L["PHXM_ABOUT_BTN_WIKI"]			= "PH:BW Wiki y manuales"
 
 --[[
 	Auto Taunt: Late Addition: Revision: 16.09.21/X2Z
@@ -470,7 +470,7 @@ L["PCR_CL_DISABLED"]			= " Esta característica está desactivada."
 L["PCR_CL_GROUP"]			= " ¡Solo algunos grupos pueden abrir este menú!"
 L["PCR_CL_LIMIT"]			= " ¡Has alcanzado el límite!"
 L["PCR_UNLIMIT_TEXT"]		= "Sin límite"
-L["PCR_WINDOW_TITLE"]		= "Menú de obj. PH:X"
+L["PCR_WINDOW_TITLE"]		= "Menú de obj. PH:BW"
 L["PCR_HEADER_TOP"]			= "Elige el objeto que quieras. ¡Tienes"
 L["PCR_HEADER_MID"]			= "%s usos disponibles"
 L["PCR_HEADER_BOTTOM"]		= "para elegir!"
@@ -504,7 +504,7 @@ L["PHXM_ADMLBL_USABLE_ENTS_REF"]		= "Los tipos son: 1: Solo físicas, 2: Física
 L["PHXM_ADMIN_USABLE_ENT_TYPE"]		= "Tipo de entidades a imitar por los objetos"
 L["PHXM_ADMIN_NOTIFY_ENT_TYPE"]		= "Notificar los objetos que no se pueden imitar al pulsar la E. Solo funciona con «ph_usable_prop_type» en 3 o 4."
 L["NOTIFY_PROP_ENTTYPE"]				= "Pulsa [E] para interactuar, o [Clic] para imitar un objeto."
-L["NOTIFY_CUST_ENT_TYPE_IS_ON"]		= "[PH:X] Nota: Pulsa [E] para interactuar con el objeto, o [Clic] para imitarlo."
+L["NOTIFY_CUST_ENT_TYPE_IS_ON"]		= "[PH:BW] Nota: Pulsa [E] para interactuar con el objeto, o [Clic] para imitarlo."
 
 --[[
 	Custom Taunts, Revision: 16.09.21/X2Z
@@ -752,7 +752,7 @@ L["PHXM_DROP_RESPAWNBLIND_BOTH"] = "Both Teams"
 L["PHXM_TAB_ADMINGROUPS"]        = "Group & Access Option"
 L["PHXM_TAB_PHEPLUS"]			= "Enhanced Plus Settings"
 
-L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:X Admin Settings, Enhanced Plus & Plugin Settings page."
+L["PHXM_ADMIN_ACCESS_GROUP"]     = "Select groups to allow access PH:BW Admin Settings, Enhanced Plus & Plugin Settings page."
 L["PHXM_ADMIN_ACCESS_GROUP_HINT"] = "Please note that \"superadmins\" cannot be revoked."
 L["PHXM_ADMIN_ACCESS_GROUP_NOULX"] = "Error: ULib & ULX is not installed on your server."
 L["PHXM_ADMIN_ACCESS_NOREVOKE"]  = " (Cannot be revoked)"
@@ -788,7 +788,7 @@ L["PHXM_PLUS_LISTTIPS"]			= "Tips: Double Click to toggle Force Player as Prop."
 L["PHXM_ADMIN_ENABLEUNSTUCK"]		= "Toggle Enable/Disable Built-in unstuck feature. If you use an addon, disable this."
 L["PHXM_ADMIN_NOTPUNSTUCKINROUND"]	= "Disable last-resort unstuck teleportations to spawnpoints outside of the hiding phase" --ph_disabletpunstuckinround
 L["PHXM_ADMIN_UNSTUCK_WAITTIME"]		= "How much seconds must pass between each unstuck attempt" --ph_unstuck_waittime
-L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:X's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
+L["PHXM_ADMIN_TEAMBAL_ORIG"] 		= "Use PH:BW's original auto-balancing (disables all following team-related options below)" --ph_originalteambalance
 L["PHXM_ADMIN_FORCESPECTOPLAY"]		= "Force spectators to play by including them when balancing teams" --ph_forcespectatorstoplay
 L["PHXM_ADMIN_NO_H_CONSECUTIVE"]		= "Prevent players from being a Hunter twice in a row (only works in shuffle mode)" --ph_preventconsecutivehunting
 L["PHXM_ADMIN_HUNTER_COUNT"] 		= "Hunter count (0 = automatic)" --ph_huntercount

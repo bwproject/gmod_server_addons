@@ -197,7 +197,7 @@ PHX.PROHIBITTED_MDLS = {
 }
 
 -- This is default English as Fallback. DO NOT TRANSLATE HERE, USE YOUR TRANSLATED LANGUAGE FILE INSTEAD!
-PHX.DefaultHelp = [[Проект Prop Hunt: X.
+PHX.DefaultHelp = [[Проект Prop Hunt: BW.
 
 Проект, делающий Prop Hunt X современным и настраиваемым.
 
