@@ -2,34 +2,34 @@
 
 if not BW_PHX_GROUPS then
     BW_PHX_GROUPS = {
-        { id = "player",    label = "Player",    desc = "обычный игрок" },
+        { id = "user",      label = "User",      desc = "обычный игрок" },
         { id = "uncommon",  label = "Uncommon",  desc = "донат 1" },
         { id = "rare",      label = "Rare",      desc = "донат 2" },
         { id = "mythical",  label = "Mythical",  desc = "донат 3" },
         { id = "legendary", label = "Legendary", desc = "донат 4" },
         { id = "immortal",  label = "Immortal",  desc = "донат 5" },
         { id = "ancient",   label = "Ancient",   desc = "донат 6" },
-        { id = "moderator", label = "Moderator", desc = "модер" },
-        { id = "admin",     label = "Admin",     desc = "админ" },
+        { id = "moderator", label = "Moderator", desc = "модератор" },
+        { id = "admin",     label = "Admin",     desc = "администратор" },
     }
 end
 
--- Наследование групп ULib: player <- uncommon <- ... ; moderator <- admin.
+-- Наследование групп ULib:
+-- User <- Uncommon <- Rare <- Mythical <- Legendary <- Immortal <- Ancient
+-- User <- Moderator <- Admin
 if not BW_PHX_GROUP_INHERITS then
     BW_PHX_GROUP_INHERITS = {
-        player    = { "user" },
-        uncommon  = { "player" },
+        uncommon  = { "user" },
         rare      = { "uncommon" },
         mythical  = { "rare" },
         legendary = { "mythical" },
         immortal  = { "legendary" },
         ancient   = { "immortal" },
-        moderator = { "player" },
+        moderator = { "user" },
         admin     = { "moderator" },
     }
 end
 
--- Отображаемое имя группы, например "Uncommon (донат 1)".
 function BW_PHX_GroupDisplay(id)
     for _, g in ipairs(BW_PHX_GROUPS) do
         if g.id == id then
