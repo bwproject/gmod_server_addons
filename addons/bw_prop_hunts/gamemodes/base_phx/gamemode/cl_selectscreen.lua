@@ -105,7 +105,7 @@ function PANEL:AddSelectButton( strName, fnFunction, txt )
 	btn:SetTextColor( color_white )
 
 	btn.Paint = function(self, w, h)
-		if self:IsHovered() or self:GetSelected() then
+		if self:IsHovered() or self.m_bSelected then
 			surface.SetDrawColor(200,150,12,220)
 		else
 			surface.SetDrawColor(40,40,40,220)
