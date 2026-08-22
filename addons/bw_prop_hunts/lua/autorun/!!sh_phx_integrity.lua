@@ -12,6 +12,7 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 ]=]
 
 if engine.ActiveGamemode() ~= "prop_hunt" then return end
+if SERVER then return end
 
 local EnableChecker = false
 local CheckBaseFretta = false
@@ -40,7 +41,7 @@ local function ManageData( bShouldSave, data )
 	if (!file.Exists( path, "DATA" )) then file.Write( path, KnownConflictWSID ) end
 
 	if (bShouldSave) then
-		if (data) and data ~= nil or data ~= "" then
+		if data ~= nil and data ~= "" then
 			file.Write( path, data )
 			if !file.Exists( path, "DATA" ) or file.Size( path, "DATA" ) < 1 then
 				print("[PH:X Integrity Check] It appears data was failed to save! Reverting to Known Conflicted Addon IDs!")
@@ -372,7 +373,7 @@ hook.Add("InitPostEntity", "PHX.CheckIntegrity", function()
 		return
 	end
 	
-	local CachedWSID = ManageData( false )
+	CachedWSID = ManageData( false )
 	
 	timer.Simple(1, function()
 		-- so this mostly happens if we're on Listen Server with 2 similar addons loaded (mostly from Workshop)

@@ -274,7 +274,7 @@ function GM:PlayerCanSeePlayersChat(txt, onteam, listen, speaker)
 end
 
 -- Called when an entity takes damage
-function EntityTakeDamage(ent, dmginfo)
+local function EntityTakeDamage(ent, dmginfo)
 	local att = dmginfo:GetAttacker()
 	
 	-- Code from: https://facepunch.com/showthread.php?t=1500179 , Special thanks from AlcoholicoDrogadicto(http://steamcommunity.com/profiles/76561198082241865/) for suggesting this.
@@ -827,7 +827,17 @@ function GM:Think()
 	if( !GAMEMODE.IsEndOfGame && ( !GAMEMODE.RoundBased || ( GAMEMODE.RoundBased && GAMEMODE:CanEndRoundBasedGame() ) ) && CurTime() >= GAMEMODE.GetTimeLimit() ) then
 		GAMEMODE:EndOfGame( true )
 	end
-	
+
+	-- Prop spectating is a bit messy so let us clean it up a bit
+	if PHX.SPECTATOR_CHECK < CurTime() then
+		for _, pl in pairs(team.GetPlayers(TEAM_PROPS)) do
+			if IsValid(pl) && !pl:Alive() && pl:GetObserverMode() == OBS_MODE_IN_EYE then
+				hook.Call("ChangeObserverMode", GAMEMODE, pl, OBS_MODE_ROAMING)
+			end
+		end
+		PHX.SPECTATOR_CHECK = CurTime() + PHX.SPECTATOR_CHECK_ADD
+	end
+
 end
 
 -- Set specific variable for checking in player initial spawn, then use Player:IsHoldingEntity()
@@ -1072,7 +1082,8 @@ function GM:OnPreRoundStart(num)
 	end
     
     -- Timer to give grenades, if ph_give_grenade_near_roundend is set.
-    timer.Create( "phx.tmr_GiveGrenade", GAMEMODE.RoundLength - PHX:GetCVar( "ph_give_grenade_roundend_before_time" ), 1, function()
+    local nadeDelay = math.max( GAMEMODE.RoundLength - PHX:GetCVar( "ph_give_grenade_roundend_before_time" ), 1 )
+    timer.Create( "phx.tmr_GiveGrenade", nadeDelay, 1, function()
         if PHX:GetCVar( "ph_give_grenade_near_roundend" ) and GAMEMODE:InRound() then
             for _,h in ipairs(team.GetPlayers( TEAM_HUNTERS )) do
                 if h:Alive() and h:HasWeapon( "weapon_smg1" ) then
@@ -1089,19 +1100,6 @@ function GM:OnPreRoundStart(num)
 	for _,h in ipairs(team.GetPlayers( TEAM_HUNTERS )) do h.PHXHasLoadout = false; end
 	UTIL_StripAllPlayers()
 	UTIL_SpawnAllPlayers()
-end
-
--- Called every server tick.
-function GM:Think()	
-	-- Prop spectating is a bit messy so let us clean it up a bit
-	if PHX.SPECTATOR_CHECK < CurTime() then
-		for _, pl in pairs(team.GetPlayers(TEAM_PROPS)) do
-			if IsValid(pl) && !pl:Alive() && pl:GetObserverMode() == OBS_MODE_IN_EYE then
-				hook.Call("ChangeObserverMode", GAMEMODE, pl, OBS_MODE_ROAMING)
-			end
-		end
-		PHX.SPECTATOR_CHECK = CurTime() + PHX.SPECTATOR_CHECK_ADD
-	end
 end
 
 -- Bonus Drop. Only works on prop_* entities apparently.
@@ -1276,12 +1274,16 @@ function PHX:PlayTaunt( pl, sndTaunt, bIsPitchEnabled, iPitchLevel, bIsRandomize
 			if (TAUNT_FALLBACK) then
 				taunt = "vo/coast/odessa/male01/nlo_cheer0"..math.random(1,4)..".wav"
 			else
+				local iAttempts = 0
 				repeat
 					taunt = PHX:GetRandomTaunt( pl:Team() )
-				until taunt != pl.last_taunt
+					iAttempts = iAttempts + 1
+				until taunt != pl.last_taunt or taunt == nil or iAttempts >= 5
 				pl.last_taunt = taunt
+
+				if !taunt then return end
 			end
-			
+
 		elseif isstring(sndTaunt) then
 			taunt = sndTaunt
 			pl.last_taunt = taunt

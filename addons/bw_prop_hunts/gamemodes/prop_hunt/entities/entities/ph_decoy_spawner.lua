@@ -47,53 +47,58 @@ function ENT:makeEntity()
 		return
 	end
 
+	if !self.EntityNameToSpawn then
+		PHX:VerboseMsg("[Decoy Spawner] No target entity name specified, aborting.\n", 2)
+		return
+	end
+
     local SpawnToEnt = ents.FindByName( self.EntityNameToSpawn )
-	
-	local MaxType = self.SpawnMaxType
-    local Max = math.Clamp( self.SpawnMaximum, -1, #SpawnToEnt )
-	
-	local Chance = self.SpawnChance
+
+	local MaxType = self.SpawnMaxType or 1
+    local Max = math.Clamp( self.SpawnMaximum or -1, -1, #SpawnToEnt )
+
+	local Chance = self.SpawnChance or 1.0
 	local SpawnRandom = self.SpawnRandom
 	local TakeModelFromMap = self.TakeModelFromMap
-	
+
 	local mdl = self.EntModel
-    
+
     if (Chance and Chance > 0) and (math.random() < Chance or Chance >= 1.0) then
 		if (SpawnToEnt) and !table.IsEmpty(SpawnToEnt) then
-			
+
 			if (SpawnRandom) then table.Shuffle( SpawnToEnt ) end
-			
+
 			if MaxType == 2 then
 				Max = math.Round( #SpawnToEnt * Max )
 			elseif MaxType <= 0 then
 				Max = 0
 			end
-			
-			if Max > 0 then Max = math.random(1, Max) end
 
-			local count=0
+			local spawnedCount = 0
 			for _,targEnt in pairs( SpawnToEnt ) do
-			
-				count=count+1
-				if Max > 0 and count == Max then break end
-			
+
+				if Max > 0 and spawnedCount >= Max then break end
+
 				local pos = targEnt:GetPos()
-				
+
 				-- Don't spawn if some decoys spawned near 32 units nearby
+				local bSuppressed = false
 				local findEnt = ents.FindInSphere( pos, 32 )
 				for _,v in ipairs(findEnt) do
 					if IsValid(v) and DontSpawn[v:GetClass()] then
 						PHX:VerboseMsg("[Decoy Spawner] I was trying to spawn decoy but there was prop or decoy near ".. tostring(v:GetPos())..", Surpressing!\n", 2)
-						continue
+						bSuppressed = true
+						break
 					end
 				end
-				
+				if bSuppressed then continue end
+
 				local decoy = ents.Create( "ph_fake_prop" )
 				decoy:SetKeyValue( "health", tostring(math.random(5,50)) )
 				decoy:SetPos( pos )
-				
+
 				decoy:Spawn()
-				
+
 				if (TakeModelFromMap) then
 					decoy:TakeModelFromMap()
 				else
@@ -102,10 +107,12 @@ function ENT:makeEntity()
 				-- Set Pos again
 				decoy:SetPos( decoy:GetPos() - Vector(0,0,decoy:OBBMins().z) )
 				decoy:SetAngles( Angle(0, AngleRand().y, 0) )
-				
+
 				decoy:PhysicsInit(SOLID_BBOX) --decoy:SetSolid(SOLID_BBOX)
 				decoy:SetMoveType(MOVETYPE_NONE)
 				decoy:Activate()
+
+				spawnedCount = spawnedCount + 1
 			end
 		end
 	end
@@ -120,7 +127,7 @@ function ENT:AcceptInput(name, act, cal, data)
         self.SpawnChance = tonumber(data)
         return true
     elseif name == "ChangeTarget" then
-        self.EntityNameToSpawn(tostring(data))
+        self.EntityNameToSpawn = tostring(data)
         return true
     elseif name == "SetMax" then
 		self.SpawnMaximum = tonumber(data)

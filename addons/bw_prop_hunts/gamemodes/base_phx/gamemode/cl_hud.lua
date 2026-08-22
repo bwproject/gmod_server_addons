@@ -291,11 +291,10 @@ function GM:UpdateHUD_Alive( InRound )
 
 end
 
---[[
-	this thing is obsolete/depcretaed. Sorry!
-
 function GM:UpdateHUD_AddedTime( iTimeAdded )
 	// to do or to override, your choice
 end
-usermessage.Hook( "RoundAddedTime", function( um ) if( GAMEMODE && um ) then GAMEMODE:UpdateHUD_AddedTime( um:ReadFloat() ) end end )
-]]--
+
+net.Receive( "RoundAddedTime", function()
+	if ( GAMEMODE ) then GAMEMODE:UpdateHUD_AddedTime( net.ReadFloat() ) end
+end )

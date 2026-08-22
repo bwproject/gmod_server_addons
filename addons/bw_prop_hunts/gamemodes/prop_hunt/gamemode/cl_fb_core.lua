@@ -28,6 +28,16 @@ end
 
 local f = {}
 f.__index = f
+
+-- Safely digs into a DIconLayout-based list to fetch its icon children.
+local function getListIcons(list)
+	local ok, icons = pcall(function()
+		return list:GetChildren()[1]:GetChildren()[1]:GetChildren()
+	end)
+	if ok and istable(icons) then return icons end
+	return {}
+end
+
 function PHXPM_openFileBrowser( ply, global, sub, svContents, wTitle )
 
 	if ( !ply:PHXIsStaff() ) then return end
@@ -223,13 +233,13 @@ function PHXPM_openFileBrowser( ply, global, sub, svContents, wTitle )
 		--[[ PANEL FUNCTIONS, MUST BE WRITTEN HERE ]] --
 		
 		function f:markPropExist( mdlname )
-			local icons = self.list:GetChildren()[1]:GetChildren()[1]:GetChildren()
-			
+			local icons = getListIcons( self.list )
+
 			if icons and icons ~= nil then
 				if (not table.IsEmpty(icons)) then
 					for _,ic in ipairs(icons) do
 						local realIcon = ic:GetChildren()[1]
-						if realIcon:GetModelName() == mdlname then
+						if IsValid(realIcon) and realIcon:GetModelName() == mdlname then
 							ic._oldbg = ic:GetBackgroundColor()
 							ic:SetBackgroundColor(Color(92,197,222))
 							timer.Simple(2, function()
@@ -305,7 +315,7 @@ function PHXPM_openFileBrowser( ply, global, sub, svContents, wTitle )
 		end
 		
 		f.btn.DoClick = function()
-			local icons = f.list:GetChildren()[1]:GetChildren()[1]:GetChildren()
+			local icons = getListIcons( f.list )
 			
 			if icons and icons ~= nil then
 				if (not table.IsEmpty(icons)) then
@@ -326,14 +336,14 @@ function PHXPM_openFileBrowser( ply, global, sub, svContents, wTitle )
 		end
 		
 		function f:updatePreview()
-			local icons = self.list:GetChildren()[1]:GetChildren()[1]:GetChildren()
-			
+			local icons = getListIcons( self.list )
+
 			if icons and icons ~= nil then
 				if (not table.IsEmpty(icons)) then
 					for _,ic in ipairs(icons) do
-						-- don't remove, but we'll mark as 'markeddontexist' instead!						
+						-- don't remove, but we'll mark as 'markeddontexist' instead!
 						local realIcon = ic:GetChildren()[1]
-						if !table.HasValue(_G[global][sub], realIcon:GetModelName()) then
+						if IsValid(realIcon) and !table.HasValue(_G[global][sub], realIcon:GetModelName()) then
 							ic.markeddontexist = true
 							ic:SetBackgroundColor(Color(255,200,16))
 							realIcon:SetToolTip(PHX:FTranslate("PHZ_tooltip_wasmarked"))

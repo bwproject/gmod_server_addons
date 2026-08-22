@@ -425,20 +425,21 @@ local function MainFrame()
 	else
 		defaultList = PHX.TAUNTS[LocalPlayer():GetVar("tauntWindowCategorie", PHX.DEFAULT_CATEGORY)]
 	end
-	
+
 	--in case categorie isn't set for the 2 teams
-	if defaultList[LocalPlayer():Team()]==nil or !istable(defaultList[LocalPlayer():Team()]) then
+	if (!istable(defaultList)) or defaultList[LocalPlayer():Team()]==nil or !istable(defaultList[LocalPlayer():Team()]) then
 		defaultList = PHX.TAUNTS[PHX.DEFAULT_CATEGORY]
+		if (!istable(defaultList)) then defaultList = {} end
 	end
-	
+
 	-- Make sure each category isn't empty and has lines.
 	local hasLines = false
-	
+
 	--Load favorite taunts before usage in loop below
 	--loadFavoriteTaunts()
-	
+
 	-- add default list and check if there is a taunt inside the category
-	if !table.IsEmpty(defaultList[LocalPlayer():Team()]) then
+	if istable(defaultList) and !table.IsEmpty(defaultList[LocalPlayer():Team()] or {}) then
 		for name,_ in pairs( defaultList[LocalPlayer():Team()] ) do
 			local newCreatedLine = window.list:AddLine( name )
 			createIconForLine(newCreatedLine,name)
@@ -608,7 +609,9 @@ local function MainFrame()
 	local function TranslateTaunt(category, linename)
 		local tm = LocalPlayer():Team()
 		if category != PHX.FAVORITE_CATEGORY then
-			return linename, PHX.TAUNTS[category][tm][linename]
+			local catTbl = PHX.TAUNTS[category]
+			if !istable(catTbl) or !istable(catTbl[tm]) then return linename end
+			return linename, catTbl[tm][linename]
 		else
 			--Easier method would be to save taunt path into favoriteTaunt table and only have to get it from there
 			for k,v in pairs(PHX.TAUNTS) do

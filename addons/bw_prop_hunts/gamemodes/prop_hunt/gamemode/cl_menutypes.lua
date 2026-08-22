@@ -126,7 +126,7 @@ end,
 		
 		if !d.init or d.init == nil then
 			dval = PHX:QCVar(c)	-- use from 'c' instead.
-		elseif isstring(dval) or d.init == "DEF_CONVAR" then
+		elseif isstring(d.init) or d.init == "DEF_CONVAR" then
 			dval = PHX:QCVar(c)	-- any string, will revert to 'c' anyway.
 		else
 			dval = d.init -- assume it's correct number value. We keep this because there are still GetCVar() being used in cl_menu.lua
@@ -333,7 +333,7 @@ end,
 				-- because this is for client, force this to use ph_cl_language.
 				RunConsoleCommand("ph_cl_language", cbox.selLang)
 				chat.AddText( Color(60,220,30), PHX:Translate( "LANGUAGE_CHANGED", cbox.selLangName ) )
-				print("[PHX] Язык изменён на " .. cbox.selLangName )
+				print("[PHX] Language changed to " .. cbox.selLangName )
 				if PHX.UI.MainForm:IsValid() then PHX.UI.MainForm:Close() end
 			end
 			
@@ -353,7 +353,7 @@ end,
 	local langCode = cvlang
 	local langList = PHX.LANGUAGES
 	
-	if (!table.IsEmpty(langList[langCode])) then
+	if (langList[langCode] and !table.IsEmpty(langList[langCode])) then
 		cbox:SetValue( langList[langCode].Name )
 	else
 		cbox:SetValue( PHX:QTrans({ "PHXM_LANGUAGE_NOT_FOUND", langCode }) )
@@ -470,7 +470,11 @@ end,
     end
     
         local cvar = GetConVar(c):GetString()
-        cbox:SetValue( PHX:QTrans( { d.data[cvar].name, cvar } ) )
+        if d.data[cvar] and istable(d.data[cvar]) then
+            cbox:SetValue( PHX:QTrans( { d.data[cvar].name, cvar } ) )
+        else
+            cbox:SetValue( cvar )
+        end
 
         for val,data in SortedPairs(d.data) do
             if istable(data) then

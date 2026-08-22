@@ -7,6 +7,8 @@ ENT.MsgPrefix 	= "[PH:BW Item Spawner] "
 local cvEnableTeamSpawner --temp cvar because we dont want to mess sh_convars.lua due to new upcoming PHX update
 if !ConVarExists( "ph_enable_team_itemspawner" ) then
 	cvEnableTeamSpawner = CreateConVar( "ph_enable_team_itemspawner", "1", FCVAR_SERVER_CAN_EXECUTE+FCVAR_ARCHIVE+FCVAR_REPLICATED, "Enable or Disable Team Item Spawner, this is where Lucky Balls and Devil Crystals are spawned.", 0, 1 )
+else
+	cvEnableTeamSpawner = GetConVar( "ph_enable_team_itemspawner" )
 end
 
 if SERVER then
@@ -21,8 +23,8 @@ function ENT:Initialize()
 	
 	if SERVER then
 		self.RemoveAfterSpawn = self:HasSpawnFlags(128)
+		self:SetSilent( self:HasSpawnFlags(64) )
 	end
-	self:SetSilent( self:HasSpawnFlags(64) )
 end
 
 function ENT:SetupDataTables()

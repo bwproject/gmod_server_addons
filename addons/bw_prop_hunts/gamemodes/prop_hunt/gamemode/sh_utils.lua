@@ -48,11 +48,12 @@ end
 
 if SERVER then
 	function util.IsStaff( ply )
-		if ( (game.IsDedicated() and ply == NULL) or (ply ~= NULL and ply:PHXIsStaff()) ) then
+		if ( ply == NULL or !IsValid(ply) ) then
+			-- Server console / non-player caller: treat as staff.
 			return true
 		end
-		
-		return false
+
+		return ply:PHXIsStaff()
 	end
 end
 

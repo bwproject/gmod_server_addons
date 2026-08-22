@@ -121,13 +121,10 @@ function GM:AddRoundTime( iAddedTime )
 	
 	SetGlobalFloat( "RoundEndTime", GetGlobalFloat( "RoundEndTime", CurTime() ) + iAddedTime );
 	timer.Adjust( "RoundEndTimer", GetGlobalFloat( "RoundEndTime" ) - GetGlobalFloat( "RoundStartTime" ), 0, function() GAMEMODE:RoundTimerEnd() end );
-	
-	local rf = RecipientFilter()
-	rf:AddAllPlayers()
 
-	umsg.Start( "RoundAddedTime", rf ); // send a umsg so you can do something with the HUD
-		umsg.Float( iAddedTime ); // time added
-	umsg.End();
+	net.Start( "RoundAddedTime" ); // send a net message so you can do something with the HUD
+		net.WriteFloat( iAddedTime ); // time added
+	net.Broadcast();
 
 end
 

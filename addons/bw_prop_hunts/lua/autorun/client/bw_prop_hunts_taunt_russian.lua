@@ -27,11 +27,19 @@ local function TranslatePanel(panel)
 end
 
 local function TranslateTauntWindows()
-    for _, frame in ipairs(vgui.GetWorldPanel():GetChildren() or {}) do
-        if IsValid(frame) and frame.GetTitle and frame:GetTitle() == PHX:FTranslate("TM_WINDOW_TITLE") then
-            TranslatePanel(frame)
+    if not istable(PHX) or not isfunction(PHX.FTranslate) then return end
+
+    local worldPanel = vgui.GetWorldPanel()
+    if not IsValid(worldPanel) then return end
+
+    for _, frame in ipairs(worldPanel:GetChildren() or {}) do
+        if IsValid(frame) and frame.GetTitle and isfunction(frame.GetTitle) then
+            local ok, title = pcall(frame.GetTitle, frame)
+            if ok and title == PHX:FTranslate("TM_WINDOW_TITLE") then
+                TranslatePanel(frame)
+            end
         end
     end
 end
 
-timer.Create("BWPHX_TauntRussianUI", 0.25, 0, TranslateTauntWindows)
+timer.Create("BWPHX_TauntRussianUI", 1, 0, TranslateTauntWindows)

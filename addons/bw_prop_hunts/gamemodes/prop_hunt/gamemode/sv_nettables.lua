@@ -49,7 +49,9 @@ local nets = {
 
     "PHX.DeathNoticeDecoy",
 	"PHX.UpdatePropbanInfo",
-    
+
+	"PlayerKilledByPlayer",
+
 	"PHX.scan_ReqTaunts",
 	"PHX.scan_SendTauntLists",
 

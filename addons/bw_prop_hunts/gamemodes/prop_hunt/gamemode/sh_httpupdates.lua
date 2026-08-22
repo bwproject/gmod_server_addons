@@ -149,6 +149,10 @@ if CLIENT then
 		if (file.Exists(PHX.ConfigPath .. "/phx_update_info.txt", "DATA")) then
 			local json = file.Read(PHX.ConfigPath .. "/phx_update_info.txt", "DATA")
 			data = util.JSONToTable(json)
+			if !istable(data) then
+				PHX:MsgBox("UPDATE_NOTIFY_MSG_NOTFOUND", "UPDATE_NOTIFY_MSG_TITLE", "MISC_OK")
+				return
+			end
 		else
 			PHX:MsgBox("UPDATE_NOTIFY_MSG_NOTFOUND", "UPDATE_NOTIFY_MSG_TITLE", "MISC_OK")
 			return
@@ -163,7 +167,7 @@ if CLIENT then
 		w.richtext:Dock(FILL)
 		w.richtext:DockMargin(4,8,4,8)
 		w.richtext:InsertColorChange(255,205, 50,255)
-		w.richtext:AppendText(data.notice)
+		w.richtext:AppendText( tostring( data.notice or "" ) )
 		function w.richtext:PerformLayout()
 			self:SetFontInternal("PHX.TopBarFont")
 		end
@@ -176,7 +180,7 @@ if CLIENT then
 		w.button:SetSize(0,48)
 		w.button:SetText( PHX:FTranslate( "UPDATE_BTN_SEEFULL" ) )
 		function w.button:DoClick()
-			gui.OpenURL(data.url)
+			if isstring( data.url ) then gui.OpenURL(data.url) end
 		end
 		
 		w.frame:MakePopup()

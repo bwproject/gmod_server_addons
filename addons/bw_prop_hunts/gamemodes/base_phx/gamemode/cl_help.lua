@@ -3,7 +3,7 @@ function GM:ShowHelp()
 
 	--if ( !IsValid( Help ) ) then
 	
-		local Help = vgui.CreateFromTable( vgui_Splash )
+		local Help = vgui.CreateFromTable( GAMEMODE.VSplashScreen )
 		Help:SetHeaderText( GAMEMODE.Name or "Untitled Gamemode" )
 		Help:SetForHelp( "HELP_F1" )
 		-- Help:SetHoverText( GAMEMODE.Help or "No Help Avaliable" );

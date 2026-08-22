@@ -828,7 +828,7 @@ function PHX:ShowTutorPopup()
 					elseif eData.type == "convar" then
 						var = input.GetKeyName( GetConVar(eId):GetInt() ):upper()
 					elseif eData.type == "default" then
-						if (string.find(id, "^KEY_")) then
+					if (string.find(eId, "^KEY_")) then
 							var = PHX:FTranslate(eId):upper()
 						else
 							var = eId:upper()

@@ -24,12 +24,10 @@ local function AutoTauntThink()
 				local pitchRandEnabled 	= ply:GetInfoNum( "ph_cl_pitch_apply_random", 0 )
 				local pitchlevel 		= ply:GetInfoNum( "ph_cl_pitch_level", 100 )
 				local isRandomized 		= ply:GetInfoNum( "ph_cl_pitch_randomized_random", 0 )
-				local rand_taunt 		= table.Random(PHX.CachedTaunts[TEAM_PROPS])
-				
-				if !isstring(rand_taunt) then rand_taunt = tostring(rand_taunt); end
+			local rand_taunt = table.Random(PHX.CachedTaunts[TEAM_PROPS])
 
 				-- Play random HL2 cheer sound because taunt is empty.
-				if (TAUNT_FALLBACK) then
+				if (TAUNT_FALLBACK or !isstring(rand_taunt)) then
 					PHX:PlayTaunt( ply, "vo/coast/odessa/male01/nlo_cheer0"..math.random(1,4)..".wav", 0, 100, 0, "LastTauntTime" )
 					return;
 				end

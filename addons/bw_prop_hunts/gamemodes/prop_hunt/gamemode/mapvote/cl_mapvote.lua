@@ -109,10 +109,10 @@ function PANEL:Init()
 	
 	self.CancelBtn = vgui.Create("DButton", self.Canvas)
 	self.CancelBtn:SetPos(0,0)
-	self.CancelBtn:SetText("Отменить голосование")
+	self.CancelBtn:SetText("Cancel Vote")
 	self.CancelBtn:SetSize(160,32)
 	self.CancelBtn.DoClick = function()
-		chat.AddText( "Голосование за карту остановлено." )
+		chat.AddText( "Map vote has been stopped." )
 		LocalPlayer():ConCommand("mv_stop")
 		self:SetVisible(false)
 	end
@@ -217,17 +217,17 @@ function PANEL:Think()
                 v:Remove()
             else
                 local bar = self:GetMapButton(MapVote.Votes[v.Player:SteamID()])
-                
-                if(MapVote.HasExtraVotePower(v.Player)) then
-                    bar.NumVotes = bar.NumVotes + 2
-                else
-                    bar.NumVotes = bar.NumVotes + 1
-                end
-                
+
                 if(IsValid(bar)) then
+                    if(MapVote.HasExtraVotePower(v.Player)) then
+                        bar.NumVotes = bar.NumVotes + 2
+                    else
+                        bar.NumVotes = bar.NumVotes + 1
+                    end
+
                     local CurrentPos = Vector(v.x, v.y, 0)
                     local NewPos = Vector((bar.x + bar:GetWide()) - 21 * bar.NumVotes - 2, bar.y + (bar:GetTall() * 0.5 - 10), 0)
-                    
+
                     if(not v.CurPos or v.CurPos ~= NewPos) then
                         v:MoveTo(NewPos.x, NewPos.y, 0.3)
                         v.CurPos = NewPos
@@ -240,7 +240,7 @@ function PANEL:Think()
     
     local timeLeft = math.Round(math.Clamp(MapVote.EndTime - CurTime(), 0, math.huge))
     
-    self.countDown:SetText(tostring(timeLeft or 0).." сек.")
+    self.countDown:SetText(tostring(timeLeft or 0).." sec.")
     self.countDown:SizeToContents()
     self.countDown:CenterHorizontal()
 end

@@ -58,9 +58,9 @@ function GM:ShowClassChooser( TEAMID )
 	if ( !GAMEMODE.SelectClass ) then return end
 	if ( ClassChooser ) then ClassChooser:Remove() end
 
-	ClassChooser = vgui.CreateFromTable( vgui_Splash )
-	ClassChooser:SetHeaderText( "Выбор класса" )
-	ClassChooser:SetHoverText( "Кем вы хотите быть?" );
+	ClassChooser = vgui.CreateFromTable( GAMEMODE.VSplashScreen )
+	ClassChooser:SetHeaderText( "Class Selection" )
+	ClassChooser:SetHoverText( "Who do you want to be?" );
 
 	Classes = team.GetClass( TEAMID )
 	for k, v in SortedPairs( Classes ) do
@@ -71,7 +71,7 @@ function GM:ShowClassChooser( TEAMID )
 			displayname = Class.DisplayName
 		end
 		
-		local description = "Нажмите, чтобы появиться за " .. displayname
+		local description = "Click to spawn as " .. displayname
 		
 		if( Class and Class.Description ) then
 			description = Class.Description

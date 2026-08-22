@@ -14,7 +14,12 @@ function PHX:AddLanguage( tbl )
 end
 
 function PHX:InsertToLanguage( tbl, code )
-	if (tbl and type(tbl) == "table" and tbl ~= nil) and (code and (code ~= nil or code ~= "")) then		
+	if (tbl and type(tbl) == "table" and tbl ~= nil) and (code and (code ~= nil or code ~= "")) then
+		if !PHX.LANGUAGES[code] or PHX.LANGUAGES[code] == nil then
+			PHX:VerboseMsg("[LANG] Insertion failed: language code " .. code .. " does not exist.", 2)
+			return
+		end
+
 		PHX:VerboseMsg("[LANG] Adding External insertion language code: (".. code ..")")
 		
 		for STRINGCODE, TRANSLATION in pairs(tbl) do

@@ -106,16 +106,29 @@ if SERVER then
 
     function ENT:TakeModelFromMap()
         local physProp = ents.FindByClass("prop_physics*")
+		if (#physProp <= 0) then
+			-- Map has no props, fallback to our default model.
+			self:ChangeModel( self:GetOverrideModel() )
+			return
+		end
+
         local RandomProp = physProp[math.random(1, #physProp)]
-        
+
         self:SetModel( RandomProp:GetModel() )
         self:SetCollisionBounds( RandomProp:GetCollisionBounds() )
     end
 
     function ENT:ChangeModel( strEnt, pos )
-        self:SetModel( strEnt:GetModel() )
-        self:SetCollisionBounds( strEnt:GetCollisionBounds() )
-    end
+		if (!strEnt) then return end
+
+		if (isstring(strEnt)) then
+			self:SetModel( strEnt )
+		else
+			if (!IsValid(strEnt)) then return end
+			self:SetModel( strEnt:GetModel() )
+			self:SetCollisionBounds( strEnt:GetCollisionBounds() )
+		end
+	end
     
 	-- Unused, but in case if there's something else is needed.
     function ENT:TheOwner( ent )
@@ -135,7 +148,7 @@ if SERVER then
 				hook.Call("PH_OnFakePropKilled", nil, attacker)
 				
 				-- Steal attacker's frags and give the frags to the owner of this prop!
-                if IsValid(owner) or owner ~= NULL then
+                if IsValid(owner) and attacker != owner then
                     attacker:SetFrags( attacker:Frags() - 1 )
                     owner:AddFrags( 1 )
                     owner.propdecoy = nil

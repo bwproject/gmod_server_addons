@@ -67,10 +67,12 @@ function ENT:Use(activator)
 		
 		if activator:Team() == TEAM_PROPS && activator:Alive() then
 			local cur
+			local iAttempts = 0
 			repeat
 				cur = PHX.DEVIL_BALL.Items[math.random(1, #PHX.DEVIL_BALL.Items)]
-			until cur ~= self.getfunction
-			
+				iAttempts = iAttempts + 1
+			until cur ~= self.getfunction or #PHX.DEVIL_BALL.Items <= 1 or iAttempts >= 5
+
 			self.getfunction = cur
 			self.getfunction(activator,self)
 			

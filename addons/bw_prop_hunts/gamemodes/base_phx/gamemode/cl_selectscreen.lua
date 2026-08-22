@@ -28,7 +28,7 @@ function PANEL:Init()
 		self.pnlMain:EnableVerticalScrollbar()
 
 	self.btnCancel = vgui.Create( "DButton", self )
-		self.btnCancel:SetText( PHX:FTranslate("MISC_CLOSE") or "Закрыть" )
+		self.btnCancel:SetText( PHX:FTranslate("MISC_CLOSE") or "Close" )
 		self.btnCancel:SetSize( 120, 32 )
 		self.btnCancel:SetFont( "HudHintTextLarge" )
 		self.btnCancel:SetFGColor( color_white )
@@ -78,7 +78,7 @@ end
 
 function PANEL:SetForHelp( strHelpText, ContribsText )
 
-	self.lblHoverText:SetText( PHX:FTranslate("HELP_F1") or "Ошибка: справка не найдена." )
+	self.lblHoverText:SetText( PHX:FTranslate("HELP_F1") or "Error: Help text not found." )
 
 	timer.Simple(0, function()
 		self.lblHoverText.PerformLayout = function(me)

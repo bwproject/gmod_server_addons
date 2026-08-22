@@ -11,8 +11,8 @@ function Register( name, classtable )
 end
 
 function Get( name )
-	
-	if ( !ClassTables[ name ] ) then return {} end
+
+	if ( !ClassTables[ name ] ) then return nil end
 
 	// Derive class here.
 	// I have favoured using table.Inherit over using a meta table 

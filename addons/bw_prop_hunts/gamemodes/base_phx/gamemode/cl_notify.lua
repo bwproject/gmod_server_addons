@@ -19,7 +19,7 @@ function GM:NotifyGMVote( name, gamemode, votesneeded )
 	local dl = vgui.Create( "DLabel" )
 	dl:SetFont( "FRETTA_MEDIUM_SHADOW" )
 	dl:SetTextColor( Color( 255, 255, 255, 255 ) )
-	dl:SetText( Format( "%s проголосовал за %s (нужно ещё %i)", name, gamemode, votesneeded ) )
+	dl:SetText( Format( "%s voted for %s (%i more vote(s) needed)", name, gamemode, votesneeded ) )
 	dl:SizeToContents()
 	g_LeftNotify:AddItem( dl, 5 )
 

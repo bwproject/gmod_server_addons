@@ -80,16 +80,20 @@ hook.Add("PH_CustomTabMenu", "ProjectBW.GroupManager", function(tab, pVgui, Pain
         local cur = ply:GetUserGroup()
         local selected = 1
         local known = cur == "user"
+        local idx = 1
         for i, g in ipairs(BW_PHX_GROUPS) do
-            combo:AddChoice(BW_PHX_GroupDisplay(g.id), g.id)
-            if g.id == cur then
-                selected = i + 1
-                known = true
+            if g.id ~= "user" then
+                combo:AddChoice(BW_PHX_GroupDisplay(g.id), g.id)
+                idx = idx + 1
+                if g.id == cur then
+                    selected = idx
+                    known = true
+                end
             end
         end
         if not known then
             combo:AddChoice(cur .. " (вне списка)", cur)
-            selected = combo:GetNumItems()
+            selected = #combo.Choices
         end
         combo:ChooseOptionID(selected)
 

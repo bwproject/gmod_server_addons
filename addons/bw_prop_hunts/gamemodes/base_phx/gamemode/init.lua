@@ -6,6 +6,7 @@
 
 util.AddNetworkString("PlayableGamemodes")
 util.AddNetworkString("fretta_teamchange")
+util.AddNetworkString("RoundAddedTime")
 
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
@@ -69,12 +70,12 @@ function GM:Think()
 	self.BaseClass:Think()
 	
 	for k,v in pairs( player.GetAll() ) do
-	
+
 		local Class = v:GetPlayerClass()
-		if ( !Class ) then return end
-		
+		if ( !Class ) then continue end
+
 		v:CallClassFunction( "Think" )
-		
+
 	end
 
 	// Game time related
@@ -277,7 +278,7 @@ function GM:PlayerRequestClass( ply, class, disablemessage )
 		ply.m_SpawnAsClass = RequestedClass
 		
 		if ( !disablemessage ) then
-			ply:ChatPrint( "Ваш класс изменится на '".. player_class.GetClassName( RequestedClass ) .. "' при возрождении" )
+			ply:ChatPrint( "Your class will change to '".. player_class.GetClassName( RequestedClass ) .. "' when you respawn" )
 		end
 		
 	else

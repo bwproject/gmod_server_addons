@@ -13,6 +13,15 @@ RTV.Wait = 60 -- The wait time in seconds. This is how long a player has to wait
 
 RTV._ActualWait = CurTime() + RTV.Wait
 
+hook.Add( "InitPostEntity", "RTV.ResetWait", function()
+	RTV._ActualWait = CurTime() + RTV.Wait
+	RTV.TotalVotes = 0
+
+	for _,v in ipairs( player.GetAll() ) do
+		v.RTVoted = nil
+	end
+end )
+
 RTV.PlayerCount = MapVote.PHXConfig.RTVPlayerCount or 3
 
 function RTV.ChatPrint( mType, ply, bBroadcast, msg, ... )
@@ -92,7 +101,7 @@ function RTV.CanVote( ply )
 		return false, "PHXM_MV_MUST_WAIT"
 	end
 
-	if GetGlobalBool( "In_Voting" ) then
+	if GetGlobalBool( "In_Voting" ) or MapVote.Allow then
 		return false, "PHXM_MV_VOTEINPROG"
 	end
 
@@ -103,7 +112,9 @@ function RTV.CanVote( ply )
 	if RTV.ChangingMaps then
 		return false, "PHXM_MV_ALR_IN_VOTE"
 	end
-	if plyCount < RTV.PlayerCount then
+
+	local needPly = MapVote.PHXConfig.RTVPlayerCount or RTV.PlayerCount
+	if plyCount < needPly then
         return false, "PHXM_MV_NEED_MORE_PLY"
     end
 

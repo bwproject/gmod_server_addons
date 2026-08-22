@@ -32,9 +32,10 @@ end)
 
 local RecentMaps = {}
 if file.Exists( RecentMapsFile, "DATA" ) then
-    RecentMaps = util.JSONToTable(file.Read( RecentMapsFile, "DATA" ))
-else
-    RecentMaps = {}
+    local jsonMaps = util.JSONToTable(file.Read( RecentMapsFile, "DATA" ))
+    if istable(jsonMaps) then
+        RecentMaps = jsonMaps
+    end
 end
 
 if ConVarExists("mv_maplimit") then
@@ -156,7 +157,7 @@ function MapVote.PHXStart(length, current, limit, prefix)
 	if (not PHX:GetCVar( "ph_enable_mapvote" )) then
 		MsgAll("PH:BW MapVote is disabled!\n")
 		for _,v in pairs(player.GetAll()) do
-			v:ChatPrint("Предупреждение: Голосование за карту отключено.")
+			v:ChatPrint("Warning: Map voting is disabled.")
 		end
 		return
 	end
@@ -166,7 +167,7 @@ function MapVote.PHXStart(length, current, limit, prefix)
     limit 		= limit or MapVote.PHXConfig.MapLimit or 24
     prefix 		= prefix or MapVote.PHXConfig.MapPrefixes
     
-	local cooldown 	= MapVote.PHXConfig.EnableCooldown or (!MapVote.PHXConfig.EnableCooldown and true)
+	local cooldown 	= MapVote.PHXConfig.EnableCooldown or false
 
     local is_expression = false
 	local ulxmap = MapVote.GetFromULX()
@@ -175,8 +176,12 @@ function MapVote.PHXStart(length, current, limit, prefix)
         local info = file.Read(GAMEMODE.Folder.."/"..GAMEMODE.FolderName..".txt", "GAME")
 
         if(info) then
-            local info = util.KeyValuesToTable(info)
-            prefix = info.maps
+            local infotbl = util.KeyValuesToTable(info)
+            if istable(infotbl) and infotbl.maps then
+                prefix = infotbl.maps
+            else
+                error("MapVote Prefix can not be loaded from gamemode")
+            end
         else
             error("MapVote Prefix can not be loaded from gamemode")
         end

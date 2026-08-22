@@ -46,9 +46,16 @@ local function DoConfig()
 	]]
 	
 	for i=1,#data do
-		local tent = ents.FindByModel(data[i][1])
-		local min 	= Vector(data[i][2]["min"][1],data[i][2]["min"][2],data[i][2]["min"][3])
-		local max 	= Vector(data[i][2]["max"][1],data[i][2]["max"][2],data[i][2]["max"][3])
+		local entData = data[i]
+		if !istable(entData) or !isstring(entData[1]) or !istable(entData[2])
+			or !istable(entData[2]["min"]) or !istable(entData[2]["max"]) then
+			PHX:VerboseMsg("[OBB MODIFIER] Skipping malformed OBB config entry #"..i..".", 2)
+			continue
+		end
+
+		local tent = ents.FindByModel(entData[1])
+		local min 	= Vector(entData[2]["min"][1] or 0, entData[2]["min"][2] or 0, entData[2]["min"][3] or 0)
+		local max 	= Vector(entData[2]["max"][1] or 0, entData[2]["max"][2] or 0, entData[2]["max"][3] or 0)
 		--[[ local dmin 	= Vector(data[i][2]["dmin"][1],data[i][2]["dmin"][2],data[i][2]["dmin"][3])
 		local dmax 	= Vector(data[i][2]["dmax"][1],data[i][2]["dmax"][2],data[i][2]["dmax"][3]) ]]
 		

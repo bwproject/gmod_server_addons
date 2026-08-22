@@ -145,9 +145,9 @@ local net_functions = {
 	["SvCommandReq"] = function(ply, data)
 		local cmd = data[1]
 		local valbool = data[2]
-		
+
 		if doAdminStrictCheck(ply) then
-			doCommand(ply, cmd, math.Round(valbool), "" )
+			doCommand(ply, cmd, tonumber(valbool) and math.Round(valbool) or tobool(valbool), "" )
 		else
 			doKickInvalidAccess(ply, cmd, "")
 		end

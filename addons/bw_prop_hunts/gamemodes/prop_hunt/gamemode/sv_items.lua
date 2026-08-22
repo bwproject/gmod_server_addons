@@ -433,7 +433,7 @@ PHX.DEVIL_BALL.PropRevenge = {
 						timer.Remove(pl.tmr_item)	-- immediately clear timer.
 						PHX.DEVIL_BALL:ResetPlayerStuff(pl)
 					end
-				elseif !pl:Alive() then
+				elseif IsValid(pl) and !pl:Alive() then
 					print("[PHX Devil Crystal] Removing Timer '" .. pl.tmr_item .. "' because player was dead!")
 					timer.Remove(pl.tmr_item)
 					print("[PHX Devil Crystal] Unsetting parameters on dead player.")
@@ -597,7 +597,8 @@ local function ResetEverything()
 			
 			if v:Alive() then
 				if v:Team() == TEAM_PROPS && v._OriginalWSpeed then v:SetWalkSpeed(v._OriginalWSpeed) end
-				if v:Team() == TEAM_PROPS && v.ph_prop:GetMaterial() then v.ph_prop:DrawShadow(true); v.ph_prop:SetMaterial(""); end
+				local phProp = v.ph_prop
+				if v:Team() == TEAM_PROPS && IsValid(phProp) && phProp:GetMaterial() then phProp:DrawShadow(true); phProp:SetMaterial(""); end
 				if v:IsFrozen() then v:Freeze(false) end
 			end
 		end

@@ -34,6 +34,11 @@ if not GAMEMODE then
 	return
 end
 
+--// Lua refresh path (GAMEMODE exists): still respect the convar before activating eChat.
+if not PHX:QCVar("ph_use_new_chat") then
+	return
+end
+
 --// Builds the chatbox but doesn't display it
 function eChat.buildBox()
 	eChat.frame = vgui.Create("DFrame")

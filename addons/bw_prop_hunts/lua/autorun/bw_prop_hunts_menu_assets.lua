@@ -1,7 +1,5 @@
 -- ProjectBW Prop Hunt X - centralized menu assets.
--- Меняй пути ниже, если захочешь заменить оформление меню.
-
-if SERVER then return end
+-- Shared: paths/URLs are harmless server-side and needed by sh_init.lua.
 
 PHX = PHX or {}
 PHX.BWMenuAssets = PHX.BWMenuAssets or {
@@ -25,8 +23,6 @@ PHX.BWMenuAssets = PHX.BWMenuAssets or {
     DonateRushURL = "https://dalink.to/the_mr_mes109",
     ShopURL = "https://projectbw.ru/shop",
 
-    -- Эти страницы оставлены совместимыми с оригинальным Prop Hunt X.
-    -- Если добавишь свои изображения в phx_menu, достаточно заменить пути здесь.
     HelpPages = {
         "vgui/phx_menu/phhelp1.png",
         "vgui/phx_menu/phhelp2.png",

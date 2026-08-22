@@ -789,9 +789,11 @@ end)
 
 -- AAAAAAARGGHHHHHH
 if CLIENT then
+	local AAAAAAARGGHHHHHH_SOUND = "vo/coast/odessa/male01/nlo_cheer04.wav"
+
 	function PHX:AAAAAAARGGHHHHHH()
 		print("oh no, it\'s the AAAAAAARGGHHHHHH AAAHHHHHHHHHHHHHHHH!")
-		surface.PlaySound(PHX.TAUNTS[PROP_TAUNTS]["DX: AAAAAAARGGHHHHHH"])
+		surface.PlaySound(AAAAAAARGGHHHHHH_SOUND)
 	end
 	concommand.Add("aaaaaaargghhhhhh", function() 
 		PHX:AAAAAAARGGHHHHHH()
