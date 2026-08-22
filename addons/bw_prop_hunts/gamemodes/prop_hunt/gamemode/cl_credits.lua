@@ -25,7 +25,6 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
 		author	= GAMEMODE.Author,
 		version = GAMEMODE._VERSION,
 		rev 	= GAMEMODE.REVISION,
-		credits	= table.concat(GAMEMODE.PHXContributors, ", "),
 		lgit	= "https://github.com/Wolvin-NET/prophuntx/",
 		lhome	= "https://gmodgameservers.com/prophuntx",
 		ldonate = GAMEMODE.DONATEURL,
@@ -63,12 +62,6 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
 		[6] = {"PHXM_ABOUT_BTN_WIKI",		function() gui.OpenURL(label.lwiki)     end}
 	},grid,"")
 	pVgui("","spacer",nil,grid,"" )
-	pVgui("","label","Trebuchet24",grid, {"PHXM_ABOUT_THANKS", ""}) --label.credits
-    
-    for _,names in pairs(GAMEMODE.PHXContributors) do
-        pVgui("","label","PHX.TopBarFont",grid, names )
-    end
-	
 	local PanelModify = tab:AddSheet("", panel, "vgui/phx_menu/m_info.png")
 	paintPanelFunc(PanelModify, PHX:FTranslate("PHXM_TAB_ABOUT"))
 end)

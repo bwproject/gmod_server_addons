@@ -360,26 +360,7 @@ GM.RoundPreStartTime		= 0
 GM.SuicideString			= "dead" -- obsolete
 GM.TeamBased 				= true
 
-local mark = utf8.char(9733)
 GM.PHXContributors			= {
-	"Galaxio "..mark.." (Support+Translation)",
-	"Godfather "..mark.." (Support)",
-    "Darktooth "..mark.." (Support+Contributor)",
-    "Antoine "..mark.." (PH:E+/Plus Contributor)",
-    "Fryman (Web & Game Hosting)",
-	"Phyremaster (Last Prop Standing)",
-	"Berry (Russian Translation)",
-	"Ph.X (Chinese Translation)",
-	"Trigstur (Dutch Translation)",
-	"Galaxio, Haeiven, TR1NITY (French Translation)",
-	"Major Nick (German Translation)",
-	"KamFretoZ",
-	"So-chiru (Korean Translation)", 
-	"Pawelxxdd (Polish Translation)",
-	"Clã | BR | The Fire Fuchs (Portuguese/Brazil Translation)",
-	"Talha Berkay Akbulut aka Matt (Turkish Translation)",
-	"Ryo567, Kurayashi (Spannish Translation)",
-	"Dralga (Discord Helper)","@yttoxictripz", "Pascual","Yam","adk","Jonpopnycorn","Thundernerd"
 }
 
 -- Called on gamemdoe initialization to create teams
