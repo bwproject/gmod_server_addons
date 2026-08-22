@@ -105,7 +105,7 @@ L["HELP_F1"] 				= [[Prop Hunt (Nazwa Kodowa) Projekt X.
 Projekt, który uczyni Prop Hunt X nowoczesnym i konfigurowalnym.
 
 Więcej informacji znajdziesz tutaj:
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 Informacje, pomoc oraz poradniki znajdziesz, klikając przycisk [F1], a następnie przechodząc do [Menu Prop Hunt].
 

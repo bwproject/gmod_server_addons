@@ -94,7 +94,7 @@ L["HELP_F1"] 				= [[A Prop Hunt (Codename) X Project.
 Een project om Prop Hunt X moder en aanpasbaar te maken.
 
 Meer informatie kan hier gevonden worden:
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 Om meer informatie te zien, hulp en uitleg, Druk op de [F1] toets en klik dan op het [Prop Hunt Menu] knopje.
 

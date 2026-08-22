@@ -6,15 +6,19 @@ if SERVER then return end
 PHX = PHX or {}
 PHX.BWMenuAssets = PHX.BWMenuAssets or {
     Admin = "vgui/phx_menu/m_admin.png",
+    BMAC = "vgui/phx_menu/bmac.png",
     Donate = "vgui/phx_menu/m_donate.png",
     GroupAccess = "vgui/phx_menu/m_groupacc.png",
     Help = "vgui/phx_menu/m_help.png",
+    IDBSGuide = "vgui/phx_menu/idbs_guide.png",
     Info = "vgui/phx_menu/m_info.png",
+    KOFI = "vgui/phx_menu/kofi.png",
     MapVote = "vgui/phx_menu/m_map.png",
     Player = "vgui/phx_menu/m_player.png",
     PlayerModel = "vgui/phx_menu/m_plmodel.png",
     Plugins = "vgui/phx_menu/m_plugins.png",
     Plus = "vgui/phx_menu/m_plus.png",
+    TutorialControl = "vgui/phx_menu/hud_control_help.png",
     Voice = "vgui/phx_menu/m_voice.png",
 
     -- ProjectBW links.

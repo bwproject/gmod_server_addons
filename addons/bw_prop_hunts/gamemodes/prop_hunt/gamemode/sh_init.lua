@@ -323,16 +323,16 @@ IncludePlayerClasses()
 
 -- Information about the gamemode
 GM.Name		= PHX.TITLE
-GM.Author	= "Wolvindra-Vinzuerio & D4UNKN0WNM4N"
+GM.Author	= "ProjectBW"
 
 -- Versioning
 GM._VERSION		= PHX.VERSION
 GM.REVISION		= PHX.REVISION --dd/mm/yy.
-GM.DONATEURL 	= "https://ko-fi.com/wolvindra"
+	GM.DONATEURL 	= PHX.BWGetMenuAsset("DonateRushURL", "https://gmod.projectbw.ru")
 
 -- Update information - returns json only
-GM.UPDATEURL 		= "https://gmodgameservers.com/ph_update_check.php"
-GM.UPDATEURLBACKUP 	= "https://raw.githubusercontent.com/Wolvin-NET/prophuntx/master/updates/update.json"
+GM.UPDATEURL 		= "https://gmod.projectbw.ru/ph_update_check.php"
+GM.UPDATEURLBACKUP 	= "https://gmod.projectbw.ru/ph_update_check.json"
 
 -- unused
 GM.Help			= ""
@@ -474,7 +474,7 @@ if CLIENT then
 				but:SetPos(40,96)
 				but:SetSize(256,40)
 				but:SetText(PHX:FTranslate("PLUGINS_BROWSE_MORE"))
-				but.DoClick = function() gui.OpenURL( "https://gmodgameservers.com/prophuntx/plugins" ) end
+				but.DoClick = function() gui.OpenURL( "https://gmod.projectbw.ru/plugins" ) end
 				but:SetIcon("icon16/bricks.png")
 			else
 				local lbl = vgui.Create("DLabel",main.panel)
@@ -523,7 +523,7 @@ if CLIENT then
 			end
 		end
 	
-	local PanelModify = tab:AddSheet("", main.panel, "vgui/phx_menu/m_plugins.png")
+	local PanelModify = tab:AddSheet("", main.panel, PHX.BWGetMenuAsset("Plugins", "vgui/phx_menu/m_plugins.png"))
 	paintPanelFunc(PanelModify, PHX:FTranslate("PHXM_TAB_PLUGINS"))
 	
 	end)

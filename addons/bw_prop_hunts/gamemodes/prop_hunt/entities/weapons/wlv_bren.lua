@@ -15,7 +15,7 @@ Supported Weapon Base:
 -- Basic information
 SWEP.Category 				= "Prop Hunt: BW" -- Used for Weapon Manager Plugin
 SWEP.Author					= "Wolvindra-Vinzuerio"
-SWEP.Contact				= "wolvindra.vinzuerio@gmail.com"
+SWEP.Contact				= "https://gmod.projectbw.ru"
 SWEP.Purpose				= "Just aim and shot at those innocent props lol."
 SWEP.Instructions			= "It's a gun. It's purpose is to shoot props."
 SWEP.Spawnable 				= true

@@ -46,7 +46,7 @@ local mat 		            = "prophunt_enhanced/sprites/luckyball"
 local pointer 	            = "prophunt_enhanced/sprites/luckyball_pointer"
 local dmat		            = "prophunt_enhanced/sprites/devilball"
 local dpointer	            = "prophunt_enhanced/sprites/devilball_pointer"
-local tutormat 	            = "vgui/phx_menu/hud_control_help.png"
+local tutormat = PHX.BWGetMenuAsset("TutorialControl", "vgui/phx_menu/hud_control_help.png")
 local crosshair             = Material("vgui/hud_crosshair")
 local curshow 	            = 0
 local lgWind 	            = {}
@@ -200,49 +200,42 @@ end
 
 -- ShowHelp is now moved to prop_hunt gamemodedir.
 function GM:ShowHelp()
-	
+
 	if GAMEMODE.VGUISplash and GAMEMODE.VGUISplash ~= nil and istable(GAMEMODE.VGUISplash) then
-	
+
 		local Help = vgui.CreateFromTable( GAMEMODE.VGUISplash )
 		Help:SetHeaderText( GAMEMODE.Name or "Prop Hunt: BW" )
 		Help:SetForHelp( "HELP_F1", GAMEMODE.PHXContributors )
-		
-		Help.lblFooterText.Think = function( panel ) 
+
+		Help.lblFooterText.Think = function( panel )
 			local tl = GAMEMODE:GetGameTimeLeft()
 			if ( tl == -1 ) then return end
-			
+
 			if( GetGlobalBool( "IsEndOfGame", false ) ) then panel:SetText( PHX:FTranslate("MISC_GAME_ENDED") ) return end
 			if( GAMEMODE.RoundBased && CurTime() > GAMEMODE:GetTimeLimit() ) then panel:SetText( PHX:FTranslate("MISC_GAMEEND") ) return end
-			
+
 			local timeLeft = PHX:FTranslate("MISC_TIMELEFT", util.ToMinutesSeconds( tl ))
 			panel:SetText( timeLeft )
 		end
-		
-		-- Internal Select buttons.
-		local btnadd = Help:AddSelectButton(PHX:FTranslate("DERMA_PHMENU"), function()
+
+		Help:AddSelectButton(PHX:FTranslate("DERMA_PHMENU"), function()
 			LocalPlayer():ConCommand("ph_x_menu")
 		end)
-		btnadd.m_colBackground = Color(255,128,40)
-		
+
 		hook.Run("PH_AddSplashHelpButton", Help)
-		
-		local btn = Help:AddSelectButton( PHX:FTranslate("DERMA_CHANGETEAM"), function() GAMEMODE:ShowTeam() end )
-		btn.m_colBackground = Color( 120, 255, 100 )
+
+		Help:AddSelectButton( PHX:FTranslate("DERMA_CHANGETEAM"), function() GAMEMODE:ShowTeam() end )
 
 		Help:AddCancelButton()
 		Help:MakePopup()
-        Help:NoFadeIn()
-        
+		Help:NoFadeIn()
+
 	else
-	
-		Help:AddCancelButton()
-        
-        Help:MakePopup()
-        Help:NoFadeIn()
+
 		ErrorNoHalt("[Prop Hunt: BW] - Unable to open Help splash screen!!!")
 
 	end
-	
+
 end
 
 -- ShowTeam also moved in here.
@@ -1119,7 +1112,7 @@ local function ShowVeryFirstTutorial()
 		fh.helpImage = vgui.Create("DImage", fh.panel)
 		fh.helpImage.Count = 1
 		fh.helpImage:Dock(FILL)
-		fh.helpImage:SetImage("vgui/phx_menu/phhelp1.png")
+		fh.helpImage:SetImage(PHX.BWGetHelpAsset(1, "vgui/phx_menu/phhelp1.png"))
 	
 		fh.pBottom = vgui.Create("DPanel", fh.panel)
 		fh.pBottom:Dock(BOTTOM)
@@ -1155,7 +1148,7 @@ local function ShowVeryFirstTutorial()
 			if fh.helpImage.Count > 10 then
 				fh.helpImage.Count = 1
 			end
-			fh.helpImage:SetImage("vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png")
+			fh.helpImage:SetImage(PHX.BWGetHelpAsset(fh.helpImage.Count, "vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png"))
 		end
 		
 		fh.bprev = vgui.Create("DButton", fh.pBottom)
@@ -1168,7 +1161,7 @@ local function ShowVeryFirstTutorial()
 			if fh.helpImage.Count < 1 then
 				fh.helpImage.Count = 10
 			end
-			fh.helpImage:SetImage("vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png")
+			fh.helpImage:SetImage(PHX.BWGetHelpAsset(fh.helpImage.Count, "vgui/phx_menu/phhelp" .. fh.helpImage.Count .. ".png"))
 		end
 	
 	fh.frame:MakePopup()

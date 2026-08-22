@@ -3,8 +3,8 @@ local L={}
 L.code = "ru"
 L.Name 		 	= "Русский"
 L.NameEnglish	= "Russian"
-L.Author			= "berry"
-L.AuthorURL		= "https://steamcommunity.com/profiles/76561198158864042"
+L.Author			= "ProjectBW"
+L.AuthorURL		= "https://gmod.projectbw.ru"
 L.SUICIDEMSG = {
 	"убивает себя!",
 	"погибает при необъяснимых обстоятельствах.",
@@ -70,7 +70,7 @@ L["HELP_F1"] 				= [[Prop Hunt проекта X.
 Проект, призванный сделать Prop Hunt более современным и настраиваемым.
 
 Более подробную информацию можно найти на:
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 Чтобы увидеть больше информации, помощь и руководство, Нажмите клавишу [F1] а затем нажмите кнопку [Prop Hunt Menu].
 

@@ -91,7 +91,7 @@ L["HELP_F1"] 				= [[Um projeto Prop Hunt (codinome) X.
 Um projeto para fazer o Prop Hunt X moderno e customizável
 
 Mais informações podem ser encontradas em:
-https://www.wolvindra.net/prophuntx
+https://gmod.projectbw.ru
 
 Para mais informações, ajuda ou guia. Pressione F1.
 

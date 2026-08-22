@@ -79,7 +79,7 @@ local function applyPatch()
             gui.OpenURL("https://projectbw.ru/shop")
         end
 
-        local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, "vgui/phx_menu/m_donate.png")
+        local PanelModify = PHX.UI.PnlTab:AddSheet("", panel, PHX.BWGetMenuAsset("Donate", "vgui/phx_menu/m_donate.png"))
         PHX.UI.PaintTabButton(PanelModify, "Поддержать")
     end
 

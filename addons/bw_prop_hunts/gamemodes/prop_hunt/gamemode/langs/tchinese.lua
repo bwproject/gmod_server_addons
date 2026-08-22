@@ -102,7 +102,7 @@ L["HELP_F1"] 				= [[物品獵殺 (代號) X 計畫.
 本計畫製作現代化與可定制的物品獵殺 X.
 
 更多訊息可在以下位置找到:
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 要查看更多訊息、幫助和指南，請按[F1]鍵，然後點擊[物品獵殺選單]按鈕.
 

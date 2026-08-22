@@ -100,7 +100,7 @@ L["HELP_F1"] = [[Prop Hunt X 프로젝트
 Prop Hunt X를 현대적이고 좀 더 커스텀 가능하도록 만든 프로젝트입니다.
 
 자세한 정보는 아래 링크에서 확인할 수 있습니다.
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 자세한 도움말 및 가이드를 보시려면, [F1] 키를 누르고 [Prop Hunt 메뉴] 버튼을 클릭하세요.
 

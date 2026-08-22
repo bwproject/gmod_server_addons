@@ -96,7 +96,7 @@ L["HELP_F1"] 				= [[Bir Nesne Avı X Projesi.
 Nesne Avını daha modern ve özelleştirilebilir hale getiren bir proje.
 
 Daha fazla bilgi şu adreste bulunabilir:
-https://www.buymeacoffee.com/wolvindra
+https://gmod.projectbw.ru
 
 Daha fazla bilgi, yardım ve kılavuz görmek için [F1] tuşuna basın ve ardından [Nesne Avı Menüsü] düğmesine tıklayın.
 

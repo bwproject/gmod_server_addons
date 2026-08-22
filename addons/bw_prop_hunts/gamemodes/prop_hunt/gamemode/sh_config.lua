@@ -202,7 +202,7 @@ PHX.DefaultHelp = [[Проект Prop Hunt: BW.
 Проект, делающий Prop Hunt X современным и настраиваемым.
 
 Больше информации можно найти на:
-https://gmodgameservers.com/prophuntx
+https://gmod.projectbw.ru
 
 Чтобы увидеть больше информации, помощи и гайд, нажмите клавишу [F1], а затем кнопку [Меню Prop Hunt].
 

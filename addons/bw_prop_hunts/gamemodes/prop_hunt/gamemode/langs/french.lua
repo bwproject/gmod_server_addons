@@ -95,7 +95,7 @@ L["HELP_DONATORS_AND_CONTRIBUTORS"]  = "\n\nDonateurs & Contributeurs:\n- %s"
 L["HELP_F1"] 				= [[Projet Prop Hunt X.
 Un projet qui a pour objectif de rendre le Prop Hunt plus Moderne et plus Personnalisable.
 Plus d'informations sur:
-https://www.buymeacoffee.com/wolvindra
+https://gmod.projectbw.ru
 Pour voir plus d'infos, de guides et d'aides, Appuyez [F1] et cliquer sur le bouton [Menu Prop Hunt].
 Version: ]].. PHX.VERSION ..[[ Revision: ]].. PHX.REVISION ..[[
 

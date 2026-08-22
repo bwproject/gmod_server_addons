@@ -233,7 +233,7 @@ hook.Add("PH_CustomTabMenu", "PHX.AdminManageUserGroup", function(tab, pVgui, Pa
 
     if ( LocalPlayer():PHXIsStaff() ) then
         local pan = ug:CreatePanel( tab )
-        local mod = tab:AddSheet("", pan, "vgui/phx_menu/m_groupacc.png")
+        local mod = tab:AddSheet("", pan, PHX.BWGetMenuAsset("GroupAccess", "vgui/phx_menu/m_groupacc.png"))
         PaintFunc(mod, PHX:FTranslate("PHXM_TAB_ADMINGROUPS"))
     end
 	

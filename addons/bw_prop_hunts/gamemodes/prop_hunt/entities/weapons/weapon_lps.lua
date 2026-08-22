@@ -5,7 +5,7 @@
 
 SWEP.Category 				= "Prop Hunt: BW" -- Used for Weapon Manager Plugin
 SWEP.Author					= "Wolvindra-Vinzuerio"
-SWEP.Contact				= "wolvindra.vinzuerio@gmail.com"
+SWEP.Contact				= "https://gmod.projectbw.ru"
 SWEP.Purpose				= "Yes."
 SWEP.Instructions			= "It does nothing."
 SWEP.PrintName				= "Last Prop Standing Gun"

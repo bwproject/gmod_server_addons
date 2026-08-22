@@ -37,7 +37,7 @@ hook.Add("PH_CustomTabMenu", "ProjectBW.GroupManager", function(tab, pVgui, Pain
         missing:SetFont("PHX.MenuCategoryLabel")
         missing:SetTextColor(Color(240, 72, 72))
 
-        local sheetMiss = tab:AddSheet("", panel, "vgui/phx_menu/m_groupacc.png")
+        local sheetMiss = tab:AddSheet("", panel, PHX.BWGetMenuAsset("GroupAccess", "vgui/phx_menu/m_groupacc.png"))
         PaintFunc(sheetMiss, "Группы")
         return
     end
@@ -115,7 +115,7 @@ hook.Add("PH_CustomTabMenu", "ProjectBW.GroupManager", function(tab, pVgui, Pain
         grid:AddItem(row)
     end
 
-    local mod = tab:AddSheet("", panel, "vgui/phx_menu/m_groupacc.png")
+    local mod = tab:AddSheet("", panel, PHX.BWGetMenuAsset("GroupAccess", "vgui/phx_menu/m_groupacc.png"))
     PaintFunc(mod, "Группы")
 end)
 

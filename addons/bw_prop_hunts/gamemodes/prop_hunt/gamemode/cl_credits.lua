@@ -25,12 +25,12 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
 		author	= GAMEMODE.Author,
 		version = GAMEMODE._VERSION,
 		rev 	= GAMEMODE.REVISION,
-		lgit	= "https://github.com/Wolvin-NET/prophuntx/",
-		lhome	= "https://gmodgameservers.com/prophuntx",
-		ldonate = GAMEMODE.DONATEURL,
-		lwiki	= "https://github.com/Wolvin-NET/prophuntx/wiki/",
-		lklog	= "https://gmodgameservers.com/prophuntx/logs",
-		lplugins = "https://gmodgameservers.com/prophuntx/plugins"
+		lgit	= "https://github.com/anomalyco/prophuntx",
+		lhome	= "https://gmod.projectbw.ru",
+		ldonate = PHX.BWGetMenuAsset("DonateRushURL", GAMEMODE.DONATEURL),
+		lwiki	= "https://github.com/anomalyco/prophuntx/wiki",
+		lklog	= "https://gmod.projectbw.ru/logs",
+		lplugins = "https://gmod.projectbw.ru/plugins"
 	}
 	
     pVgui("","spacer",nil,grid,"" )
@@ -62,6 +62,6 @@ hook.Add("PH_CustomTabMenu", "PHX.About", function(tab, pVgui, paintPanelFunc)
 		[6] = {"PHXM_ABOUT_BTN_WIKI",		function() gui.OpenURL(label.lwiki)     end}
 	},grid,"")
 	pVgui("","spacer",nil,grid,"" )
-	local PanelModify = tab:AddSheet("", panel, "vgui/phx_menu/m_info.png")
+	local PanelModify = tab:AddSheet("", panel, PHX.BWGetMenuAsset("Info", "vgui/phx_menu/m_info.png"))
 	paintPanelFunc(PanelModify, PHX:FTranslate("PHXM_TAB_ABOUT"))
 end)

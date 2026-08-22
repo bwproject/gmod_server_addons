@@ -9,12 +9,10 @@ L.code = "en_us"
 
 L.Name 		 	= "English"
 L.NameEnglish	= "English"
-L.Author			= "Wolvindra-Vinzuerio, Godfather, Fafy" -- Only accept STRINGS.
+L.Author			= "ProjectBW"
 -- Can Accept: String, and Table.
 L.AuthorURL		= {	
-	"https://steamcommunity.com/profiles/76561198086789110", 
-	"https://steamcommunity.com/profiles/76561198283562416", 
-	"https://steamcommunity.com/profiles/76561198016233242"
+	"https://gmod.projectbw.ru"
 }
 -- Special Section that isn't String-based
 L.SUICIDEMSG = {  -- Fix me: there was addition text here but feel free to add more.
@@ -103,7 +101,7 @@ L["HELP_F1"] 				= [[A Prop Hunt X Project.
 A project to make Prop Hunt be more modern and customisable.
 
 More info can be found at:
-https://www.buymeacoffee.com/wolvindra
+https://gmod.projectbw.ru
 
 To See more info, help and guide, Press [F1] key and then click [Prop Hunt Menu] button.
 
