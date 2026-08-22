@@ -93,11 +93,13 @@ hook.Add("PostGamemodeLoaded", "BWPHX_RussianUI", function()
         ru["PHXM_MV_CHANGEMAP_NOPLAYER"] = "Принудительно менять карту, если на сервере не осталось игроков?"
     end)
 
+    local _bwphx_wrapped = false
+
     timer.Simple(0.1, function()
         -- Оборачиваем открытие меню: после создания всех элементов переводим
         -- оставшиеся хардкодные строки оригинального интерфейса.
         if not PHX.UI or not PHX.UI.BaseMainMenu then return end
-        if PHX.UI.BaseMainMenu.__BWPHXRussian then return end
+        if _bwphx_wrapped then return end
 
         local original = PHX.UI.BaseMainMenu
         local wrapped = function(...)
@@ -105,7 +107,7 @@ hook.Add("PostGamemodeLoaded", "BWPHX_RussianUI", function()
             timer.Simple(0, BWPHX_ApplyDonationLinks)
             return result
         end
-        wrapped.__BWPHXRussian = true
+        _bwphx_wrapped = true
         PHX.UI.BaseMainMenu = wrapped
     end)
 end)
